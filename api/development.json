@@ -1,0 +1,23 @@
+{
+  "api": {
+    "config": {
+      "django": {
+        "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
+        "settingsModule": "config.settings.development"
+      },
+      "ccu": {
+        "webUrl": "https://app.dev.crisiscleanup.io",
+        "apiUrl": "https://api.dev.crisiscleanup.io"
+      },
+      "connect": {
+        "instanceId": "87fbcad4-9f58-4153-84e8-d5b7202693e8"
+      },
+      "aws": {
+        "dynamoStage": "dev"
+      },
+      "phone": {
+        "checkTimezone": false
+      }
+    }
+  }
+}
