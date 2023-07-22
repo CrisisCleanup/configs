@@ -1,0 +1,20 @@
+creation_rules:
+  # Production
+  - path_regex: production\.secrets\.json$
+    kms: "arn:aws:kms:us-east-1:967600921982:key/92bb4239-ff0c-4ef0-bcd4-f3565eea2e23"
+    pgp: "034B589A81A5E04F9F60BF7D6337007435FB154C"
+    age: "age1lahy804ukd2pq478t5kc06unc6vceedddjkcxfgg63mkt3gmpsnswavg9y,age16gtkkvx0hn8gpjtzua535mf293e9amufze8ertplzjq9wm5v7suq6kklef"
+    # Staging
+  - path_regex: staging\.secrets\.json$
+    kms: "arn:aws:kms:us-east-1:730804594403:key/a952e4f5-9b6f-483b-9604-28f7a6ed2231"
+    pgp: "034B589A81A5E04F9F60BF7D6337007435FB154C"
+    age: "age1lahy804ukd2pq478t5kc06unc6vceedddjkcxfgg63mkt3gmpsnswavg9y,age16gtkkvx0hn8gpjtzua535mf293e9amufze8ertplzjq9wm5v7suq6kklef"
+    # Development
+  - path_regex: development\.secrets\.json$
+    kms: "arn:aws:kms:us-east-1:858114272695:key/be16f9c7-28d2-49ec-b725-d2c31063ac43"
+    pgp: "034B589A81A5E04F9F60BF7D6337007435FB154C"
+    age: "age1lahy804ukd2pq478t5kc06unc6vceedddjkcxfgg63mkt3gmpsnswavg9y,age16gtkkvx0hn8gpjtzua535mf293e9amufze8ertplzjq9wm5v7suq6kklef"
+    # Catch-all rule
+  - kms: "arn:aws:kms:us-east-1:730804594403:key/a952e4f5-9b6f-483b-9604-28f7a6ed2231"
+    pgp: "034B589A81A5E04F9F60BF7D6337007435FB154C"
+    age: "age1lahy804ukd2pq478t5kc06unc6vceedddjkcxfgg63mkt3gmpsnswavg9y,age16gtkkvx0hn8gpjtzua535mf293e9amufze8ertplzjq9wm5v7suq6kklef"
