@@ -30,6 +30,10 @@
       "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-api",
       "tag": "latest",
       "pullPolicy": "Always"
+    },
+    "ingressAnnotations": {
+      "kubernetes.io/ingress.class": "alb",
+      "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:us-east-1:858114272695:certificate/4d59b12a-3703-4341-8d74-427008fe87ed"
     }
   }
 }
