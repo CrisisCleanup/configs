@@ -25,7 +25,7 @@
     "domainName": "dev.crisiscleanup.io",
     "webImage": {
       "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-web",
-      "tag": "latest",
+      "tag": "development",
       "pullPolicy": "Always"
     },
     "apiImage": {
