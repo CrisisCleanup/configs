@@ -34,6 +34,13 @@ async function pathExists(filePath: string): Promise<boolean> {
   }
 }
 
+const commonDefaults = {
+  apiStack: {
+    codeStarConnectionArn:
+      "arn:aws:codestar-connections:us-east-1:971613762022:connection/fa675d04-034e-445d-8918-5e4cf2ca8899",
+  },
+};
+
 async function resolveConfig(configPath: string) {
   const parts = path.parse(configPath);
   const envName = parts.name;
@@ -53,7 +60,7 @@ async function resolveConfig(configPath: string) {
       return await decrypt(secretsPath);
     }),
   ]);
-  return [envName, defu(configData, secretsData)];
+  return [envName, defu(configData, secretsData, commonDefaults)];
 }
 
 async function main() {
@@ -66,6 +73,7 @@ async function main() {
   return {
     $meta: { name: "crisiscleanup" },
     $env: Object.fromEntries(envConfigs),
+    ...commonDefaults,
   };
 }
 
