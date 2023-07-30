@@ -1,4 +1,8 @@
 {
+  "cdkEnvironment": {
+    "account": "858114272695",
+    "region": "us-east-1"
+  },
   "api": {
     "config": {
       "django": {
