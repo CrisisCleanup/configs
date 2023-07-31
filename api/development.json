@@ -5,7 +5,9 @@
   },
   "apiStack": {
     "eks": {
-      "platformArns": "arn:aws:iam::858114272695:role/AWSReservedSSO_AdministratorAccess_f2cb8b35bd2b7189"
+      "platformArns": [
+        "arn:aws:iam::858114272695:role/AWSReservedSSO_AdministratorAccess_f2cb8b35bd2b7189"
+      ]
     }
   },
   "api": {
