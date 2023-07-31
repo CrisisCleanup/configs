@@ -41,8 +41,8 @@
     },
     "apiImage": {
       "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-api",
-      "tag": "development",
-      "pullPolicy": "Always"
+      "tag": "development-d1ed663",
+      "pullPolicy": "IfNotPresent"
     },
     "ingressAnnotations": {
       "kubernetes.io/ingress.class": "alb",
