@@ -6,7 +6,8 @@
   "apiStack": {
     "eks": {
       "platformArns": [
-        "arn:aws:iam::858114272695:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_5989a993441c798f"
+        "arn:aws:iam::858114272695:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_5989a993441c798f",
+        "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674"
       ]
     }
   },
