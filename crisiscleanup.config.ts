@@ -41,7 +41,14 @@ const commonDefaults = {
   },
 };
 
-async function resolveConfig(configPath: string) {
+interface ConfigSources {
+  name: string;
+  configPath: string;
+  secretsPath: string;
+}
+
+function resolveSources(name: string): ConfigSources {
+  const configPath = configsRelative("api", `${name}.json`);
   const parts = path.parse(configPath);
   const envName = parts.name;
   const secretsPath = path.format({
@@ -50,6 +57,18 @@ async function resolveConfig(configPath: string) {
     ext: ".secrets" + parts.ext,
     name: parts.name,
   });
+  return {
+    name: envName,
+    configPath,
+    secretsPath,
+  };
+}
+
+async function resolveConfig(
+  sources: ConfigSources,
+  autoDecrypt: boolean = false
+) {
+  const { configPath, secretsPath, name } = sources;
   const [configData, secretsData] = await Promise.all([
     pathExists(configPath).then(async (exists) => {
       if (!exists) return {};
@@ -57,21 +76,22 @@ async function resolveConfig(configPath: string) {
     }),
     pathExists(secretsPath).then(async (exists) => {
       if (!exists) return {};
+      if (!autoDecrypt) return {};
       return await decrypt(secretsPath);
     }),
   ]);
-  return [envName, defu(configData, secretsData, commonDefaults)];
+  return [name, defu(configData, secretsData, commonDefaults)];
 }
 
 async function main() {
+  const autoDecrypt = Boolean(destr.destr(process.env.CCU_CONFIGS_DECRYPT));
   const stages = ["local", "development", "staging", "production", "test"];
+  const sources = stages.map((stage) => resolveSources(stage));
   const envConfigs = await Promise.all(
-    stages.map((stage) =>
-      resolveConfig(configsRelative("api", `${stage}.json`))
-    )
+    sources.map((source) => resolveConfig(source, autoDecrypt))
   );
   return {
-    $meta: { name: "crisiscleanup" },
+    $meta: { name: "crisiscleanup", repo: "configs", sources },
     $env: Object.fromEntries(envConfigs),
     ...commonDefaults,
   };
