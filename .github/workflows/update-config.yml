@@ -1,0 +1,82 @@
+name: Update Config
+on:
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: "Target environment"
+        required: true
+        type: string
+      path:
+        description: "JSON Patch Path"
+        required: true
+        type: string
+      value:
+        description: "New value"
+        required: true
+        type: string
+
+  workflow_call:
+    inputs:
+      environment:
+        description: "Target environment"
+        required: true
+        type: string
+      path:
+        description: "JSON Patch Path"
+        required: true
+        type: string
+      value:
+        description: "New value"
+        required: true
+        type: string
+
+jobs:
+  update:
+    name: Patch // ${{ inputs.environment }}
+    runs-on: ubuntu-latest
+    env:
+      TARGET: ${{ inputs.environment }}
+      JSON_PATH: ${{ inputs.path }}
+      NEW_VALUE: ${{ inputs.value }}
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Install JSON Patch
+        run: npm install fast-json-patch
+
+      - name: Patch Config
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs/promises')
+            const jsonPatch = require('fast-json-patch')
+            const { TARGET, JSON_PATH, NEW_VALUE } = process.env;
+            const filePath = `api/${TARGET}.json`
+            const patch = [
+              { op: "replace", path: JSON_PATH, value: NEW_VALUE }
+            ]
+            const data = JSON.parse((await fs.readFile(filePath)).toString())
+            const newData = jsonPatch.applyPatch(data, patch).newDocument;
+            await fs.writeFile(filePath, JSON.stringify(newData, null, 2))
+
+      - name: Authenticate Bot
+        id: auth
+        uses: CrisisCleanup/crisiscleanup-3-api/.github/actions/auth-gha-app@master
+        with:
+          app_id: ${{ secrets.CCU_BOT_APP_ID }}
+          install_id: ${{ secrets.CCU_BOT_INSTALL_ID }}
+          private_key: ${{ secrets.CCU_BOT_PRIVATE_KEY }}
+          authenticate: "true"
+
+      - name: Commit changes.
+        run: |
+          git config --global user.name "${{ steps.auth.outputs.name }}"
+          git config --global user.email "${{ steps.auth.outputs.email }}"
+          git add .
+          git commit -m "chore(${{ inputs.environment }}): update config ${{ inputs.path }}" -a || true
+
+      - name: Push Changes
+        uses: ad-m/github-push-action@c361e2bb0747df3110bdbe051b209b40766670ec
+        with:
+          github_token: ${{ steps.auth.outputs.token }}
+          branch: ${{ github.head_ref || github.ref }}
