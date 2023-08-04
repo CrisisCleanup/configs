@@ -2,5 +2,23 @@
   "cdkEnvironment": {
     "account": "967600921982",
     "region": "us-east-1"
+  },
+  "chart": {
+    "namespace": "prod",
+    "domainName": "crisiscleanup.org",
+    "webImage": {
+      "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-web",
+      "tag": "production",
+      "pullPolicy": "Always"
+    },
+    "apiImage": {
+      "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-api",
+      "tag": "production-cd3397c",
+      "pullPolicy": "IfNotPresent"
+    },
+    "ingressAnnotations": {
+      "kubernetes.io/ingress.class": "alb",
+      "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:us-east-1:967600921982:certificate/14e84885-7bbd-4940-83be-5d5420f20885"
+    }
   }
 }
