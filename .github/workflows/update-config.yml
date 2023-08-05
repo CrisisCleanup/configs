@@ -35,11 +35,21 @@ jobs:
     name: Patch // ${{ inputs.environment }}
     runs-on: ubuntu-latest
     env:
+      REPO_PATH: .crisiscleanup-configs
       TARGET: api/${{ inputs.environment }}.json
       JSON_PATH: ${{ inputs.path }}
       NEW_VALUE: ${{ inputs.value }}
     steps:
+      # ensure we checkout the configs repo during a workflow_call event.
       - uses: actions/checkout@v3
+        with:
+          persist-credentials: false
+          fetch-depth: 0
+          token: ${{ secrets.GH_CONFIGS_RO_PAT }}
+          repository: CrisisCleanup/configs
+          ref: main
+          path: ${{ env.REPO_PATH }}
+          clean: false
 
       - name: Install JSON Patch
         run: npm install fast-json-patch
@@ -49,9 +59,10 @@ jobs:
         with:
           script: |
             const fs = require('fs/promises')
+            const path = require('path')
             const jsonPatch = require('fast-json-patch')
-            const { TARGET, JSON_PATH, NEW_VALUE } = process.env;
-            const filePath = TARGET
+            const { TARGET, JSON_PATH, NEW_VALUE, REPO_PATH } = process.env;
+            const filePath = path.join(REPO_PATH, TARGET)
             const patch = [
               { op: "replace", path: JSON_PATH, value: NEW_VALUE }
             ]
@@ -79,4 +90,10 @@ jobs:
         uses: ad-m/github-push-action@c361e2bb0747df3110bdbe051b209b40766670ec
         with:
           github_token: ${{ steps.auth.outputs.token }}
-          branch: ${{ github.head_ref || github.ref }}
+          branch: main
+          repository: CrisisCleanup/configs
+
+      - name: Cleanup
+        if: always()
+        continue-on-error: true
+        run: rm -rf ${{ env.REPO_PATH }} || true
