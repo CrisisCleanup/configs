@@ -31,4 +31,4 @@ runs:
           core.info(JSON.stringify(patches, null, 2))
           const data = JSON.parse((await fs.readFile(TARGET)).toString())
           const newData = jsonPatch.applyPatch(data, patches).newDocument;
-          await fs.writeFile(filePath, JSON.stringify(newData, null, 2))
+          await fs.writeFile(TARGET, JSON.stringify(newData, null, 2))
