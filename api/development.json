@@ -1,4 +1,6 @@
 {
+  "$schema": "../config.schema.json",
+  "ccuStage": "development",
   "cdkEnvironment": {
     "account": "858114272695",
     "region": "us-east-1"
@@ -22,16 +24,15 @@
       },
       "ccu": {
         "webUrl": "https://app.dev.crisiscleanup.io",
-        "apiUrl": "https://api.dev.crisiscleanup.io"
+        "apiUrl": "https://api.dev.crisiscleanup.io",
+        "forceDocker": false,
+        "newrelicDisable": true
       },
       "connect": {
         "instanceId": "87fbcad4-9f58-4153-84e8-d5b7202693e8"
       },
       "elasticSearch": {
         "host": "https://search-crisiscleanup-weyohcdj6uiduuj65scqkmxxjy.us-east-1.es.amazonaws.com/"
-      },
-      "aws": {
-        "dynamoStage": "dev"
       },
       "phone": {
         "checkTimezone": false
