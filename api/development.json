@@ -15,7 +15,10 @@
     "config": {
       "django": {
         "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
-        "settingsModule": "config.settings.development"
+        "settingsModule": "config.settings.development",
+        "allowedHosts": "https://app.dev.crisiscleanup.io,https://app.dev.crisiscleanup.io,https://cdn.crisiscleanup.io",
+        "sessionCookieSecure": true,
+        "csrfCookieSecure": true
       },
       "ccu": {
         "webUrl": "https://app.dev.crisiscleanup.io",
@@ -23,6 +26,9 @@
       },
       "connect": {
         "instanceId": "87fbcad4-9f58-4153-84e8-d5b7202693e8"
+      },
+      "elasticSearch": {
+        "host": "https://search-crisiscleanup-weyohcdj6uiduuj65scqkmxxjy.us-east-1.es.amazonaws.com/"
       },
       "aws": {
         "dynamoStage": "dev"
