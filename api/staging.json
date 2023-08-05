@@ -8,7 +8,7 @@
   "apiStack": {
     "database": {
       "ioOptimized": true,
-      "maxACU": 2
+      "maxAcu": 2
     },
     "isolateDatabase": true,
     "eks": {
@@ -34,7 +34,7 @@
         "instanceId": "414df788-cd99-4580-ad07-f8af22246ce5"
       },
       "phone": {
-        "checkTimezone": true,
+        "checkTimezone": true
       },
       "newRelic": {
         "environment": "staging"
