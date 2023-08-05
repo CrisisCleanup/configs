@@ -32,7 +32,7 @@ on:
 
 jobs:
   update:
-    name: Patch // ${{ inputs.environment }}
+    name: Patch >> ${{ inputs.environment }}
     runs-on: ubuntu-latest
     env:
       REPO_PATH: .crisiscleanup-configs
@@ -51,24 +51,14 @@ jobs:
           path: ${{ env.REPO_PATH }}
           clean: false
 
-      - name: Install JSON Patch
-        run: npm install fast-json-patch
-
-      - name: Patch Config
-        uses: actions/github-script@v6
+      - name: Apply Patches
+        uses: CrisisCleanup/configs/.github/actions/json-patch@main
         with:
-          script: |
-            const fs = require('fs/promises')
-            const path = require('path')
-            const jsonPatch = require('fast-json-patch')
-            const { TARGET, JSON_PATH, NEW_VALUE, REPO_PATH } = process.env;
-            const filePath = path.join(REPO_PATH, TARGET)
-            const patch = [
-              { op: "replace", path: JSON_PATH, value: NEW_VALUE }
-            ]
-            const data = JSON.parse((await fs.readFile(filePath)).toString())
-            const newData = jsonPatch.applyPatch(data, patch).newDocument;
-            await fs.writeFile(filePath, JSON.stringify(newData, null, 2))
+          file-path: ${{ env.REPO_PATH }}/${{ env.TARGET }}
+          patches: |
+            - op: replace
+              path: ${{ env.JSON_PATH }}
+              value: ${{ env.NEW_VALUE }}
 
       - name: Authenticate Bot
         id: auth
@@ -80,6 +70,7 @@ jobs:
           authenticate: "true"
 
       - name: Commit changes.
+        working-directory: ${{ env.REPO_PATH }}
         run: |
           git config --global user.name "${{ steps.auth.outputs.name }}"
           git config --global user.email "${{ steps.auth.outputs.email }}"
@@ -92,6 +83,7 @@ jobs:
           github_token: ${{ steps.auth.outputs.token }}
           branch: main
           repository: CrisisCleanup/configs
+          directory: ${{ env.REPO_PATH }}
 
       - name: Cleanup
         if: always()
