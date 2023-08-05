@@ -1,7 +1,45 @@
 {
+  "$schema": "../config.schema.json",
+  "ccuStage": "staging",
   "cdkEnvironment": {
     "account": "730804594403",
     "region": "us-east-1"
+  },
+  "apiStack": {
+    "database": {
+      "ioOptimized": true,
+      "maxACU": 2
+    },
+    "isolateDatabase": true,
+    "eks": {
+      "platformArns": []
+    }
+  },
+  "api": {
+    "config": {
+      "django": {
+        "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
+        "settingsModule": "config.settings.production",
+        "allowedHosts": "*",
+        "sessionCookieSecure": true,
+        "csrfCookieSecure": true
+      },
+      "ccu": {
+        "webUrl": "https://app.staging.crisiscleanup.io",
+        "apiUrl": "https://api.staging.crisiscleanup.io",
+        "newrelicDisable": true,
+        "forceDocker": false
+      },
+      "connect": {
+        "instanceId": "414df788-cd99-4580-ad07-f8af22246ce5"
+      },
+      "phone": {
+        "checkTimezone": true,
+      },
+      "newRelic": {
+        "environment": "staging"
+      }
+    }
   },
   "chart": {
     "namespace": "staging",
@@ -19,6 +57,35 @@
     "ingressAnnotations": {
       "kubernetes.io/ingress.class": "alb",
       "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:us-east-1:730804594403:certificate/66461000-fd15-49dc-bfc7-2f0d90131bb7"
+    },
+    "wsgi": {
+      "scaling": {
+        "maxReplicas": 6
+      }
+    },
+    "asgi": {
+      "scaling": {
+        "maxReplicas": 6
+      }
+    },
+    "celery": {
+      "celery": {
+        "scaling": {
+          "maxReplicas": 6
+        }
+      },
+      "signal": {
+        "scaling": {
+          "maxReplicas": 6
+        }
+      }
+    },
+    "frontend": {
+      "web": {
+        "scaling": {
+          "maxReplicas": 4
+        }
+      }
     }
   }
 }
