@@ -16,7 +16,7 @@
       "django": {
         "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
         "settingsModule": "config.settings.development",
-        "allowedHosts": "https://app.dev.crisiscleanup.io,https://app.dev.crisiscleanup.io,https://cdn.crisiscleanup.io",
+        "allowedHosts": "*",
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
