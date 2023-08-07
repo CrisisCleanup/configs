@@ -6,6 +6,11 @@
     "region": "us-east-1"
   },
   "apiStack": {
+    "network": {
+      "natGateways": 1,
+      "cidr": "10.1.0.0/16",
+      "maxAzs": 2
+    },
     "eks": {
       "platformArns": [
         "arn:aws:iam::858114272695:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_5989a993441c798f",

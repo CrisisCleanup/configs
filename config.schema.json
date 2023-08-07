@@ -21,6 +21,28 @@
       ],
       "type": "object"
     },
+    "NetworkConfig": {
+      "additionalProperties": false,
+      "properties": {
+        "maxAzs": {
+          "type": "number",
+          "default": 2
+        },
+        "natGateways": {
+          "type": "number",
+          "default": 1
+        },
+        "cidr": {
+          "type": "string",
+          "default": "10.0.0.0/16"
+        }
+      },
+      "required": [
+        "maxAzs",
+        "natGateways"
+      ],
+      "type": "object"
+    },
     "EKSConfig": {
       "additionalProperties": false,
       "properties": {
@@ -77,6 +99,9 @@
         },
         "eks": {
           "$ref": "#/definitions/EKSConfig"
+        },
+        "network": {
+          "$ref": "#/definitions/NetworkConfig"
         },
         "isolateDatabase": {
           "type": "boolean"

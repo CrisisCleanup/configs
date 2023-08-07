@@ -6,6 +6,11 @@
     "region": "us-east-1"
   },
   "apiStack": {
+    "network": {
+      "natGateways": 1,
+      "maxAzs": 2,
+      "cidr": "10.2.0.0/16"
+    },
     "database": {
       "ioOptimized": true,
       "maxAcu": 2
