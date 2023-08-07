@@ -51,7 +51,7 @@
     },
     "apiImage": {
       "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-api",
-      "tag": "staging-v3.32.0",
+      "tag": "staging-2bf2eb8",
       "pullPolicy": "IfNotPresent"
     },
     "ingressAnnotations": {
