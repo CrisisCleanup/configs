@@ -17,8 +17,8 @@
     },
     "eks": {
       "platformArns": [
-        "arn:aws:sts::240937704012:assumed-role/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674",
-        "arn:aws:sts::730804594403:assumed-role/AWSReservedSSO_AWSAdministratorAccess_da8aae177a669892"
+        "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674",
+        "arn:aws:iam::730804594403:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_da8aae177a669892"
       ]
     }
   },
