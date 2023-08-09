@@ -14,11 +14,11 @@
     "database": {
       "databaseName": "crisiscleanup",
       "username": "crisiscleanup",
-      "ioOptimized": true,
+      "ioOptimized": false,
       "minAcu": 0.5,
       "maxAcu": 5.5,
       "snapshotIdentifier": "ccu-staging-aurora-pg15-20230809",
-      "numReplicas": 0,
+      "numReplicas": 0
     },
     "eks": {
       "platformArns": [

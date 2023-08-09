@@ -6,6 +6,15 @@
     "region": "us-east-1"
   },
   "apiStack": {
+    "database": {
+      "ioOptimized": false,
+      "username": "crisiscleanup",
+      "databaseName": "crisiscleanup",
+      "snapshotIdentifier": "ccu-dev-upgrade-15",
+      "minAcu": 0.5,
+      "maxAcu": 4,
+      "numReplicas": 0
+    },
     "network": {
       "natGateways": 1,
       "cidr": "10.1.0.0/16",
