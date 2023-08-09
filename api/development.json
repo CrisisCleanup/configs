@@ -8,7 +8,7 @@
   "apiStack": {
     "database": {
       "ioOptimized": false,
-      "username": "crisiscleanup",
+      "username": "postgres",
       "databaseName": "crisiscleanup",
       "snapshotIdentifier": "ccu-dev-upgrade-15",
       "minAcu": 0.5,
