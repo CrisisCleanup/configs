@@ -13,7 +13,7 @@
     },
     "database": {
       "ioOptimized": true,
-      "maxAcu": 2
+      "maxAcu": 5.5
     },
     "eks": {
       "platformArns": [
