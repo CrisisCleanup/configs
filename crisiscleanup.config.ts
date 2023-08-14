@@ -35,6 +35,26 @@ async function pathExists(filePath: string): Promise<boolean> {
 }
 
 const commonDefaults = {
+  api: {
+    config: {
+      sentry: {
+        traceExcludeUrls: [
+          "/",
+          "/health",
+          "/health/",
+          "/ws/health",
+          "/ws/health/",
+          "/version",
+          "/version/",
+          "/{var}health/",
+          "/{var}version/",
+          "crisiscleanup.common.tasks.get_request_ip",
+          "crisiscleanup.common.tasks.create_signal_log"
+          "crisiscleanup.common.tasks.create_new_signal_events"
+        ]
+      }
+    },
+  },
   apiStack: {
     codeStarConnectionArn:
       "arn:aws:codestar-connections:us-east-1:971613762022:connection/fa675d04-034e-445d-8918-5e4cf2ca8899",
