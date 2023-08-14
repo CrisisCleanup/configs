@@ -32,7 +32,7 @@
       "django": {
         "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": "*",
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
@@ -50,6 +50,9 @@
       },
       "newRelic": {
         "environment": "staging"
+      },
+      "celery": {
+        "alwaysEager": false
       }
     }
   },
@@ -82,21 +85,21 @@
     },
     "celery": {
       "celery": {
+        "queues": ["celery"],
         "scaling": {
           "maxReplicas": 6
         }
       },
       "signal": {
+        "queues": ["signal", "phone", "metrics"],
         "scaling": {
           "maxReplicas": 6
         }
       }
     },
-    "frontend": {
-      "web": {
-        "scaling": {
-          "maxReplicas": 4
-        }
+    "web": {
+      "scaling": {
+        "maxReplicas": 4
       }
     }
   }
