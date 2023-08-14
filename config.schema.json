@@ -508,6 +508,13 @@
             "backupRetentionDays": {
               "type": "number",
               "default": 1
+            },
+            "bastionAllowList": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": []
             }
           },
           "required": [
