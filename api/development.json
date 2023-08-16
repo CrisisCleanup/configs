@@ -69,6 +69,12 @@
     "ingressAnnotations": {
       "kubernetes.io/ingress.class": "alb",
       "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:us-east-1:858114272695:certificate/4d59b12a-3703-4341-8d74-427008fe87ed"
+    },
+    "wsgi": {
+      "scaling": {
+        "minReplicas": 1,
+        "maxReplicas": 6
+      }
     }
   }
 }
