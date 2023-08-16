@@ -12,7 +12,7 @@
       "databaseName": "crisiscleanup",
       "snapshotIdentifier": "ccu-dev-upgrade-15",
       "minAcu": 0.5,
-      "maxAcu": 6.5,
+      "maxAcu": 8,
       "numReplicas": 0
     },
     "network": {
