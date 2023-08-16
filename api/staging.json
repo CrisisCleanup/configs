@@ -14,7 +14,7 @@
     "database": {
       "databaseName": "crisiscleanup",
       "username": "postgres",
-      "ioOptimized": false,
+      "ioOptimized": true,
       "minAcu": 0.5,
       "maxAcu": 8,
       "snapshotIdentifier": "ccu-staging-aurora-pg15-20230809",
