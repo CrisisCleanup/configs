@@ -7,7 +7,7 @@
   },
   "apiStack": {
     "database": {
-      "ioOptimized": false,
+      "ioOptimized": true,
       "username": "postgres",
       "databaseName": "crisiscleanup",
       "snapshotIdentifier": "ccu-dev-upgrade-15",
@@ -32,9 +32,7 @@
       "django": {
         "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
         "settingsModule": "config.settings.development",
-        "allowedHosts": [
-          "*"
-        ],
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
