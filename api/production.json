@@ -12,7 +12,7 @@
       "natGateways": 3
     },
     "database": {
-      "databaseName": "crisiscleanup",
+      "databaseName": null,
       "username": "postgres",
       "ioOptimized": true,
       "minAcu": 2,
@@ -37,9 +37,7 @@
       "django": {
         "emailBackend": "anymail.backends.mandrill.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": [
-          "*"
-        ],
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
@@ -96,9 +94,7 @@
     },
     "celery": {
       "celery": {
-        "queues": [
-          "celery"
-        ],
+        "queues": ["celery"],
         "scaling": {
           "memUtilPercent": 75,
           "minReplicas": 2,
@@ -106,11 +102,7 @@
         }
       },
       "signal": {
-        "queues": [
-          "signal",
-          "phone",
-          "metrics"
-        ],
+        "queues": ["signal", "phone", "metrics"],
         "scaling": {
           "memUtilPercent": 75,
           "minReplicas": 2,
