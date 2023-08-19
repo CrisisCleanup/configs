@@ -1,7 +1,64 @@
 {
+  "$schema": "../config.schema.json",
+  "ccuStage": "production",
   "cdkEnvironment": {
     "account": "967600921982",
     "region": "us-east-1"
+  },
+  "apiStack": {
+    "network": {
+      "cidr": "10.3.0.0/16",
+      "maxAzs": 3,
+      "natGateways": 3
+    },
+    "database": {
+      "databaseName": "crisiscleanup",
+      "username": "postgres",
+      "ioOptimized": true,
+      "minAcu": 2,
+      "maxAcu": 64,
+      "snapshotIdentifier": "CHANGEME",
+      "numReplicas": 1,
+      "numReplicasScaledWithWriter": 1,
+      "performanceInsights": true,
+      "backupRetentionDays": 4
+    },
+    "eks": {
+      "platformArns": [
+        "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674"
+      ]
+    }
+  },
+  "api": {
+    "config": {
+      "django": {
+        "emailBackend": "anymail.backends.mandrill.EmailBackend",
+        "settingsModule": "config.settings.production",
+        "allowedHosts": [
+          "*"
+        ],
+        "sessionCookieSecure": true,
+        "csrfCookieSecure": true
+      },
+      "ccu": {
+        "webUrl": "https://crisiscleanup.org",
+        "apiUrl": "https://api.crisiscleanup.org",
+        "newrelicDisable": false,
+        "forceDocker": false
+      },
+      "connect": {
+        "instanceId": "cd54a377-8223-4c43-8524-a21d2837b7c5"
+      },
+      "phone": {
+        "checkTimezone": true
+      },
+      "newRelic": {
+        "environment": "production"
+      },
+      "celery": {
+        "alwaysEager": false
+      }
+    }
   },
   "chart": {
     "namespace": "prod",
@@ -19,6 +76,52 @@
     "ingressAnnotations": {
       "kubernetes.io/ingress.class": "alb",
       "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:us-east-1:967600921982:certificate/14e84885-7bbd-4940-83be-5d5420f20885"
+    },
+    "wsgi": {
+      "scaling": {
+        "memUtilPercent": 75,
+        "minReplicas": 3,
+        "maxReplicas": 10
+      }
+    },
+    "asgi": {
+      "scaling": {
+        "memUtilPercent": 75,
+        "minReplicas": 2,
+        "maxReplicas": 8
+      }
+    },
+    "celery": {
+      "celery": {
+        "queues": [
+          "celery"
+        ],
+        "scaling": {
+          "memUtilPercent": 75,
+          "minReplicas": 2,
+          "maxReplicas": 8
+        }
+      },
+      "signal": {
+        "queues": [
+          "signal",
+          "phone",
+          "metrics"
+        ],
+        "scaling": {
+          "memUtilPercent": 75,
+          "minReplicas": 2,
+          "maxReplicas": 8
+        }
+      }
+    },
+    "web": {
+      "scaling": {
+        "minReplicas": 3,
+        "maxReplicas": 8,
+        "memUtilPercent": 75
+      }
     }
+
   }
 }
