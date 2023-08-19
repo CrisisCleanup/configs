@@ -147,7 +147,27 @@
                   "type": "object",
                   "properties": {
                     "traceExcludeUrls": {
-                      "$ref": "#/definitions/ApiConfig/properties/api/properties/config/properties/django/properties/allowedHosts",
+                      "anyOf": [
+                        {
+                          "allOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ],
                       "default": [
                         "/",
                         "/health",
@@ -230,7 +250,27 @@
                       "type": "string"
                     },
                     "hostReplicas": {
-                      "$ref": "#/definitions/ApiConfig/properties/api/properties/config/properties/django/properties/allowedHosts",
+                      "anyOf": [
+                        {
+                          "allOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ],
                       "default": []
                     }
                   },
@@ -305,7 +345,20 @@
                   "additionalProperties": false
                 },
                 "cloudfront": {
-                  "$ref": "#/definitions/ApiConfig/properties/api/properties/secrets/properties/jwt"
+                  "type": "object",
+                  "properties": {
+                    "publicKey": {
+                      "type": "string"
+                    },
+                    "privateKey": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "publicKey",
+                    "privateKey"
+                  ],
+                  "additionalProperties": false
                 },
                 "saml": {
                   "type": "object",
@@ -381,7 +434,14 @@
           "default": {}
         },
         "ccuStage": {
-          "$ref": "#/definitions/ApiConfig/properties/api/properties/config/properties/newRelic/properties/environment"
+          "type": "string",
+          "enum": [
+            "local",
+            "development",
+            "staging",
+            "production",
+            "test"
+          ]
         }
       },
       "required": [
@@ -452,7 +512,22 @@
               "type": "string"
             },
             "databaseName": {
-              "type": "string"
+              "anyOf": [
+                {
+                  "anyOf": [
+                    {
+                      "not": {}
+                    },
+                    {
+                      "type": "string"
+                    }
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null
             },
             "snapshotIdentifier": {
               "type": "string",
@@ -496,6 +571,11 @@
               "type": "boolean",
               "default": false,
               "description": "Enable performance insights."
+            },
+            "performanceInsightsRetention": {
+              "type": "number",
+              "default": 7,
+              "description": "Number of days to retain performance insights."
             },
             "cloudwatchLogsRetentionDays": {
               "type": "number",
@@ -631,13 +711,19 @@
           "type": "object",
           "properties": {
             "repository": {
-              "$ref": "#/definitions/ChartConfig/properties/apiImage/properties/repository"
+              "type": "string"
             },
             "tag": {
-              "$ref": "#/definitions/ChartConfig/properties/apiImage/properties/tag"
+              "type": "string",
+              "default": "latest"
             },
             "pullPolicy": {
-              "$ref": "#/definitions/ChartConfig/properties/apiImage/properties/pullPolicy"
+              "type": "string",
+              "enum": [
+                "Always",
+                "Never",
+                "IfNotPresent"
+              ]
             }
           },
           "required": [
@@ -677,13 +763,19 @@
                   "type": "object",
                   "properties": {
                     "repository": {
-                      "$ref": "#/definitions/ChartConfig/properties/apiImage/properties/repository"
+                      "type": "string"
                     },
                     "tag": {
-                      "$ref": "#/definitions/ChartConfig/properties/apiImage/properties/tag"
+                      "type": "string",
+                      "default": "latest"
                     },
                     "pullPolicy": {
-                      "$ref": "#/definitions/ChartConfig/properties/apiImage/properties/pullPolicy"
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
                     }
                   },
                   "required": [
@@ -712,7 +804,9 @@
                       "description": "Target average cpu utilization percentage."
                     },
                     "memUtilPercent": {
-                      "$ref": "#/definitions/ChartConfig/properties/web/anyOf/0/properties/scaling/properties/cpuUtilPercent",
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100,
                       "default": 85,
                       "description": "Target average memory utilization percentage."
                     }
@@ -730,7 +824,30 @@
               "type": "object",
               "properties": {
                 "image": {
-                  "$ref": "#/definitions/ChartConfig/properties/web/anyOf/0/properties/image"
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "pullPolicy"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
                 },
                 "replicaCount": {
                   "type": "number",
@@ -752,10 +869,108 @@
         "wsgi": {
           "anyOf": [
             {
-              "$ref": "#/definitions/ChartConfig/properties/web/anyOf/0"
+              "type": "object",
+              "properties": {
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "pullPolicy"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
+                },
+                "scaling": {
+                  "type": "object",
+                  "properties": {
+                    "minReplicas": {
+                      "type": "number"
+                    },
+                    "maxReplicas": {
+                      "type": "number",
+                      "default": 2,
+                      "description": "Maximum number of replicas to scale up too."
+                    },
+                    "cpuUtilPercent": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100,
+                      "default": 70,
+                      "description": "Target average cpu utilization percentage."
+                    },
+                    "memUtilPercent": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100,
+                      "default": 85,
+                      "description": "Target average memory utilization percentage."
+                    }
+                  },
+                  "additionalProperties": true,
+                  "description": "Horizontal Autoscaling Parameters"
+                }
+              },
+              "required": [
+                "scaling"
+              ],
+              "additionalProperties": true
             },
             {
-              "$ref": "#/definitions/ChartConfig/properties/web/anyOf/1"
+              "type": "object",
+              "properties": {
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "pullPolicy"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
+                },
+                "replicaCount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Static number of replicas to create."
+                }
+              },
+              "required": [
+                "replicaCount"
+              ],
+              "additionalProperties": true
             }
           ],
           "description": "Django Api WSGI component.",
@@ -769,10 +984,108 @@
         "asgi": {
           "anyOf": [
             {
-              "$ref": "#/definitions/ChartConfig/properties/web/anyOf/0"
+              "type": "object",
+              "properties": {
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "pullPolicy"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
+                },
+                "scaling": {
+                  "type": "object",
+                  "properties": {
+                    "minReplicas": {
+                      "type": "number"
+                    },
+                    "maxReplicas": {
+                      "type": "number",
+                      "default": 2,
+                      "description": "Maximum number of replicas to scale up too."
+                    },
+                    "cpuUtilPercent": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100,
+                      "default": 70,
+                      "description": "Target average cpu utilization percentage."
+                    },
+                    "memUtilPercent": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100,
+                      "default": 85,
+                      "description": "Target average memory utilization percentage."
+                    }
+                  },
+                  "additionalProperties": true,
+                  "description": "Horizontal Autoscaling Parameters"
+                }
+              },
+              "required": [
+                "scaling"
+              ],
+              "additionalProperties": true
             },
             {
-              "$ref": "#/definitions/ChartConfig/properties/web/anyOf/1"
+              "type": "object",
+              "properties": {
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "pullPolicy"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
+                },
+                "replicaCount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Static number of replicas to create."
+                }
+              },
+              "required": [
+                "replicaCount"
+              ],
+              "additionalProperties": true
             }
           ],
           "description": "Django Api ASGI component.",
@@ -786,10 +1099,108 @@
         "celeryBeat": {
           "anyOf": [
             {
-              "$ref": "#/definitions/ChartConfig/properties/web/anyOf/0"
+              "type": "object",
+              "properties": {
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "pullPolicy"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
+                },
+                "scaling": {
+                  "type": "object",
+                  "properties": {
+                    "minReplicas": {
+                      "type": "number"
+                    },
+                    "maxReplicas": {
+                      "type": "number",
+                      "default": 2,
+                      "description": "Maximum number of replicas to scale up too."
+                    },
+                    "cpuUtilPercent": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100,
+                      "default": 70,
+                      "description": "Target average cpu utilization percentage."
+                    },
+                    "memUtilPercent": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100,
+                      "default": 85,
+                      "description": "Target average memory utilization percentage."
+                    }
+                  },
+                  "additionalProperties": true,
+                  "description": "Horizontal Autoscaling Parameters"
+                }
+              },
+              "required": [
+                "scaling"
+              ],
+              "additionalProperties": true
             },
             {
-              "$ref": "#/definitions/ChartConfig/properties/web/anyOf/1"
+              "type": "object",
+              "properties": {
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "pullPolicy"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
+                },
+                "replicaCount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Static number of replicas to create."
+                }
+              },
+              "required": [
+                "replicaCount"
+              ],
+              "additionalProperties": true
             }
           ],
           "description": "Celery Beat component.",
@@ -805,7 +1216,30 @@
                 "type": "object",
                 "properties": {
                   "image": {
-                    "$ref": "#/definitions/ChartConfig/properties/web/anyOf/0/properties/image"
+                    "type": "object",
+                    "properties": {
+                      "repository": {
+                        "type": "string"
+                      },
+                      "tag": {
+                        "type": "string",
+                        "default": "latest"
+                      },
+                      "pullPolicy": {
+                        "type": "string",
+                        "enum": [
+                          "Always",
+                          "Never",
+                          "IfNotPresent"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "repository",
+                      "pullPolicy"
+                    ],
+                    "additionalProperties": false,
+                    "description": "Container Image Configuration"
                   },
                   "queues": {
                     "type": "array",
@@ -815,7 +1249,33 @@
                     "minItems": 1
                   },
                   "scaling": {
-                    "$ref": "#/definitions/ChartConfig/properties/web/anyOf/0/properties/scaling"
+                    "type": "object",
+                    "properties": {
+                      "minReplicas": {
+                        "type": "number"
+                      },
+                      "maxReplicas": {
+                        "type": "number",
+                        "default": 2,
+                        "description": "Maximum number of replicas to scale up too."
+                      },
+                      "cpuUtilPercent": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 100,
+                        "default": 70,
+                        "description": "Target average cpu utilization percentage."
+                      },
+                      "memUtilPercent": {
+                        "type": "number",
+                        "minimum": 0,
+                        "maximum": 100,
+                        "default": 85,
+                        "description": "Target average memory utilization percentage."
+                      }
+                    },
+                    "additionalProperties": true,
+                    "description": "Horizontal Autoscaling Parameters"
                   }
                 },
                 "required": [
@@ -828,10 +1288,37 @@
                 "type": "object",
                 "properties": {
                   "image": {
-                    "$ref": "#/definitions/ChartConfig/properties/web/anyOf/0/properties/image"
+                    "type": "object",
+                    "properties": {
+                      "repository": {
+                        "type": "string"
+                      },
+                      "tag": {
+                        "type": "string",
+                        "default": "latest"
+                      },
+                      "pullPolicy": {
+                        "type": "string",
+                        "enum": [
+                          "Always",
+                          "Never",
+                          "IfNotPresent"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "repository",
+                      "pullPolicy"
+                    ],
+                    "additionalProperties": false,
+                    "description": "Container Image Configuration"
                   },
                   "queues": {
-                    "$ref": "#/definitions/ChartConfig/properties/celery/additionalProperties/anyOf/0/properties/queues"
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "minItems": 1
                   },
                   "replicaCount": {
                     "type": "number",
@@ -881,34 +1368,653 @@
       "type": "object",
       "properties": {
         "api": {
-          "$ref": "#/definitions/ApiConfig/properties/api"
+          "type": "object",
+          "properties": {
+            "config": {
+              "type": "object",
+              "properties": {
+                "celery": {
+                  "type": "object",
+                  "properties": {
+                    "alwaysEager": {
+                      "type": "boolean",
+                      "default": false,
+                      "description": "Run celery tasks synchronously"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                },
+                "django": {
+                  "type": "object",
+                  "properties": {
+                    "accountAllowRegistration": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "allowedHosts": {
+                      "anyOf": [
+                        {
+                          "allOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ],
+                      "default": [
+                        "*"
+                      ],
+                      "description": "Django ALLOWED_HOSTS"
+                    },
+                    "csrfCookieSecure": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Secure CSRF cookie"
+                    },
+                    "secureSslRedirect": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "sessionCookieSecure": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "emailBackend": {
+                      "type": "string",
+                      "default": "django.core.mail.backends.dummy.EmailBackend",
+                      "description": "Django EMAIL_BACKEND python import path."
+                    },
+                    "settingsModule": {
+                      "type": "string",
+                      "default": "config.settings.local",
+                      "description": "Django settings module"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                },
+                "elasticSearch": {
+                  "type": "object",
+                  "properties": {
+                    "host": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                },
+                "newRelic": {
+                  "type": "object",
+                  "properties": {
+                    "configFile": {
+                      "type": "string",
+                      "default": "/app/newrelic.ini",
+                      "description": "Path to newrelic.ini file"
+                    },
+                    "environment": {
+                      "type": "string",
+                      "enum": [
+                        "local",
+                        "development",
+                        "staging",
+                        "production",
+                        "test"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                },
+                "ccu": {
+                  "type": "object",
+                  "properties": {
+                    "newrelicDisable": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Disable new relic integration."
+                    },
+                    "webUrl": {
+                      "type": "string",
+                      "format": "uri",
+                      "default": "https://local.crisiscleanup.io"
+                    },
+                    "apiUrl": {
+                      "type": "string",
+                      "format": "uri",
+                      "default": "https://api.local.crisiscleanup.io"
+                    },
+                    "forceDocker": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Force assumption of running in docker."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                },
+                "sentry": {
+                  "type": "object",
+                  "properties": {
+                    "traceExcludeUrls": {
+                      "anyOf": [
+                        {
+                          "allOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ],
+                      "default": [
+                        "/",
+                        "/health",
+                        "/health/",
+                        "/ws/health",
+                        "/ws/health/",
+                        "/version",
+                        "/version/",
+                        "/{var}health/",
+                        "/{var}version/"
+                      ],
+                      "description": "Sentry trace names to exclude."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                },
+                "connect": {
+                  "type": "object",
+                  "properties": {
+                    "instanceId": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                },
+                "phone": {
+                  "type": "object",
+                  "properties": {
+                    "checkTimezone": {
+                      "type": "boolean",
+                      "default": true,
+                      "description": "Enable phone system timezone guardrails."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                }
+              },
+              "additionalProperties": false,
+              "default": {}
+            },
+            "secrets": {
+              "type": "object",
+              "properties": {
+                "postgres": {
+                  "type": "object",
+                  "properties": {
+                    "dbname": {
+                      "type": "string"
+                    },
+                    "host": {
+                      "type": "string"
+                    },
+                    "password": {
+                      "type": "string"
+                    },
+                    "user": {
+                      "type": "string"
+                    },
+                    "port": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "dbname"
+                  ],
+                  "additionalProperties": false,
+                  "default": {
+                    "dbname": "crisiscleanup_local",
+                    "port": "5432"
+                  }
+                },
+                "redis": {
+                  "type": "object",
+                  "properties": {
+                    "host": {
+                      "type": "string"
+                    },
+                    "hostReplicas": {
+                      "anyOf": [
+                        {
+                          "allOf": [
+                            {
+                              "type": "string"
+                            },
+                            {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              }
+                            }
+                          ]
+                        },
+                        {
+                          "type": "array",
+                          "items": {
+                            "type": "string"
+                          }
+                        }
+                      ],
+                      "default": []
+                    }
+                  },
+                  "required": [
+                    "host"
+                  ],
+                  "additionalProperties": false,
+                  "default": {
+                    "host": "172.17.0.1"
+                  }
+                },
+                "jwt": {
+                  "type": "object",
+                  "properties": {
+                    "publicKey": {
+                      "type": "string"
+                    },
+                    "privateKey": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "publicKey",
+                    "privateKey"
+                  ],
+                  "additionalProperties": false
+                },
+                "zendesk": {
+                  "type": "object",
+                  "properties": {
+                    "apiKey": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "apiKey"
+                  ],
+                  "additionalProperties": false
+                },
+                "connectFirst": {
+                  "type": "object",
+                  "properties": {
+                    "password": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "additionalProperties": false
+                },
+                "aws": {
+                  "type": "object",
+                  "properties": {
+                    "dynamoStage": {
+                      "type": "string"
+                    },
+                    "accessKeyId": {
+                      "type": "string"
+                    },
+                    "secretAccessKey": {
+                      "type": "string"
+                    },
+                    "defaultRegion": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "dynamoStage",
+                    "accessKeyId",
+                    "secretAccessKey",
+                    "defaultRegion"
+                  ],
+                  "additionalProperties": false
+                },
+                "cloudfront": {
+                  "type": "object",
+                  "properties": {
+                    "publicKey": {
+                      "type": "string"
+                    },
+                    "privateKey": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "publicKey",
+                    "privateKey"
+                  ],
+                  "additionalProperties": false
+                },
+                "saml": {
+                  "type": "object",
+                  "properties": {
+                    "awsRole": {
+                      "type": "string"
+                    },
+                    "awsProvider": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "awsRole",
+                    "awsProvider"
+                  ],
+                  "additionalProperties": false,
+                  "default": {
+                    "awsProvider": "",
+                    "awsRole": ""
+                  }
+                },
+                "django": {
+                  "type": "object",
+                  "properties": {
+                    "adminUrl": {
+                      "type": "string",
+                      "default": "^admin/"
+                    },
+                    "secretKey": {
+                      "type": "string",
+                      "default": "local_good_key"
+                    },
+                    "mandrill": {
+                      "type": "object",
+                      "properties": {
+                        "apiKey": {
+                          "type": "string"
+                        }
+                      },
+                      "required": [
+                        "apiKey"
+                      ],
+                      "additionalProperties": false,
+                      "default": {
+                        "apiKey": ""
+                      }
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                }
+              },
+              "additionalProperties": true,
+              "default": {}
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
         },
         "cdkEnvironment": {
-          "$ref": "#/definitions/ApiConfig/properties/cdkEnvironment"
+          "type": "object",
+          "properties": {
+            "account": {
+              "type": "string",
+              "default": "971613762022"
+            },
+            "region": {
+              "type": "string",
+              "default": "us-east-1"
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
         },
         "ccuStage": {
-          "$ref": "#/definitions/ApiConfig/properties/api/properties/config/properties/newRelic/properties/environment"
+          "type": "string",
+          "enum": [
+            "local",
+            "development",
+            "staging",
+            "production",
+            "test"
+          ]
         },
         "apiStack": {
           "type": "object",
           "properties": {
             "eks": {
-              "$ref": "#/definitions/ApiStackConfig/properties/eks"
+              "type": "object",
+              "properties": {
+                "coreDnsVersion": {
+                  "type": "string",
+                  "default": "v1.10.1-eksbuild.2",
+                  "description": "CoreDNS version."
+                },
+                "kubeProxyVersion": {
+                  "type": "string",
+                  "default": "v1.27.3-eksbuild.2",
+                  "description": "Kube-proxy version."
+                },
+                "vpcCniVersion": {
+                  "type": "string",
+                  "default": "v1.13.3-eksbuild.1",
+                  "description": "VPC CNI driver version."
+                },
+                "ebsCsiVersion": {
+                  "type": "string",
+                  "default": "v1.21.0-eksbuild.1",
+                  "description": "EBS CSI driver version."
+                },
+                "defaultSecretsEncryption": {
+                  "type": "boolean",
+                  "default": true,
+                  "description": "Enable default secrets encryption for k8s secrets."
+                },
+                "k8s": {
+                  "type": "object",
+                  "properties": {
+                    "version": {
+                      "type": "string",
+                      "default": "1.27",
+                      "description": "Kubernetes version."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
+                },
+                "platformArns": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "description": "ARNs to add to platform team.",
+                  "default": []
+                }
+              },
+              "additionalProperties": false,
+              "default": {},
+              "description": "EKS configuration."
             },
             "database": {
-              "$ref": "#/definitions/ApiStackConfig/properties/database"
+              "type": "object",
+              "properties": {
+                "username": {
+                  "type": "string"
+                },
+                "databaseName": {
+                  "anyOf": [
+                    {
+                      "anyOf": [
+                        {
+                          "not": {}
+                        },
+                        {
+                          "type": "string"
+                        }
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null
+                },
+                "snapshotIdentifier": {
+                  "type": "string",
+                  "description": "Snapshot identifier to restore from."
+                },
+                "engineVersion": {
+                  "type": "string",
+                  "default": "15.3",
+                  "description": "Aurora Compatible Postgres version."
+                },
+                "ioOptimized": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "Enable Aurora IO optimized storage."
+                },
+                "minAcu": {
+                  "type": "number",
+                  "default": 0.5,
+                  "description": "Minimum Aurora capacity unit."
+                },
+                "maxAcu": {
+                  "type": "number",
+                  "default": 1.5,
+                  "description": "Maximum Aurora capacity unit."
+                },
+                "isolated": {
+                  "type": "boolean",
+                  "description": "Place database in an isolated subnet."
+                },
+                "numReplicas": {
+                  "type": "number",
+                  "default": 0,
+                  "description": "Number of read replicas."
+                },
+                "numReplicasScaledWithWriter": {
+                  "type": "number",
+                  "default": 0,
+                  "description": "Number of read replicas scaled with writer."
+                },
+                "performanceInsights": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "Enable performance insights."
+                },
+                "performanceInsightsRetention": {
+                  "type": "number",
+                  "default": 7,
+                  "description": "Number of days to retain performance insights."
+                },
+                "cloudwatchLogsRetentionDays": {
+                  "type": "number",
+                  "default": 30
+                },
+                "deletionProtection": {
+                  "type": "boolean",
+                  "default": false
+                },
+                "backupRetentionDays": {
+                  "type": "number",
+                  "default": 1
+                },
+                "bastionAllowList": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "default": []
+                }
+              },
+              "required": [
+                "snapshotIdentifier"
+              ],
+              "additionalProperties": false,
+              "default": {
+                "snapshotIdentifier": ""
+              }
             },
             "network": {
-              "$ref": "#/definitions/ApiStackConfig/properties/network"
+              "type": "object",
+              "properties": {
+                "maxAzs": {
+                  "type": "number",
+                  "default": 2,
+                  "description": "Maximum availability zones."
+                },
+                "natGateways": {
+                  "type": "number",
+                  "default": 1,
+                  "description": "Number of NAT gateways."
+                },
+                "cidr": {
+                  "type": "string",
+                  "description": "CIDR for VPC."
+                },
+                "createIsolatedSubnet": {
+                  "type": "boolean",
+                  "default": false,
+                  "description": "Create isolated /28 subnet."
+                }
+              },
+              "additionalProperties": false,
+              "default": {}
             },
             "cache": {
-              "$ref": "#/definitions/ApiStackConfig/properties/cache"
+              "type": "object",
+              "properties": {
+                "enabled": {
+                  "type": "boolean",
+                  "description": "Whether to create managed elasticache instance.",
+                  "default": false
+                },
+                "nodeType": {
+                  "type": "string",
+                  "description": "ElastiCache Node Type",
+                  "default": "cache.m7g.large"
+                },
+                "engineVersion": {
+                  "type": "string",
+                  "description": "Redis Engine Version",
+                  "default": "7.0"
+                }
+              },
+              "additionalProperties": false,
+              "default": {}
             },
             "codeStarConnectionArn": {
-              "$ref": "#/definitions/ApiStackConfig/properties/codeStarConnectionArn"
+              "type": "string"
             },
             "kubecostToken": {
-              "$ref": "#/definitions/ApiStackConfig/properties/kubecostToken"
+              "type": "string"
             }
           },
           "additionalProperties": false
@@ -917,34 +2023,700 @@
           "type": "object",
           "properties": {
             "namespace": {
-              "$ref": "#/definitions/ChartConfig/properties/namespace"
+              "type": "string",
+              "minLength": 1,
+              "default": "local",
+              "description": "Target k8s namespace name."
             },
             "domainName": {
-              "$ref": "#/definitions/ChartConfig/properties/domainName"
+              "type": "string",
+              "minLength": 1,
+              "default": "local.crisiscleanup.io"
             },
             "apiImage": {
-              "$ref": "#/definitions/ChartConfig/properties/apiImage"
+              "type": "object",
+              "properties": {
+                "repository": {
+                  "type": "string"
+                },
+                "tag": {
+                  "type": "string",
+                  "default": "latest"
+                },
+                "pullPolicy": {
+                  "type": "string",
+                  "enum": [
+                    "Always",
+                    "Never",
+                    "IfNotPresent"
+                  ]
+                }
+              },
+              "required": [
+                "repository",
+                "pullPolicy"
+              ],
+              "additionalProperties": false,
+              "description": "Default image to use for api components.",
+              "default": {
+                "repository": "crisiscleanup-api",
+                "tag": "latest",
+                "pullPolicy": "IfNotPresent"
+              }
             },
             "webImage": {
-              "$ref": "#/definitions/ChartConfig/properties/webImage"
+              "type": "object",
+              "properties": {
+                "repository": {
+                  "type": "string"
+                },
+                "tag": {
+                  "type": "string",
+                  "default": "latest"
+                },
+                "pullPolicy": {
+                  "type": "string",
+                  "enum": [
+                    "Always",
+                    "Never",
+                    "IfNotPresent"
+                  ]
+                }
+              },
+              "required": [
+                "repository",
+                "pullPolicy"
+              ],
+              "additionalProperties": false,
+              "description": "Default image to use for web components.",
+              "default": {
+                "repository": "crisiscleanup-web",
+                "tag": "latest",
+                "pullPolicy": "IfNotPresent"
+              }
             },
             "ingressAnnotations": {
-              "$ref": "#/definitions/ChartConfig/properties/ingressAnnotations"
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "Annotations to add to ingress resource.",
+              "default": {
+                "alb.ingress.kubernetes.io/listen-ports": "[{\"HTTP\": 80}, {\"HTTPS\":443}]",
+                "alb.ingress.kubernetes.io/ssl-redirect": "443",
+                "alb.ingress.kubernetes.io/scheme": "internet-facing",
+                "alb.ingress.kubernetes.io/target-type": "ip",
+                "alb.ingress.kubernetes.io/target-group-attributes": "load_balancing.algorithm.type=least_outstanding_requests",
+                "alb.ingress.kubernetes.io/healthcheck-path": "/health",
+                "alb.ingress.kubernetes.io/load-balancer-attributes": "idle_timeout.timeout_seconds=120"
+              }
             },
             "web": {
-              "$ref": "#/definitions/ChartConfig/properties/web"
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "scaling": {
+                      "type": "object",
+                      "properties": {
+                        "minReplicas": {
+                          "type": "number"
+                        },
+                        "maxReplicas": {
+                          "type": "number",
+                          "default": 2,
+                          "description": "Maximum number of replicas to scale up too."
+                        },
+                        "cpuUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 70,
+                          "description": "Target average cpu utilization percentage."
+                        },
+                        "memUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 85,
+                          "description": "Target average memory utilization percentage."
+                        }
+                      },
+                      "additionalProperties": true,
+                      "description": "Horizontal Autoscaling Parameters"
+                    }
+                  },
+                  "required": [
+                    "scaling"
+                  ],
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "replicaCount": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Static number of replicas to create."
+                    }
+                  },
+                  "required": [
+                    "replicaCount"
+                  ],
+                  "additionalProperties": true
+                }
+              ],
+              "description": "Frontend web component.",
+              "default": {
+                "replicaCount": 2
+              }
             },
             "wsgi": {
-              "$ref": "#/definitions/ChartConfig/properties/wsgi"
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "scaling": {
+                      "type": "object",
+                      "properties": {
+                        "minReplicas": {
+                          "type": "number"
+                        },
+                        "maxReplicas": {
+                          "type": "number",
+                          "default": 2,
+                          "description": "Maximum number of replicas to scale up too."
+                        },
+                        "cpuUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 70,
+                          "description": "Target average cpu utilization percentage."
+                        },
+                        "memUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 85,
+                          "description": "Target average memory utilization percentage."
+                        }
+                      },
+                      "additionalProperties": true,
+                      "description": "Horizontal Autoscaling Parameters"
+                    }
+                  },
+                  "required": [
+                    "scaling"
+                  ],
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "replicaCount": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Static number of replicas to create."
+                    }
+                  },
+                  "required": [
+                    "replicaCount"
+                  ],
+                  "additionalProperties": true
+                }
+              ],
+              "description": "Django Api WSGI component.",
+              "default": {
+                "scaling": {
+                  "minReplicas": 1,
+                  "maxReplicas": 3
+                }
+              }
             },
             "asgi": {
-              "$ref": "#/definitions/ChartConfig/properties/asgi"
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "scaling": {
+                      "type": "object",
+                      "properties": {
+                        "minReplicas": {
+                          "type": "number"
+                        },
+                        "maxReplicas": {
+                          "type": "number",
+                          "default": 2,
+                          "description": "Maximum number of replicas to scale up too."
+                        },
+                        "cpuUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 70,
+                          "description": "Target average cpu utilization percentage."
+                        },
+                        "memUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 85,
+                          "description": "Target average memory utilization percentage."
+                        }
+                      },
+                      "additionalProperties": true,
+                      "description": "Horizontal Autoscaling Parameters"
+                    }
+                  },
+                  "required": [
+                    "scaling"
+                  ],
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "replicaCount": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Static number of replicas to create."
+                    }
+                  },
+                  "required": [
+                    "replicaCount"
+                  ],
+                  "additionalProperties": true
+                }
+              ],
+              "description": "Django Api ASGI component.",
+              "default": {
+                "scaling": {
+                  "minReplicas": 1,
+                  "maxReplicas": 2
+                }
+              }
             },
             "celeryBeat": {
-              "$ref": "#/definitions/ChartConfig/properties/celeryBeat"
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "scaling": {
+                      "type": "object",
+                      "properties": {
+                        "minReplicas": {
+                          "type": "number"
+                        },
+                        "maxReplicas": {
+                          "type": "number",
+                          "default": 2,
+                          "description": "Maximum number of replicas to scale up too."
+                        },
+                        "cpuUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 70,
+                          "description": "Target average cpu utilization percentage."
+                        },
+                        "memUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 85,
+                          "description": "Target average memory utilization percentage."
+                        }
+                      },
+                      "additionalProperties": true,
+                      "description": "Horizontal Autoscaling Parameters"
+                    }
+                  },
+                  "required": [
+                    "scaling"
+                  ],
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "replicaCount": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Static number of replicas to create."
+                    }
+                  },
+                  "required": [
+                    "replicaCount"
+                  ],
+                  "additionalProperties": true
+                }
+              ],
+              "description": "Celery Beat component.",
+              "default": {
+                "replicaCount": 1
+              }
             },
             "celery": {
-              "$ref": "#/definitions/ChartConfig/properties/celery"
+              "type": "object",
+              "additionalProperties": {
+                "anyOf": [
+                  {
+                    "type": "object",
+                    "properties": {
+                      "image": {
+                        "type": "object",
+                        "properties": {
+                          "repository": {
+                            "type": "string"
+                          },
+                          "tag": {
+                            "type": "string",
+                            "default": "latest"
+                          },
+                          "pullPolicy": {
+                            "type": "string",
+                            "enum": [
+                              "Always",
+                              "Never",
+                              "IfNotPresent"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "repository",
+                          "pullPolicy"
+                        ],
+                        "additionalProperties": false,
+                        "description": "Container Image Configuration"
+                      },
+                      "queues": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1
+                      },
+                      "scaling": {
+                        "type": "object",
+                        "properties": {
+                          "minReplicas": {
+                            "type": "number"
+                          },
+                          "maxReplicas": {
+                            "type": "number",
+                            "default": 2,
+                            "description": "Maximum number of replicas to scale up too."
+                          },
+                          "cpuUtilPercent": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100,
+                            "default": 70,
+                            "description": "Target average cpu utilization percentage."
+                          },
+                          "memUtilPercent": {
+                            "type": "number",
+                            "minimum": 0,
+                            "maximum": 100,
+                            "default": 85,
+                            "description": "Target average memory utilization percentage."
+                          }
+                        },
+                        "additionalProperties": true,
+                        "description": "Horizontal Autoscaling Parameters"
+                      }
+                    },
+                    "required": [
+                      "queues",
+                      "scaling"
+                    ],
+                    "additionalProperties": true
+                  },
+                  {
+                    "type": "object",
+                    "properties": {
+                      "image": {
+                        "type": "object",
+                        "properties": {
+                          "repository": {
+                            "type": "string"
+                          },
+                          "tag": {
+                            "type": "string",
+                            "default": "latest"
+                          },
+                          "pullPolicy": {
+                            "type": "string",
+                            "enum": [
+                              "Always",
+                              "Never",
+                              "IfNotPresent"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "repository",
+                          "pullPolicy"
+                        ],
+                        "additionalProperties": false,
+                        "description": "Container Image Configuration"
+                      },
+                      "queues": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "minItems": 1
+                      },
+                      "replicaCount": {
+                        "type": "number",
+                        "minimum": 0,
+                        "description": "Static number of replicas to create."
+                      }
+                    },
+                    "required": [
+                      "queues",
+                      "replicaCount"
+                    ],
+                    "additionalProperties": true
+                  }
+                ]
+              },
+              "propertyNames": {
+                "minLength": 1
+              },
+              "description": "Celery worker components.",
+              "default": {
+                "celery": {
+                  "queues": [
+                    "celery"
+                  ],
+                  "scaling": {
+                    "minReplicas": 1,
+                    "maxReplicas": 2
+                  }
+                },
+                "signal": {
+                  "queues": [
+                    "signal",
+                    "phone",
+                    "metrics"
+                  ],
+                  "scaling": {
+                    "minReplicas": 1,
+                    "maxReplicas": 2
+                  }
+                }
+              }
             }
           },
           "additionalProperties": false
@@ -961,19 +2733,1358 @@
             "type": "object",
             "properties": {
               "api": {
-                "$ref": "#/definitions/ApiConfig/properties/api"
+                "type": "object",
+                "properties": {
+                  "config": {
+                    "type": "object",
+                    "properties": {
+                      "celery": {
+                        "type": "object",
+                        "properties": {
+                          "alwaysEager": {
+                            "type": "boolean",
+                            "default": false,
+                            "description": "Run celery tasks synchronously"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      },
+                      "django": {
+                        "type": "object",
+                        "properties": {
+                          "accountAllowRegistration": {
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "allowedHosts": {
+                            "anyOf": [
+                              {
+                                "allOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            ],
+                            "default": [
+                              "*"
+                            ],
+                            "description": "Django ALLOWED_HOSTS"
+                          },
+                          "csrfCookieSecure": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Secure CSRF cookie"
+                          },
+                          "secureSslRedirect": {
+                            "type": "boolean",
+                            "default": false
+                          },
+                          "sessionCookieSecure": {
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "emailBackend": {
+                            "type": "string",
+                            "default": "django.core.mail.backends.dummy.EmailBackend",
+                            "description": "Django EMAIL_BACKEND python import path."
+                          },
+                          "settingsModule": {
+                            "type": "string",
+                            "default": "config.settings.local",
+                            "description": "Django settings module"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      },
+                      "elasticSearch": {
+                        "type": "object",
+                        "properties": {
+                          "host": {
+                            "type": "string",
+                            "default": ""
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      },
+                      "newRelic": {
+                        "type": "object",
+                        "properties": {
+                          "configFile": {
+                            "type": "string",
+                            "default": "/app/newrelic.ini",
+                            "description": "Path to newrelic.ini file"
+                          },
+                          "environment": {
+                            "type": "string",
+                            "enum": [
+                              "local",
+                              "development",
+                              "staging",
+                              "production",
+                              "test"
+                            ]
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      },
+                      "ccu": {
+                        "type": "object",
+                        "properties": {
+                          "newrelicDisable": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Disable new relic integration."
+                          },
+                          "webUrl": {
+                            "type": "string",
+                            "format": "uri",
+                            "default": "https://local.crisiscleanup.io"
+                          },
+                          "apiUrl": {
+                            "type": "string",
+                            "format": "uri",
+                            "default": "https://api.local.crisiscleanup.io"
+                          },
+                          "forceDocker": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Force assumption of running in docker."
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      },
+                      "sentry": {
+                        "type": "object",
+                        "properties": {
+                          "traceExcludeUrls": {
+                            "anyOf": [
+                              {
+                                "allOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            ],
+                            "default": [
+                              "/",
+                              "/health",
+                              "/health/",
+                              "/ws/health",
+                              "/ws/health/",
+                              "/version",
+                              "/version/",
+                              "/{var}health/",
+                              "/{var}version/"
+                            ],
+                            "description": "Sentry trace names to exclude."
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      },
+                      "connect": {
+                        "type": "object",
+                        "properties": {
+                          "instanceId": {
+                            "type": "string",
+                            "default": ""
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      },
+                      "phone": {
+                        "type": "object",
+                        "properties": {
+                          "checkTimezone": {
+                            "type": "boolean",
+                            "default": true,
+                            "description": "Enable phone system timezone guardrails."
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      }
+                    },
+                    "additionalProperties": false,
+                    "default": {}
+                  },
+                  "secrets": {
+                    "type": "object",
+                    "properties": {
+                      "postgres": {
+                        "type": "object",
+                        "properties": {
+                          "dbname": {
+                            "type": "string"
+                          },
+                          "host": {
+                            "type": "string"
+                          },
+                          "password": {
+                            "type": "string"
+                          },
+                          "user": {
+                            "type": "string"
+                          },
+                          "port": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "dbname"
+                        ],
+                        "additionalProperties": false,
+                        "default": {
+                          "dbname": "crisiscleanup_local",
+                          "port": "5432"
+                        }
+                      },
+                      "redis": {
+                        "type": "object",
+                        "properties": {
+                          "host": {
+                            "type": "string"
+                          },
+                          "hostReplicas": {
+                            "anyOf": [
+                              {
+                                "allOf": [
+                                  {
+                                    "type": "string"
+                                  },
+                                  {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  }
+                                ]
+                              },
+                              {
+                                "type": "array",
+                                "items": {
+                                  "type": "string"
+                                }
+                              }
+                            ],
+                            "default": []
+                          }
+                        },
+                        "required": [
+                          "host"
+                        ],
+                        "additionalProperties": false,
+                        "default": {
+                          "host": "172.17.0.1"
+                        }
+                      },
+                      "jwt": {
+                        "type": "object",
+                        "properties": {
+                          "publicKey": {
+                            "type": "string"
+                          },
+                          "privateKey": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "publicKey",
+                          "privateKey"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "zendesk": {
+                        "type": "object",
+                        "properties": {
+                          "apiKey": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "apiKey"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "connectFirst": {
+                        "type": "object",
+                        "properties": {
+                          "password": {
+                            "type": "string",
+                            "default": ""
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "aws": {
+                        "type": "object",
+                        "properties": {
+                          "dynamoStage": {
+                            "type": "string"
+                          },
+                          "accessKeyId": {
+                            "type": "string"
+                          },
+                          "secretAccessKey": {
+                            "type": "string"
+                          },
+                          "defaultRegion": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "dynamoStage",
+                          "accessKeyId",
+                          "secretAccessKey",
+                          "defaultRegion"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "cloudfront": {
+                        "type": "object",
+                        "properties": {
+                          "publicKey": {
+                            "type": "string"
+                          },
+                          "privateKey": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "publicKey",
+                          "privateKey"
+                        ],
+                        "additionalProperties": false
+                      },
+                      "saml": {
+                        "type": "object",
+                        "properties": {
+                          "awsRole": {
+                            "type": "string"
+                          },
+                          "awsProvider": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "awsRole",
+                          "awsProvider"
+                        ],
+                        "additionalProperties": false,
+                        "default": {
+                          "awsProvider": "",
+                          "awsRole": ""
+                        }
+                      },
+                      "django": {
+                        "type": "object",
+                        "properties": {
+                          "adminUrl": {
+                            "type": "string",
+                            "default": "^admin/"
+                          },
+                          "secretKey": {
+                            "type": "string",
+                            "default": "local_good_key"
+                          },
+                          "mandrill": {
+                            "type": "object",
+                            "properties": {
+                              "apiKey": {
+                                "type": "string"
+                              }
+                            },
+                            "required": [
+                              "apiKey"
+                            ],
+                            "additionalProperties": false,
+                            "default": {
+                              "apiKey": ""
+                            }
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      }
+                    },
+                    "additionalProperties": true,
+                    "default": {}
+                  }
+                },
+                "additionalProperties": false,
+                "default": {}
               },
               "cdkEnvironment": {
-                "$ref": "#/definitions/ApiConfig/properties/cdkEnvironment"
+                "type": "object",
+                "properties": {
+                  "account": {
+                    "type": "string",
+                    "default": "971613762022"
+                  },
+                  "region": {
+                    "type": "string",
+                    "default": "us-east-1"
+                  }
+                },
+                "additionalProperties": false,
+                "default": {}
               },
               "ccuStage": {
-                "$ref": "#/definitions/ApiConfig/properties/api/properties/config/properties/newRelic/properties/environment"
+                "type": "string",
+                "enum": [
+                  "local",
+                  "development",
+                  "staging",
+                  "production",
+                  "test"
+                ]
               },
               "apiStack": {
-                "$ref": "#/definitions/ApiStackConfig"
+                "type": "object",
+                "properties": {
+                  "eks": {
+                    "type": "object",
+                    "properties": {
+                      "coreDnsVersion": {
+                        "type": "string",
+                        "default": "v1.10.1-eksbuild.2",
+                        "description": "CoreDNS version."
+                      },
+                      "kubeProxyVersion": {
+                        "type": "string",
+                        "default": "v1.27.3-eksbuild.2",
+                        "description": "Kube-proxy version."
+                      },
+                      "vpcCniVersion": {
+                        "type": "string",
+                        "default": "v1.13.3-eksbuild.1",
+                        "description": "VPC CNI driver version."
+                      },
+                      "ebsCsiVersion": {
+                        "type": "string",
+                        "default": "v1.21.0-eksbuild.1",
+                        "description": "EBS CSI driver version."
+                      },
+                      "defaultSecretsEncryption": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Enable default secrets encryption for k8s secrets."
+                      },
+                      "k8s": {
+                        "type": "object",
+                        "properties": {
+                          "version": {
+                            "type": "string",
+                            "default": "1.27",
+                            "description": "Kubernetes version."
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
+                      },
+                      "platformArns": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "description": "ARNs to add to platform team.",
+                        "default": []
+                      }
+                    },
+                    "additionalProperties": false,
+                    "default": {},
+                    "description": "EKS configuration."
+                  },
+                  "database": {
+                    "type": "object",
+                    "properties": {
+                      "username": {
+                        "type": "string"
+                      },
+                      "databaseName": {
+                        "anyOf": [
+                          {
+                            "anyOf": [
+                              {
+                                "not": {}
+                              },
+                              {
+                                "type": "string"
+                              }
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null
+                      },
+                      "snapshotIdentifier": {
+                        "type": "string",
+                        "description": "Snapshot identifier to restore from."
+                      },
+                      "engineVersion": {
+                        "type": "string",
+                        "default": "15.3",
+                        "description": "Aurora Compatible Postgres version."
+                      },
+                      "ioOptimized": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Enable Aurora IO optimized storage."
+                      },
+                      "minAcu": {
+                        "type": "number",
+                        "default": 0.5,
+                        "description": "Minimum Aurora capacity unit."
+                      },
+                      "maxAcu": {
+                        "type": "number",
+                        "default": 1.5,
+                        "description": "Maximum Aurora capacity unit."
+                      },
+                      "isolated": {
+                        "type": "boolean",
+                        "description": "Place database in an isolated subnet."
+                      },
+                      "numReplicas": {
+                        "type": "number",
+                        "default": 0,
+                        "description": "Number of read replicas."
+                      },
+                      "numReplicasScaledWithWriter": {
+                        "type": "number",
+                        "default": 0,
+                        "description": "Number of read replicas scaled with writer."
+                      },
+                      "performanceInsights": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Enable performance insights."
+                      },
+                      "performanceInsightsRetention": {
+                        "type": "number",
+                        "default": 7,
+                        "description": "Number of days to retain performance insights."
+                      },
+                      "cloudwatchLogsRetentionDays": {
+                        "type": "number",
+                        "default": 30
+                      },
+                      "deletionProtection": {
+                        "type": "boolean",
+                        "default": false
+                      },
+                      "backupRetentionDays": {
+                        "type": "number",
+                        "default": 1
+                      },
+                      "bastionAllowList": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "default": []
+                      }
+                    },
+                    "required": [
+                      "snapshotIdentifier"
+                    ],
+                    "additionalProperties": false,
+                    "default": {
+                      "snapshotIdentifier": ""
+                    }
+                  },
+                  "network": {
+                    "type": "object",
+                    "properties": {
+                      "maxAzs": {
+                        "type": "number",
+                        "default": 2,
+                        "description": "Maximum availability zones."
+                      },
+                      "natGateways": {
+                        "type": "number",
+                        "default": 1,
+                        "description": "Number of NAT gateways."
+                      },
+                      "cidr": {
+                        "type": "string",
+                        "description": "CIDR for VPC."
+                      },
+                      "createIsolatedSubnet": {
+                        "type": "boolean",
+                        "default": false,
+                        "description": "Create isolated /28 subnet."
+                      }
+                    },
+                    "additionalProperties": false,
+                    "default": {}
+                  },
+                  "cache": {
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "description": "Whether to create managed elasticache instance.",
+                        "default": false
+                      },
+                      "nodeType": {
+                        "type": "string",
+                        "description": "ElastiCache Node Type",
+                        "default": "cache.m7g.large"
+                      },
+                      "engineVersion": {
+                        "type": "string",
+                        "description": "Redis Engine Version",
+                        "default": "7.0"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "default": {}
+                  },
+                  "codeStarConnectionArn": {
+                    "type": "string"
+                  },
+                  "kubecostToken": {
+                    "type": "string"
+                  }
+                },
+                "additionalProperties": false
               },
               "chart": {
-                "$ref": "#/definitions/ChartConfig"
+                "type": "object",
+                "properties": {
+                  "namespace": {
+                    "type": "string",
+                    "minLength": 1,
+                    "default": "local",
+                    "description": "Target k8s namespace name."
+                  },
+                  "domainName": {
+                    "type": "string",
+                    "minLength": 1,
+                    "default": "local.crisiscleanup.io"
+                  },
+                  "apiImage": {
+                    "type": "object",
+                    "properties": {
+                      "repository": {
+                        "type": "string"
+                      },
+                      "tag": {
+                        "type": "string",
+                        "default": "latest"
+                      },
+                      "pullPolicy": {
+                        "type": "string",
+                        "enum": [
+                          "Always",
+                          "Never",
+                          "IfNotPresent"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "repository",
+                      "pullPolicy"
+                    ],
+                    "additionalProperties": false,
+                    "description": "Default image to use for api components.",
+                    "default": {
+                      "repository": "crisiscleanup-api",
+                      "tag": "latest",
+                      "pullPolicy": "IfNotPresent"
+                    }
+                  },
+                  "webImage": {
+                    "type": "object",
+                    "properties": {
+                      "repository": {
+                        "type": "string"
+                      },
+                      "tag": {
+                        "type": "string",
+                        "default": "latest"
+                      },
+                      "pullPolicy": {
+                        "type": "string",
+                        "enum": [
+                          "Always",
+                          "Never",
+                          "IfNotPresent"
+                        ]
+                      }
+                    },
+                    "required": [
+                      "repository",
+                      "pullPolicy"
+                    ],
+                    "additionalProperties": false,
+                    "description": "Default image to use for web components.",
+                    "default": {
+                      "repository": "crisiscleanup-web",
+                      "tag": "latest",
+                      "pullPolicy": "IfNotPresent"
+                    }
+                  },
+                  "ingressAnnotations": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "type": "string"
+                    },
+                    "description": "Annotations to add to ingress resource.",
+                    "default": {
+                      "alb.ingress.kubernetes.io/listen-ports": "[{\"HTTP\": 80}, {\"HTTPS\":443}]",
+                      "alb.ingress.kubernetes.io/ssl-redirect": "443",
+                      "alb.ingress.kubernetes.io/scheme": "internet-facing",
+                      "alb.ingress.kubernetes.io/target-type": "ip",
+                      "alb.ingress.kubernetes.io/target-group-attributes": "load_balancing.algorithm.type=least_outstanding_requests",
+                      "alb.ingress.kubernetes.io/healthcheck-path": "/health",
+                      "alb.ingress.kubernetes.io/load-balancer-attributes": "idle_timeout.timeout_seconds=120"
+                    }
+                  },
+                  "web": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "scaling": {
+                            "type": "object",
+                            "properties": {
+                              "minReplicas": {
+                                "type": "number"
+                              },
+                              "maxReplicas": {
+                                "type": "number",
+                                "default": 2,
+                                "description": "Maximum number of replicas to scale up too."
+                              },
+                              "cpuUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 70,
+                                "description": "Target average cpu utilization percentage."
+                              },
+                              "memUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 85,
+                                "description": "Target average memory utilization percentage."
+                              }
+                            },
+                            "additionalProperties": true,
+                            "description": "Horizontal Autoscaling Parameters"
+                          }
+                        },
+                        "required": [
+                          "scaling"
+                        ],
+                        "additionalProperties": true
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "replicaCount": {
+                            "type": "number",
+                            "minimum": 0,
+                            "description": "Static number of replicas to create."
+                          }
+                        },
+                        "required": [
+                          "replicaCount"
+                        ],
+                        "additionalProperties": true
+                      }
+                    ],
+                    "description": "Frontend web component.",
+                    "default": {
+                      "replicaCount": 2
+                    }
+                  },
+                  "wsgi": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "scaling": {
+                            "type": "object",
+                            "properties": {
+                              "minReplicas": {
+                                "type": "number"
+                              },
+                              "maxReplicas": {
+                                "type": "number",
+                                "default": 2,
+                                "description": "Maximum number of replicas to scale up too."
+                              },
+                              "cpuUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 70,
+                                "description": "Target average cpu utilization percentage."
+                              },
+                              "memUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 85,
+                                "description": "Target average memory utilization percentage."
+                              }
+                            },
+                            "additionalProperties": true,
+                            "description": "Horizontal Autoscaling Parameters"
+                          }
+                        },
+                        "required": [
+                          "scaling"
+                        ],
+                        "additionalProperties": true
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "replicaCount": {
+                            "type": "number",
+                            "minimum": 0,
+                            "description": "Static number of replicas to create."
+                          }
+                        },
+                        "required": [
+                          "replicaCount"
+                        ],
+                        "additionalProperties": true
+                      }
+                    ],
+                    "description": "Django Api WSGI component.",
+                    "default": {
+                      "scaling": {
+                        "minReplicas": 1,
+                        "maxReplicas": 3
+                      }
+                    }
+                  },
+                  "asgi": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "scaling": {
+                            "type": "object",
+                            "properties": {
+                              "minReplicas": {
+                                "type": "number"
+                              },
+                              "maxReplicas": {
+                                "type": "number",
+                                "default": 2,
+                                "description": "Maximum number of replicas to scale up too."
+                              },
+                              "cpuUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 70,
+                                "description": "Target average cpu utilization percentage."
+                              },
+                              "memUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 85,
+                                "description": "Target average memory utilization percentage."
+                              }
+                            },
+                            "additionalProperties": true,
+                            "description": "Horizontal Autoscaling Parameters"
+                          }
+                        },
+                        "required": [
+                          "scaling"
+                        ],
+                        "additionalProperties": true
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "replicaCount": {
+                            "type": "number",
+                            "minimum": 0,
+                            "description": "Static number of replicas to create."
+                          }
+                        },
+                        "required": [
+                          "replicaCount"
+                        ],
+                        "additionalProperties": true
+                      }
+                    ],
+                    "description": "Django Api ASGI component.",
+                    "default": {
+                      "scaling": {
+                        "minReplicas": 1,
+                        "maxReplicas": 2
+                      }
+                    }
+                  },
+                  "celeryBeat": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "scaling": {
+                            "type": "object",
+                            "properties": {
+                              "minReplicas": {
+                                "type": "number"
+                              },
+                              "maxReplicas": {
+                                "type": "number",
+                                "default": 2,
+                                "description": "Maximum number of replicas to scale up too."
+                              },
+                              "cpuUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 70,
+                                "description": "Target average cpu utilization percentage."
+                              },
+                              "memUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 85,
+                                "description": "Target average memory utilization percentage."
+                              }
+                            },
+                            "additionalProperties": true,
+                            "description": "Horizontal Autoscaling Parameters"
+                          }
+                        },
+                        "required": [
+                          "scaling"
+                        ],
+                        "additionalProperties": true
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "replicaCount": {
+                            "type": "number",
+                            "minimum": 0,
+                            "description": "Static number of replicas to create."
+                          }
+                        },
+                        "required": [
+                          "replicaCount"
+                        ],
+                        "additionalProperties": true
+                      }
+                    ],
+                    "description": "Celery Beat component.",
+                    "default": {
+                      "replicaCount": 1
+                    }
+                  },
+                  "celery": {
+                    "type": "object",
+                    "additionalProperties": {
+                      "anyOf": [
+                        {
+                          "type": "object",
+                          "properties": {
+                            "image": {
+                              "type": "object",
+                              "properties": {
+                                "repository": {
+                                  "type": "string"
+                                },
+                                "tag": {
+                                  "type": "string",
+                                  "default": "latest"
+                                },
+                                "pullPolicy": {
+                                  "type": "string",
+                                  "enum": [
+                                    "Always",
+                                    "Never",
+                                    "IfNotPresent"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "repository",
+                                "pullPolicy"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Container Image Configuration"
+                            },
+                            "queues": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "minItems": 1
+                            },
+                            "scaling": {
+                              "type": "object",
+                              "properties": {
+                                "minReplicas": {
+                                  "type": "number"
+                                },
+                                "maxReplicas": {
+                                  "type": "number",
+                                  "default": 2,
+                                  "description": "Maximum number of replicas to scale up too."
+                                },
+                                "cpuUtilPercent": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 100,
+                                  "default": 70,
+                                  "description": "Target average cpu utilization percentage."
+                                },
+                                "memUtilPercent": {
+                                  "type": "number",
+                                  "minimum": 0,
+                                  "maximum": 100,
+                                  "default": 85,
+                                  "description": "Target average memory utilization percentage."
+                                }
+                              },
+                              "additionalProperties": true,
+                              "description": "Horizontal Autoscaling Parameters"
+                            }
+                          },
+                          "required": [
+                            "queues",
+                            "scaling"
+                          ],
+                          "additionalProperties": true
+                        },
+                        {
+                          "type": "object",
+                          "properties": {
+                            "image": {
+                              "type": "object",
+                              "properties": {
+                                "repository": {
+                                  "type": "string"
+                                },
+                                "tag": {
+                                  "type": "string",
+                                  "default": "latest"
+                                },
+                                "pullPolicy": {
+                                  "type": "string",
+                                  "enum": [
+                                    "Always",
+                                    "Never",
+                                    "IfNotPresent"
+                                  ]
+                                }
+                              },
+                              "required": [
+                                "repository",
+                                "pullPolicy"
+                              ],
+                              "additionalProperties": false,
+                              "description": "Container Image Configuration"
+                            },
+                            "queues": {
+                              "type": "array",
+                              "items": {
+                                "type": "string"
+                              },
+                              "minItems": 1
+                            },
+                            "replicaCount": {
+                              "type": "number",
+                              "minimum": 0,
+                              "description": "Static number of replicas to create."
+                            }
+                          },
+                          "required": [
+                            "queues",
+                            "replicaCount"
+                          ],
+                          "additionalProperties": true
+                        }
+                      ]
+                    },
+                    "propertyNames": {
+                      "minLength": 1
+                    },
+                    "description": "Celery worker components.",
+                    "default": {
+                      "celery": {
+                        "queues": [
+                          "celery"
+                        ],
+                        "scaling": {
+                          "minReplicas": 1,
+                          "maxReplicas": 2
+                        }
+                      },
+                      "signal": {
+                        "queues": [
+                          "signal",
+                          "phone",
+                          "metrics"
+                        ],
+                        "scaling": {
+                          "minReplicas": 1,
+                          "maxReplicas": 2
+                        }
+                      }
+                    }
+                  }
+                },
+                "additionalProperties": false
               }
             },
             "required": [
