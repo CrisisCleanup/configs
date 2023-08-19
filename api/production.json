@@ -17,7 +17,7 @@
       "ioOptimized": true,
       "minAcu": 2,
       "maxAcu": 64,
-      "snapshotIdentifier": "CHANGEME",
+      "snapshotIdentifier": "ccu-prod-aurora-pg15-20230818",
       "numReplicas": 1,
       "numReplicasScaledWithWriter": 1,
       "performanceInsights": true,
