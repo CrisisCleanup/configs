@@ -42,6 +42,7 @@ const commonDefaults = {
       "crisiscleanup-3-api",
       "crisiscleanup-4-web",
       "maintenance-site",
+      "test-reports",
     ],
   },
   api: {
