@@ -442,6 +442,28 @@
             "production",
             "test"
           ]
+        },
+        "pipeline": {
+          "type": "object",
+          "properties": {
+            "repositories": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "infrastructure"
+              ],
+              "description": "Repositories allow to authenticate via OIDC."
+            },
+            "assetsBucketName": {
+              "type": "string",
+              "default": "crisiscleanup-pipeline-assets",
+              "description": "Name of S3 bucket used to store pipeline assets."
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
         }
       },
       "required": [
@@ -648,6 +670,42 @@
               "type": "string",
               "description": "Redis Engine Version",
               "default": "7.0"
+            },
+            "nodes": {
+              "type": "number",
+              "description": "Number of nodes to create.",
+              "default": 1
+            },
+            "replicas": {
+              "type": "number",
+              "description": "Number of replicas to create.",
+              "default": 1
+            },
+            "clusterMode": {
+              "type": "boolean",
+              "description": "Enable redis cluster mode.",
+              "default": false
+            },
+            "memoryAutoscalingTarget": {
+              "anyOf": [
+                {
+                  "anyOf": [
+                    {
+                      "not": {}
+                    },
+                    {
+                      "type": "number",
+                      "minimum": 10,
+                      "maximum": 100
+                    }
+                  ]
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "description": "Configure autoscaling target for cluster.",
+              "default": null
             }
           },
           "additionalProperties": false,
@@ -1806,6 +1864,28 @@
             "test"
           ]
         },
+        "pipeline": {
+          "type": "object",
+          "properties": {
+            "repositories": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [
+                "infrastructure"
+              ],
+              "description": "Repositories allow to authenticate via OIDC."
+            },
+            "assetsBucketName": {
+              "type": "string",
+              "default": "crisiscleanup-pipeline-assets",
+              "description": "Name of S3 bucket used to store pipeline assets."
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
         "apiStack": {
           "type": "object",
           "properties": {
@@ -2005,6 +2085,42 @@
                   "type": "string",
                   "description": "Redis Engine Version",
                   "default": "7.0"
+                },
+                "nodes": {
+                  "type": "number",
+                  "description": "Number of nodes to create.",
+                  "default": 1
+                },
+                "replicas": {
+                  "type": "number",
+                  "description": "Number of replicas to create.",
+                  "default": 1
+                },
+                "clusterMode": {
+                  "type": "boolean",
+                  "description": "Enable redis cluster mode.",
+                  "default": false
+                },
+                "memoryAutoscalingTarget": {
+                  "anyOf": [
+                    {
+                      "anyOf": [
+                        {
+                          "not": {}
+                        },
+                        {
+                          "type": "number",
+                          "minimum": 10,
+                          "maximum": 100
+                        }
+                      ]
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "description": "Configure autoscaling target for cluster.",
+                  "default": null
                 }
               },
               "additionalProperties": false,
@@ -3171,6 +3287,28 @@
                   "test"
                 ]
               },
+              "pipeline": {
+                "type": "object",
+                "properties": {
+                  "repositories": {
+                    "type": "array",
+                    "items": {
+                      "type": "string"
+                    },
+                    "default": [
+                      "infrastructure"
+                    ],
+                    "description": "Repositories allow to authenticate via OIDC."
+                  },
+                  "assetsBucketName": {
+                    "type": "string",
+                    "default": "crisiscleanup-pipeline-assets",
+                    "description": "Name of S3 bucket used to store pipeline assets."
+                  }
+                },
+                "additionalProperties": false,
+                "default": {}
+              },
               "apiStack": {
                 "type": "object",
                 "properties": {
@@ -3370,6 +3508,42 @@
                         "type": "string",
                         "description": "Redis Engine Version",
                         "default": "7.0"
+                      },
+                      "nodes": {
+                        "type": "number",
+                        "description": "Number of nodes to create.",
+                        "default": 1
+                      },
+                      "replicas": {
+                        "type": "number",
+                        "description": "Number of replicas to create.",
+                        "default": 1
+                      },
+                      "clusterMode": {
+                        "type": "boolean",
+                        "description": "Enable redis cluster mode.",
+                        "default": false
+                      },
+                      "memoryAutoscalingTarget": {
+                        "anyOf": [
+                          {
+                            "anyOf": [
+                              {
+                                "not": {}
+                              },
+                              {
+                                "type": "number",
+                                "minimum": 10,
+                                "maximum": 100
+                              }
+                            ]
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "description": "Configure autoscaling target for cluster.",
+                        "default": null
                       }
                     },
                     "additionalProperties": false,
