@@ -1,11 +1,8 @@
 name: "JSON Patch"
 description: "Apply a JSON Patch to a given file"
 inputs:
-  file-path:
-    description: Path to file to patch.
-    required: true
   patches:
-    description: YAML string array of patches to apply.
+    description: JSON or YAML object of RFC6902 patches keyed by file paths.
     required: true
 
 runs:
@@ -13,22 +10,35 @@ runs:
   steps:
     - name: Install JSON Patch
       shell: bash
-      run: npm install fast-json-patch yaml
+      run: npm --no-save install fast-json-patch yaml
 
     - name: Patch Config
       uses: actions/github-script@v6
       env:
-        TARGET: ${{ inputs.file-path }}
         PATCHES: ${{ inputs.patches }}
       with:
         script: |
+          const { PATCHES } = process.env;
+          let patches;
+          try {
+            patches = JSON.parse(PATCHES);
+          } catch(e) {
+            core.info('Failed to parse as json, attempting yaml...')
+            const yaml = require('yaml');
+            patches = yaml.parse(PATCHES);
+          }
           const fs = require('fs/promises');
-          const yaml = require('yaml');
           const jsonPatch = require('fast-json-patch')
-          const { TARGET, PATCHES } = process.env;
-          const patches = yaml.parse(PATCHES)
-          core.info(`Applying patches to ${TARGET}:`)
-          core.info(JSON.stringify(patches, null, 2))
-          const data = JSON.parse((await fs.readFile(TARGET)).toString())
-          const newData = jsonPatch.applyPatch(data, patches).newDocument;
-          await fs.writeFile(TARGET, JSON.stringify(newData, null, 2))
+          core.info('Parsed input:');
+          core.info(JSON.stringify(patches, null, 2));
+          
+          const promises = Object.entries(patches).map(async ([filePath, patches]) => {
+            core.info(`Applying patches to ${filePath}:`)
+            core.info(JSON.stringify(patches, null, 2))
+            const data = JSON.parse((await fs.readFile(filePath)).toString())
+            const newData = jsonPatch.applyPatch(data, patches).newDocument;
+            await fs.writeFile(filePath, JSON.stringify(newData, null, 2))
+          });
+          await Promise.all(promises);
+          core.info('All patches applied!');
+          
