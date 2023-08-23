@@ -12,7 +12,7 @@
       "databaseName": "crisiscleanup",
       "snapshotIdentifier": "ccu-dev-upgrade-15",
       "minAcu": 0.5,
-      "maxAcu": 6.5,
+      "maxAcu": 8.0,
       "numReplicas": 0
     },
     "network": {
@@ -32,9 +32,7 @@
       "django": {
         "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
         "settingsModule": "config.settings.development",
-        "allowedHosts": [
-          "*"
-        ],
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
