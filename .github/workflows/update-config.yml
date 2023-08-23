@@ -38,9 +38,9 @@ jobs:
           PATH_PREFIX: ${{ env.REPO_PATH }}/api/
         run: |
           # group input patches by file to patches
-          printf -v query 'group_by(.environment) | map({key: ("%s" + .[0].environment + ".json"), value: map({path: .path, value: .value, op: .op})}) | from_entries | tojson' "$PATH_PREFIX"
+          printf -v query 'group_by(.environment) | map({key: ("%s" + .[0].environment + ".json"), value: map({path: .path, value: .value, op: .op})}) | from_entries' "$PATH_PREFIX"
           echo "Query: $query" 
-          results=$(jq "$query" <<<"$PATCHES_INPUT")
+          results=$(jq -c "$query" <<<"$PATCHES_INPUT")
           echo "Results: $results"
           echo "patches-by-file=$results" >> $GITHUB_OUTPUT
           # create a commit message
