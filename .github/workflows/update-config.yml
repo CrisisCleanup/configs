@@ -14,7 +14,6 @@ on:
         description: JSON string array of RFC6902 patches with an additional environment key.
 
 jobs:
-
   update:
     name: Patch Configs
     runs-on: ubuntu-latest
@@ -39,14 +38,16 @@ jobs:
           PATH_PREFIX: ${{ env.REPO_PATH }}/api/
         run: |
           # group input patches by file to patches
-          printf -v query 'group_by(.environment) | map({key: ("%s" + .[0].environment + ".json"), value: map({path: .path, value: .value, op: .op})}) | from_entries' "$PATH_PREFIX"
+          printf -v query 'group_by(.environment) | map({key: ("%s" + .[0].environment + ".json"), value: map({path: .path, value: .value, op: .op})}) | from_entries | tojson' "$PATH_PREFIX"
           echo "Query: $query" 
-          results=$(jq -r "$query" <<<"$PATCHES_INPUT")
+          results=$(jq "$query" <<<"$PATCHES_INPUT")
           echo "Results: $results"
           echo "patches-by-file=$results" >> $GITHUB_OUTPUT
           # create a commit message
+          echo "Creating commit message..."
           changes=$(jq -r 'map("\(.environment)@\(.path)") | join(", ")' <<<"$PATCHES_INPUT")
           commit_message="chore(patch): ${changes}"
+          echo "Commit Message: ${commit_message}"
           echo "commit-msg=$commit_message" >> $GITHUB_OUTPUT
 
       - name: Apply Patches
