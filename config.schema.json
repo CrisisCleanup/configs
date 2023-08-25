@@ -720,24 +720,24 @@
                 "appId": {
                   "type": "string"
                 },
-                "installationId": {
+                "appInstallationId": {
                   "type": "string"
                 },
-                "privateKey": {
+                "appPrivateKey": {
                   "type": "string"
                 }
               },
               "required": [
                 "appId",
-                "installationId",
-                "privateKey"
+                "appInstallationId",
+                "appPrivateKey"
               ],
               "additionalProperties": false,
               "description": "Github App Credentials",
               "default": {
                 "appId": "",
-                "installationId": "",
-                "privateKey": ""
+                "appInstallationId": "",
+                "appPrivateKey": ""
               }
             },
             "minRunners": {
@@ -2296,24 +2296,24 @@
                     "appId": {
                       "type": "string"
                     },
-                    "installationId": {
+                    "appInstallationId": {
                       "type": "string"
                     },
-                    "privateKey": {
+                    "appPrivateKey": {
                       "type": "string"
                     }
                   },
                   "required": [
                     "appId",
-                    "installationId",
-                    "privateKey"
+                    "appInstallationId",
+                    "appPrivateKey"
                   ],
                   "additionalProperties": false,
                   "description": "Github App Credentials",
                   "default": {
                     "appId": "",
-                    "installationId": "",
-                    "privateKey": ""
+                    "appInstallationId": "",
+                    "appPrivateKey": ""
                   }
                 },
                 "minRunners": {
@@ -3880,24 +3880,24 @@
                           "appId": {
                             "type": "string"
                           },
-                          "installationId": {
+                          "appInstallationId": {
                             "type": "string"
                           },
-                          "privateKey": {
+                          "appPrivateKey": {
                             "type": "string"
                           }
                         },
                         "required": [
                           "appId",
-                          "installationId",
-                          "privateKey"
+                          "appInstallationId",
+                          "appPrivateKey"
                         ],
                         "additionalProperties": false,
                         "description": "Github App Credentials",
                         "default": {
                           "appId": "",
-                          "installationId": "",
-                          "privateKey": ""
+                          "appInstallationId": "",
+                          "appPrivateKey": ""
                         }
                       },
                       "minRunners": {
