@@ -37,9 +37,7 @@
       "django": {
         "emailBackend": "anymail.backends.mandrill.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": [
-          "*"
-        ],
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
@@ -83,43 +81,37 @@
     "wsgi": {
       "scaling": {
         "memUtilPercent": 80,
-        "minReplicas": 3,
+        "minReplicas": 2,
         "maxReplicas": 10
       }
     },
     "asgi": {
       "scaling": {
-        "memUtilPercent": 75,
+        "memUtilPercent": 80,
         "minReplicas": 2,
-        "maxReplicas": 8
+        "maxReplicas": 6
       }
     },
     "celery": {
       "celery": {
-        "queues": [
-          "celery"
-        ],
+        "queues": ["celery"],
         "scaling": {
-          "memUtilPercent": 75,
-          "minReplicas": 2,
-          "maxReplicas": 8
+          "memUtilPercent": 80,
+          "minReplicas": 1,
+          "maxReplicas": 4
         }
       },
       "signal": {
-        "queues": [
-          "signal",
-          "phone",
-          "metrics"
-        ],
+        "queues": ["signal", "phone", "metrics"],
         "scaling": {
-          "memUtilPercent": 75,
-          "minReplicas": 2,
-          "maxReplicas": 8
+          "memUtilPercent": 80,
+          "minReplicas": 1,
+          "maxReplicas": 4
         }
       }
     },
     "web": {
-      "replicaCount": 4
+      "replicaCount": 3
     }
   }
 }
