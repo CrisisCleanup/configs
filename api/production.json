@@ -82,7 +82,7 @@
     },
     "wsgi": {
       "scaling": {
-        "memUtilPercent": 75,
+        "memUtilPercent": 80,
         "minReplicas": 3,
         "maxReplicas": 10
       }
@@ -119,11 +119,7 @@
       }
     },
     "web": {
-      "scaling": {
-        "minReplicas": 3,
-        "maxReplicas": 8,
-        "memUtilPercent": 75
-      }
+      "replicaCount": 4
     }
   }
 }
