@@ -711,6 +711,55 @@
           "additionalProperties": false,
           "default": {}
         },
+        "arc": {
+          "type": "object",
+          "properties": {
+            "github": {
+              "type": "object",
+              "properties": {
+                "appId": {
+                  "type": "string"
+                },
+                "installId": {
+                  "type": "string"
+                },
+                "privateKey": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "appId",
+                "installId",
+                "privateKey"
+              ],
+              "additionalProperties": false,
+              "description": "Github App Credentials",
+              "default": {
+                "appId": "",
+                "installId": "",
+                "privateKey": ""
+              }
+            },
+            "minRunners": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "default": null,
+              "description": "Minimum allowed runners"
+            },
+            "maxRunners": {
+              "type": [
+                "number",
+                "null"
+              ],
+              "default": null,
+              "description": "Maximum allowed runners"
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
+        },
         "codeStarConnectionArn": {
           "type": "string"
         },
@@ -1418,6 +1467,118 @@
               }
             }
           }
+        },
+        "adminWebsocket": {
+          "anyOf": [
+            {
+              "type": "object",
+              "properties": {
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "pullPolicy"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
+                },
+                "scaling": {
+                  "type": "object",
+                  "properties": {
+                    "minReplicas": {
+                      "type": "number"
+                    },
+                    "maxReplicas": {
+                      "type": "number",
+                      "default": 2,
+                      "description": "Maximum number of replicas to scale up too."
+                    },
+                    "cpuUtilPercent": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100,
+                      "default": 70,
+                      "description": "Target average cpu utilization percentage."
+                    },
+                    "memUtilPercent": {
+                      "type": "number",
+                      "minimum": 0,
+                      "maximum": 100,
+                      "default": 85,
+                      "description": "Target average memory utilization percentage."
+                    }
+                  },
+                  "additionalProperties": true,
+                  "description": "Horizontal Autoscaling Parameters"
+                }
+              },
+              "required": [
+                "scaling"
+              ],
+              "additionalProperties": true
+            },
+            {
+              "type": "object",
+              "properties": {
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "required": [
+                    "repository",
+                    "pullPolicy"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
+                },
+                "replicaCount": {
+                  "type": "number",
+                  "minimum": 0,
+                  "description": "Static number of replicas to create."
+                }
+              },
+              "required": [
+                "replicaCount"
+              ],
+              "additionalProperties": true
+            }
+          ],
+          "description": "Connect Admin Websocket component",
+          "default": {
+            "replicaCount": 1
+          }
         }
       },
       "additionalProperties": false
@@ -2121,6 +2282,55 @@
                   ],
                   "description": "Configure autoscaling target for cluster.",
                   "default": null
+                }
+              },
+              "additionalProperties": false,
+              "default": {}
+            },
+            "arc": {
+              "type": "object",
+              "properties": {
+                "github": {
+                  "type": "object",
+                  "properties": {
+                    "appId": {
+                      "type": "string"
+                    },
+                    "installId": {
+                      "type": "string"
+                    },
+                    "privateKey": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "appId",
+                    "installId",
+                    "privateKey"
+                  ],
+                  "additionalProperties": false,
+                  "description": "Github App Credentials",
+                  "default": {
+                    "appId": "",
+                    "installId": "",
+                    "privateKey": ""
+                  }
+                },
+                "minRunners": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "default": null,
+                  "description": "Minimum allowed runners"
+                },
+                "maxRunners": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "default": null,
+                  "description": "Maximum allowed runners"
                 }
               },
               "additionalProperties": false,
@@ -2832,6 +3042,118 @@
                     "maxReplicas": 2
                   }
                 }
+              }
+            },
+            "adminWebsocket": {
+              "anyOf": [
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "scaling": {
+                      "type": "object",
+                      "properties": {
+                        "minReplicas": {
+                          "type": "number"
+                        },
+                        "maxReplicas": {
+                          "type": "number",
+                          "default": 2,
+                          "description": "Maximum number of replicas to scale up too."
+                        },
+                        "cpuUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 70,
+                          "description": "Target average cpu utilization percentage."
+                        },
+                        "memUtilPercent": {
+                          "type": "number",
+                          "minimum": 0,
+                          "maximum": 100,
+                          "default": 85,
+                          "description": "Target average memory utilization percentage."
+                        }
+                      },
+                      "additionalProperties": true,
+                      "description": "Horizontal Autoscaling Parameters"
+                    }
+                  },
+                  "required": [
+                    "scaling"
+                  ],
+                  "additionalProperties": true
+                },
+                {
+                  "type": "object",
+                  "properties": {
+                    "image": {
+                      "type": "object",
+                      "properties": {
+                        "repository": {
+                          "type": "string"
+                        },
+                        "tag": {
+                          "type": "string",
+                          "default": "latest"
+                        },
+                        "pullPolicy": {
+                          "type": "string",
+                          "enum": [
+                            "Always",
+                            "Never",
+                            "IfNotPresent"
+                          ]
+                        }
+                      },
+                      "required": [
+                        "repository",
+                        "pullPolicy"
+                      ],
+                      "additionalProperties": false,
+                      "description": "Container Image Configuration"
+                    },
+                    "replicaCount": {
+                      "type": "number",
+                      "minimum": 0,
+                      "description": "Static number of replicas to create."
+                    }
+                  },
+                  "required": [
+                    "replicaCount"
+                  ],
+                  "additionalProperties": true
+                }
+              ],
+              "description": "Connect Admin Websocket component",
+              "default": {
+                "replicaCount": 1
               }
             }
           },
@@ -3549,6 +3871,55 @@
                     "additionalProperties": false,
                     "default": {}
                   },
+                  "arc": {
+                    "type": "object",
+                    "properties": {
+                      "github": {
+                        "type": "object",
+                        "properties": {
+                          "appId": {
+                            "type": "string"
+                          },
+                          "installId": {
+                            "type": "string"
+                          },
+                          "privateKey": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "appId",
+                          "installId",
+                          "privateKey"
+                        ],
+                        "additionalProperties": false,
+                        "description": "Github App Credentials",
+                        "default": {
+                          "appId": "",
+                          "installId": "",
+                          "privateKey": ""
+                        }
+                      },
+                      "minRunners": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "default": null,
+                        "description": "Minimum allowed runners"
+                      },
+                      "maxRunners": {
+                        "type": [
+                          "number",
+                          "null"
+                        ],
+                        "default": null,
+                        "description": "Maximum allowed runners"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "default": {}
+                  },
                   "codeStarConnectionArn": {
                     "type": "string"
                   },
@@ -4255,6 +4626,118 @@
                           "maxReplicas": 2
                         }
                       }
+                    }
+                  },
+                  "adminWebsocket": {
+                    "anyOf": [
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "scaling": {
+                            "type": "object",
+                            "properties": {
+                              "minReplicas": {
+                                "type": "number"
+                              },
+                              "maxReplicas": {
+                                "type": "number",
+                                "default": 2,
+                                "description": "Maximum number of replicas to scale up too."
+                              },
+                              "cpuUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 70,
+                                "description": "Target average cpu utilization percentage."
+                              },
+                              "memUtilPercent": {
+                                "type": "number",
+                                "minimum": 0,
+                                "maximum": 100,
+                                "default": 85,
+                                "description": "Target average memory utilization percentage."
+                              }
+                            },
+                            "additionalProperties": true,
+                            "description": "Horizontal Autoscaling Parameters"
+                          }
+                        },
+                        "required": [
+                          "scaling"
+                        ],
+                        "additionalProperties": true
+                      },
+                      {
+                        "type": "object",
+                        "properties": {
+                          "image": {
+                            "type": "object",
+                            "properties": {
+                              "repository": {
+                                "type": "string"
+                              },
+                              "tag": {
+                                "type": "string",
+                                "default": "latest"
+                              },
+                              "pullPolicy": {
+                                "type": "string",
+                                "enum": [
+                                  "Always",
+                                  "Never",
+                                  "IfNotPresent"
+                                ]
+                              }
+                            },
+                            "required": [
+                              "repository",
+                              "pullPolicy"
+                            ],
+                            "additionalProperties": false,
+                            "description": "Container Image Configuration"
+                          },
+                          "replicaCount": {
+                            "type": "number",
+                            "minimum": 0,
+                            "description": "Static number of replicas to create."
+                          }
+                        },
+                        "required": [
+                          "replicaCount"
+                        ],
+                        "additionalProperties": true
+                      }
+                    ],
+                    "description": "Connect Admin Websocket component",
+                    "default": {
+                      "replicaCount": 1
                     }
                   }
                 },
