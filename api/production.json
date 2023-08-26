@@ -31,6 +31,10 @@
     },
     "cache": {
       "enabled": true
+    },
+    "arc": {
+      "minRunners": 0,
+      "maxRunners": 5
     }
   },
   "api": {
@@ -38,9 +42,7 @@
       "django": {
         "emailBackend": "anymail.backends.mandrill.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": [
-          "*"
-        ],
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
@@ -84,7 +86,7 @@
     "wsgi": {
       "scaling": {
         "memUtilPercent": 80,
-        "minReplicas": 2,
+        "minReplicas": 3,
         "maxReplicas": 10
       }
     },
@@ -97,9 +99,7 @@
     },
     "celery": {
       "celery": {
-        "queues": [
-          "celery"
-        ],
+        "queues": ["celery"],
         "scaling": {
           "memUtilPercent": 80,
           "minReplicas": 1,
@@ -107,11 +107,7 @@
         }
       },
       "signal": {
-        "queues": [
-          "signal",
-          "phone",
-          "metrics"
-        ],
+        "queues": ["signal", "phone", "metrics"],
         "scaling": {
           "memUtilPercent": 80,
           "minReplicas": 1,
