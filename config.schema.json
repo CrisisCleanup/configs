@@ -521,6 +521,21 @@
               },
               "description": "ARNs to add to platform team.",
               "default": []
+            },
+            "instanceTypes": {
+              "anyOf": [
+                {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  }
+                },
+                {
+                  "type": "null"
+                }
+              ],
+              "default": null,
+              "description": "List of instance families for karpenter to provision."
             }
           },
           "additionalProperties": false,
@@ -2097,6 +2112,21 @@
                   },
                   "description": "ARNs to add to platform team.",
                   "default": []
+                },
+                "instanceTypes": {
+                  "anyOf": [
+                    {
+                      "type": "array",
+                      "items": {
+                        "type": "string"
+                      }
+                    },
+                    {
+                      "type": "null"
+                    }
+                  ],
+                  "default": null,
+                  "description": "List of instance families for karpenter to provision."
                 }
               },
               "additionalProperties": false,
@@ -3681,6 +3711,21 @@
                         },
                         "description": "ARNs to add to platform team.",
                         "default": []
+                      },
+                      "instanceTypes": {
+                        "anyOf": [
+                          {
+                            "type": "array",
+                            "items": {
+                              "type": "string"
+                            }
+                          },
+                          {
+                            "type": "null"
+                          }
+                        ],
+                        "default": null,
+                        "description": "List of instance families for karpenter to provision."
                       }
                     },
                     "additionalProperties": false,

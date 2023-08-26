@@ -24,6 +24,7 @@
       "backupRetentionDays": 4
     },
     "eks": {
+      "instanceTypes": ["c", "m", "r"],
       "platformArns": [
         "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674",
         "arn:aws:iam::967600921982:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_ddf52ca00402da26"
