@@ -907,6 +907,10 @@
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -970,6 +974,10 @@
                   ],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
+                },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
                 },
                 "replicaCount": {
                   "type": "number",
@@ -1019,6 +1027,10 @@
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1082,6 +1094,10 @@
                   ],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
+                },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
                 },
                 "replicaCount": {
                   "type": "number",
@@ -1134,6 +1150,10 @@
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1197,6 +1217,10 @@
                   ],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
+                },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
                 },
                 "replicaCount": {
                   "type": "number",
@@ -1249,6 +1273,10 @@
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1313,6 +1341,10 @@
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
+                },
                 "replicaCount": {
                   "type": "number",
                   "minimum": 0,
@@ -1362,6 +1394,10 @@
                     ],
                     "additionalProperties": false,
                     "description": "Container Image Configuration"
+                  },
+                  "spread": {
+                    "type": "boolean",
+                    "default": false
                   },
                   "queues": {
                     "type": "array",
@@ -1434,6 +1470,10 @@
                     ],
                     "additionalProperties": false,
                     "description": "Container Image Configuration"
+                  },
+                  "spread": {
+                    "type": "boolean",
+                    "default": false
                   },
                   "queues": {
                     "type": "array",
@@ -1514,6 +1554,10 @@
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1577,6 +1621,10 @@
                   ],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
+                },
+                "spread": {
+                  "type": "boolean",
+                  "default": false
                 },
                 "replicaCount": {
                   "type": "number",
@@ -2498,6 +2546,10 @@
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -2561,6 +2613,10 @@
                       ],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
+                    },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
                     },
                     "replicaCount": {
                       "type": "number",
@@ -2610,6 +2666,10 @@
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -2673,6 +2733,10 @@
                       ],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
+                    },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
                     },
                     "replicaCount": {
                       "type": "number",
@@ -2725,6 +2789,10 @@
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -2788,6 +2856,10 @@
                       ],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
+                    },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
                     },
                     "replicaCount": {
                       "type": "number",
@@ -2840,6 +2912,10 @@
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -2904,6 +2980,10 @@
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "replicaCount": {
                       "type": "number",
                       "minimum": 0,
@@ -2953,6 +3033,10 @@
                         ],
                         "additionalProperties": false,
                         "description": "Container Image Configuration"
+                      },
+                      "spread": {
+                        "type": "boolean",
+                        "default": false
                       },
                       "queues": {
                         "type": "array",
@@ -3025,6 +3109,10 @@
                         ],
                         "additionalProperties": false,
                         "description": "Container Image Configuration"
+                      },
+                      "spread": {
+                        "type": "boolean",
+                        "default": false
                       },
                       "queues": {
                         "type": "array",
@@ -3105,6 +3193,10 @@
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -3168,6 +3260,10 @@
                       ],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
+                    },
+                    "spread": {
+                      "type": "boolean",
+                      "default": false
                     },
                     "replicaCount": {
                       "type": "number",
@@ -4097,6 +4193,10 @@
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4160,6 +4260,10 @@
                             ],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
+                          },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
                           },
                           "replicaCount": {
                             "type": "number",
@@ -4209,6 +4313,10 @@
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4272,6 +4380,10 @@
                             ],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
+                          },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
                           },
                           "replicaCount": {
                             "type": "number",
@@ -4324,6 +4436,10 @@
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4387,6 +4503,10 @@
                             ],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
+                          },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
                           },
                           "replicaCount": {
                             "type": "number",
@@ -4439,6 +4559,10 @@
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4503,6 +4627,10 @@
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
+                          },
                           "replicaCount": {
                             "type": "number",
                             "minimum": 0,
@@ -4552,6 +4680,10 @@
                               ],
                               "additionalProperties": false,
                               "description": "Container Image Configuration"
+                            },
+                            "spread": {
+                              "type": "boolean",
+                              "default": false
                             },
                             "queues": {
                               "type": "array",
@@ -4624,6 +4756,10 @@
                               ],
                               "additionalProperties": false,
                               "description": "Container Image Configuration"
+                            },
+                            "spread": {
+                              "type": "boolean",
+                              "default": false
                             },
                             "queues": {
                               "type": "array",
@@ -4704,6 +4840,10 @@
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4767,6 +4907,10 @@
                             ],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
+                          },
+                          "spread": {
+                            "type": "boolean",
+                            "default": false
                           },
                           "replicaCount": {
                             "type": "number",

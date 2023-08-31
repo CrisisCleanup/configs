@@ -85,6 +85,7 @@
       "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:us-east-1:967600921982:certificate/14e84885-7bbd-4940-83be-5d5420f20885"
     },
     "wsgi": {
+      "spread": true,
       "scaling": {
         "memUtilPercent": 80,
         "minReplicas": 3,
@@ -92,6 +93,7 @@
       }
     },
     "asgi": {
+      "spread": true,
       "scaling": {
         "memUtilPercent": 80,
         "minReplicas": 2,
