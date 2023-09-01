@@ -15,19 +15,20 @@
       "databaseName": null,
       "username": "postgres",
       "ioOptimized": true,
-      "minAcu": 2,
+      "minAcu": 3,
       "maxAcu": 64,
       "snapshotIdentifier": "ccu-prod-aurora-pg15-20230818",
       "numReplicas": 1,
       "numReplicasScaledWithWriter": 1,
       "performanceInsights": true,
-      "backupRetentionDays": 4
+      "backupRetentionDays": 3
     },
     "eks": {
       "instanceTypes": [
         "c",
         "m",
-        "r"
+        "r",
+        "t"
       ],
       "platformArns": [
         "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674",
