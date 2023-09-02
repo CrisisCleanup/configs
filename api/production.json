@@ -95,8 +95,8 @@
       "spread": true,
       "scaling": {
         "memUtilPercent": 80,
-        "minReplicas": 3,
-        "maxReplicas": 10
+        "minReplicas": 4,
+        "maxReplicas": 16
       }
     },
     "asgi": {
@@ -114,8 +114,8 @@
         ],
         "scaling": {
           "memUtilPercent": 80,
-          "minReplicas": 1,
-          "maxReplicas": 4
+          "minReplicas": 3,
+          "maxReplicas": 8
         }
       },
       "signal": {
@@ -126,8 +126,8 @@
         ],
         "scaling": {
           "memUtilPercent": 80,
-          "minReplicas": 1,
-          "maxReplicas": 4
+          "minReplicas": 3,
+          "maxReplicas": 8
         }
       }
     },
