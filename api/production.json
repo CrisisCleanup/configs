@@ -15,7 +15,7 @@
       "databaseName": null,
       "username": "postgres",
       "ioOptimized": true,
-      "minAcu": 3,
+      "minAcu": 4,
       "maxAcu": 64,
       "snapshotIdentifier": "ccu-prod-aurora-pg15-20230818",
       "numReplicas": 1,
