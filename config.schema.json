@@ -770,6 +770,18 @@
               ],
               "default": null,
               "description": "Maximum allowed runners"
+            },
+            "images": {
+              "type": "object",
+              "additionalProperties": {
+                "type": "string"
+              },
+              "description": "Images to use.",
+              "default": {
+                "runner": "summerwind/actions-runner:ubuntu-20.04",
+                "init-dind-externals": "ghcr.io/actions/actions-runner:2.308.0",
+                "dind": "docker:dind"
+              }
             }
           },
           "additionalProperties": false,
@@ -2409,6 +2421,18 @@
                   ],
                   "default": null,
                   "description": "Maximum allowed runners"
+                },
+                "images": {
+                  "type": "object",
+                  "additionalProperties": {
+                    "type": "string"
+                  },
+                  "description": "Images to use.",
+                  "default": {
+                    "runner": "summerwind/actions-runner:ubuntu-20.04",
+                    "init-dind-externals": "ghcr.io/actions/actions-runner:2.308.0",
+                    "dind": "docker:dind"
+                  }
                 }
               },
               "additionalProperties": false,
@@ -4056,6 +4080,18 @@
                         ],
                         "default": null,
                         "description": "Maximum allowed runners"
+                      },
+                      "images": {
+                        "type": "object",
+                        "additionalProperties": {
+                          "type": "string"
+                        },
+                        "description": "Images to use.",
+                        "default": {
+                          "runner": "summerwind/actions-runner:ubuntu-20.04",
+                          "init-dind-externals": "ghcr.io/actions/actions-runner:2.308.0",
+                          "dind": "docker:dind"
+                        }
                       }
                     },
                     "additionalProperties": false,
