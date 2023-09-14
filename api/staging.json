@@ -16,7 +16,7 @@
       "username": "postgres",
       "ioOptimized": true,
       "minAcu": 0.5,
-      "maxAcu": 12,
+      "maxAcu": 8,
       "snapshotIdentifier": "ccu-staging-aurora-pg15-20230809",
       "numReplicas": 0
     },
@@ -32,9 +32,7 @@
       "django": {
         "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": [
-          "*"
-        ],
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
@@ -87,19 +85,13 @@
     },
     "celery": {
       "celery": {
-        "queues": [
-          "celery"
-        ],
+        "queues": ["celery"],
         "scaling": {
           "maxReplicas": 6
         }
       },
       "signal": {
-        "queues": [
-          "signal",
-          "phone",
-          "metrics"
-        ],
+        "queues": ["signal", "phone", "metrics"],
         "scaling": {
           "maxReplicas": 6
         }
