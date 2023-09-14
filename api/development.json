@@ -35,8 +35,8 @@
         "allowedHosts": [
           "*"
         ],
-        "sessionCookieSecure": true,
-        "csrfCookieSecure": true
+        "sessionCookieSecure": false,
+        "csrfCookieSecure": false
       },
       "ccu": {
         "webUrl": "https://app.dev.crisiscleanup.io",
