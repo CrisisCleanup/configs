@@ -32,7 +32,9 @@
       "django": {
         "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": ["*"],
+        "allowedHosts": [
+          "*"
+        ],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
@@ -66,7 +68,7 @@
     },
     "apiImage": {
       "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-api",
-      "tag": "staging-e86e734",
+      "tag": "staging-4683abd",
       "pullPolicy": "IfNotPresent"
     },
     "ingressAnnotations": {
@@ -85,13 +87,19 @@
     },
     "celery": {
       "celery": {
-        "queues": ["celery"],
+        "queues": [
+          "celery"
+        ],
         "scaling": {
           "maxReplicas": 6
         }
       },
       "signal": {
-        "queues": ["signal", "phone", "metrics"],
+        "queues": [
+          "signal",
+          "phone",
+          "metrics"
+        ],
         "scaling": {
           "maxReplicas": 6
         }
