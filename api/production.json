@@ -35,7 +35,7 @@
     },
     "arc": {
       "minRunners": 1,
-      "maxRunners": 6,
+      "maxRunners": 8,
       "images": {
         "runner": "ghcr.io/actions-runner-controller/actions-runner-controller/actions-runner:ubuntu-20.04",
         "init-dind-externals": "ghcr.io/actions/actions-runner:2.308.0"
