@@ -37,7 +37,7 @@
       "minRunners": 1,
       "maxRunners": 8,
       "images": {
-        "runner": "ghcr.io/actions-runner-controller/actions-runner-controller/actions-runner:v2.309.0-ubuntu-20.04-dce49a0",
+        "runner": "ghcr.io/actions-runner-controller/actions-runner-controller/actions-runner-dind:v2.309.0-ubuntu-20.04-dce49a0",
         "init-dind-externals": "ghcr.io/actions/actions-runner:2.309.0"
       }
     }
