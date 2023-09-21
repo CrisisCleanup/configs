@@ -38,7 +38,7 @@
       "maxRunners": 8,
       "images": {
         "runner": "ghcr.io/crisiscleanup/runner:v2.309.0",
-        "init-dind-externals": "ghcr.io/actions/actions-runner:2.309.0"
+        "init-dind-externals": "ghcr.io/crisiscleanup/runner:v2.309.0"
       }
     }
   },
