@@ -61,6 +61,7 @@ const commonDefaults = {
           "crisiscleanup.common.tasks.get_request_ip",
           "crisiscleanup.common.tasks.create_signal_log",
           "crisiscleanup.common.tasks.create_new_signal_events",
+          "/users/{pk}/states",
         ],
       },
     },
