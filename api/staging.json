@@ -18,7 +18,10 @@
       "minAcu": 0.5,
       "maxAcu": 8,
       "snapshotIdentifier": "ccu-staging-aurora-pg15-20230809",
-      "numReplicas": 0
+      "numReplicas": 0,
+      "credentialsReadableFrom": [
+        "967600921982"
+      ]
     },
     "eks": {
       "platformArns": [

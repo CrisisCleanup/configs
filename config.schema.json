@@ -632,6 +632,14 @@
                 "type": "string"
               },
               "default": []
+            },
+            "credentialsReadableFrom": {
+              "type": "array",
+              "items": {
+                "type": "string"
+              },
+              "default": [],
+              "description": "Account IDs to allow access to credentials."
             }
           },
           "required": [
@@ -886,126 +894,6 @@
             "alb.ingress.kubernetes.io/target-group-attributes": "load_balancing.algorithm.type=least_outstanding_requests",
             "alb.ingress.kubernetes.io/healthcheck-path": "/health",
             "alb.ingress.kubernetes.io/load-balancer-attributes": "idle_timeout.timeout_seconds=120"
-          }
-        },
-        "web": {
-          "anyOf": [
-            {
-              "type": "object",
-              "properties": {
-                "image": {
-                  "type": "object",
-                  "properties": {
-                    "repository": {
-                      "type": "string"
-                    },
-                    "tag": {
-                      "type": "string",
-                      "default": "latest"
-                    },
-                    "pullPolicy": {
-                      "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
-                  "additionalProperties": false,
-                  "description": "Container Image Configuration"
-                },
-                "spread": {
-                  "type": "boolean",
-                  "default": false
-                },
-                "scaling": {
-                  "type": "object",
-                  "properties": {
-                    "minReplicas": {
-                      "type": "number"
-                    },
-                    "maxReplicas": {
-                      "type": "number",
-                      "default": 2,
-                      "description": "Maximum number of replicas to scale up too."
-                    },
-                    "cpuUtilPercent": {
-                      "type": "number",
-                      "minimum": 0,
-                      "maximum": 100,
-                      "default": 70,
-                      "description": "Target average cpu utilization percentage."
-                    },
-                    "memUtilPercent": {
-                      "type": "number",
-                      "minimum": 0,
-                      "maximum": 100,
-                      "default": 85,
-                      "description": "Target average memory utilization percentage."
-                    }
-                  },
-                  "additionalProperties": true,
-                  "description": "Horizontal Autoscaling Parameters"
-                }
-              },
-              "required": [
-                "scaling"
-              ],
-              "additionalProperties": true
-            },
-            {
-              "type": "object",
-              "properties": {
-                "image": {
-                  "type": "object",
-                  "properties": {
-                    "repository": {
-                      "type": "string"
-                    },
-                    "tag": {
-                      "type": "string",
-                      "default": "latest"
-                    },
-                    "pullPolicy": {
-                      "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
-                    }
-                  },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
-                  "additionalProperties": false,
-                  "description": "Container Image Configuration"
-                },
-                "spread": {
-                  "type": "boolean",
-                  "default": false
-                },
-                "replicaCount": {
-                  "type": "number",
-                  "minimum": 0,
-                  "description": "Static number of replicas to create."
-                }
-              },
-              "required": [
-                "replicaCount"
-              ],
-              "additionalProperties": true
-            }
-          ],
-          "description": "Frontend web component.",
-          "default": {
-            "replicaCount": 2
           }
         },
         "wsgi": {
@@ -2283,6 +2171,14 @@
                     "type": "string"
                   },
                   "default": []
+                },
+                "credentialsReadableFrom": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "default": [],
+                  "description": "Account IDs to allow access to credentials."
                 }
               },
               "required": [
@@ -2537,126 +2433,6 @@
                 "alb.ingress.kubernetes.io/target-group-attributes": "load_balancing.algorithm.type=least_outstanding_requests",
                 "alb.ingress.kubernetes.io/healthcheck-path": "/health",
                 "alb.ingress.kubernetes.io/load-balancer-attributes": "idle_timeout.timeout_seconds=120"
-              }
-            },
-            "web": {
-              "anyOf": [
-                {
-                  "type": "object",
-                  "properties": {
-                    "image": {
-                      "type": "object",
-                      "properties": {
-                        "repository": {
-                          "type": "string"
-                        },
-                        "tag": {
-                          "type": "string",
-                          "default": "latest"
-                        },
-                        "pullPolicy": {
-                          "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
-                      "additionalProperties": false,
-                      "description": "Container Image Configuration"
-                    },
-                    "spread": {
-                      "type": "boolean",
-                      "default": false
-                    },
-                    "scaling": {
-                      "type": "object",
-                      "properties": {
-                        "minReplicas": {
-                          "type": "number"
-                        },
-                        "maxReplicas": {
-                          "type": "number",
-                          "default": 2,
-                          "description": "Maximum number of replicas to scale up too."
-                        },
-                        "cpuUtilPercent": {
-                          "type": "number",
-                          "minimum": 0,
-                          "maximum": 100,
-                          "default": 70,
-                          "description": "Target average cpu utilization percentage."
-                        },
-                        "memUtilPercent": {
-                          "type": "number",
-                          "minimum": 0,
-                          "maximum": 100,
-                          "default": 85,
-                          "description": "Target average memory utilization percentage."
-                        }
-                      },
-                      "additionalProperties": true,
-                      "description": "Horizontal Autoscaling Parameters"
-                    }
-                  },
-                  "required": [
-                    "scaling"
-                  ],
-                  "additionalProperties": true
-                },
-                {
-                  "type": "object",
-                  "properties": {
-                    "image": {
-                      "type": "object",
-                      "properties": {
-                        "repository": {
-                          "type": "string"
-                        },
-                        "tag": {
-                          "type": "string",
-                          "default": "latest"
-                        },
-                        "pullPolicy": {
-                          "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
-                        }
-                      },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
-                      "additionalProperties": false,
-                      "description": "Container Image Configuration"
-                    },
-                    "spread": {
-                      "type": "boolean",
-                      "default": false
-                    },
-                    "replicaCount": {
-                      "type": "number",
-                      "minimum": 0,
-                      "description": "Static number of replicas to create."
-                    }
-                  },
-                  "required": [
-                    "replicaCount"
-                  ],
-                  "additionalProperties": true
-                }
-              ],
-              "description": "Frontend web component.",
-              "default": {
-                "replicaCount": 2
               }
             },
             "wsgi": {
@@ -3942,6 +3718,14 @@
                           "type": "string"
                         },
                         "default": []
+                      },
+                      "credentialsReadableFrom": {
+                        "type": "array",
+                        "items": {
+                          "type": "string"
+                        },
+                        "default": [],
+                        "description": "Account IDs to allow access to credentials."
                       }
                     },
                     "required": [
@@ -4196,126 +3980,6 @@
                       "alb.ingress.kubernetes.io/target-group-attributes": "load_balancing.algorithm.type=least_outstanding_requests",
                       "alb.ingress.kubernetes.io/healthcheck-path": "/health",
                       "alb.ingress.kubernetes.io/load-balancer-attributes": "idle_timeout.timeout_seconds=120"
-                    }
-                  },
-                  "web": {
-                    "anyOf": [
-                      {
-                        "type": "object",
-                        "properties": {
-                          "image": {
-                            "type": "object",
-                            "properties": {
-                              "repository": {
-                                "type": "string"
-                              },
-                              "tag": {
-                                "type": "string",
-                                "default": "latest"
-                              },
-                              "pullPolicy": {
-                                "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
-                            "additionalProperties": false,
-                            "description": "Container Image Configuration"
-                          },
-                          "spread": {
-                            "type": "boolean",
-                            "default": false
-                          },
-                          "scaling": {
-                            "type": "object",
-                            "properties": {
-                              "minReplicas": {
-                                "type": "number"
-                              },
-                              "maxReplicas": {
-                                "type": "number",
-                                "default": 2,
-                                "description": "Maximum number of replicas to scale up too."
-                              },
-                              "cpuUtilPercent": {
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 100,
-                                "default": 70,
-                                "description": "Target average cpu utilization percentage."
-                              },
-                              "memUtilPercent": {
-                                "type": "number",
-                                "minimum": 0,
-                                "maximum": 100,
-                                "default": 85,
-                                "description": "Target average memory utilization percentage."
-                              }
-                            },
-                            "additionalProperties": true,
-                            "description": "Horizontal Autoscaling Parameters"
-                          }
-                        },
-                        "required": [
-                          "scaling"
-                        ],
-                        "additionalProperties": true
-                      },
-                      {
-                        "type": "object",
-                        "properties": {
-                          "image": {
-                            "type": "object",
-                            "properties": {
-                              "repository": {
-                                "type": "string"
-                              },
-                              "tag": {
-                                "type": "string",
-                                "default": "latest"
-                              },
-                              "pullPolicy": {
-                                "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
-                              }
-                            },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
-                            "additionalProperties": false,
-                            "description": "Container Image Configuration"
-                          },
-                          "spread": {
-                            "type": "boolean",
-                            "default": false
-                          },
-                          "replicaCount": {
-                            "type": "number",
-                            "minimum": 0,
-                            "description": "Static number of replicas to create."
-                          }
-                        },
-                        "required": [
-                          "replicaCount"
-                        ],
-                        "additionalProperties": true
-                      }
-                    ],
-                    "description": "Frontend web component.",
-                    "default": {
-                      "replicaCount": 2
                     }
                   },
                   "wsgi": {
