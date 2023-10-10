@@ -632,14 +632,6 @@
                 "type": "string"
               },
               "default": []
-            },
-            "credentialsReadableFrom": {
-              "type": "array",
-              "items": {
-                "type": "string"
-              },
-              "default": [],
-              "description": "Account IDs to allow access to credentials."
             }
           },
           "required": [
@@ -1542,6 +1534,96 @@
           "default": {
             "replicaCount": 1
           }
+        },
+        "sync": {
+          "type": "object",
+          "properties": {
+            "image": {
+              "type": "object",
+              "properties": {
+                "repository": {
+                  "type": "string"
+                },
+                "tag": {
+                  "type": "string",
+                  "default": "latest"
+                },
+                "pullPolicy": {
+                  "type": "string",
+                  "enum": [
+                    "Always",
+                    "Never",
+                    "IfNotPresent"
+                  ]
+                }
+              },
+              "required": [
+                "repository",
+                "pullPolicy"
+              ],
+              "additionalProperties": false,
+              "description": "Container Image Configuration"
+            },
+            "schedule": {
+              "type": "object",
+              "properties": {
+                "minute": {
+                  "type": "string"
+                },
+                "hour": {
+                  "type": "string"
+                },
+                "day": {
+                  "type": "string"
+                },
+                "month": {
+                  "type": "string"
+                },
+                "weekDay": {
+                  "type": "string"
+                }
+              },
+              "additionalProperties": false,
+              "default": {
+                "hour": "0"
+              }
+            },
+            "sourceDsn": {
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": null
+            },
+            "target": {
+              "type": "object",
+              "properties": {
+                "bastionHost": {
+                  "type": "string"
+                },
+                "bastionKey": {
+                  "type": "string"
+                },
+                "databaseDsn": {
+                  "type": "string"
+                },
+                "dev": {
+                  "type": "boolean",
+                  "default": true
+                }
+              },
+              "required": [
+                "bastionHost",
+                "bastionKey",
+                "databaseDsn"
+              ],
+              "additionalProperties": false
+            }
+          },
+          "required": [
+            "target"
+          ],
+          "additionalProperties": false
         }
       },
       "additionalProperties": false
@@ -2171,14 +2253,6 @@
                     "type": "string"
                   },
                   "default": []
-                },
-                "credentialsReadableFrom": {
-                  "type": "array",
-                  "items": {
-                    "type": "string"
-                  },
-                  "default": [],
-                  "description": "Account IDs to allow access to credentials."
                 }
               },
               "required": [
@@ -3081,6 +3155,84 @@
               "default": {
                 "replicaCount": 1
               }
+            },
+            "sync": {
+              "type": "object",
+              "properties": {
+                "image": {
+                  "type": "object",
+                  "properties": {
+                    "repository": {
+                      "type": "string"
+                    },
+                    "tag": {
+                      "type": "string",
+                      "default": "latest"
+                    },
+                    "pullPolicy": {
+                      "type": "string",
+                      "enum": [
+                        "Always",
+                        "Never",
+                        "IfNotPresent"
+                      ]
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Container Image Configuration"
+                },
+                "schedule": {
+                  "type": "object",
+                  "properties": {
+                    "minute": {
+                      "type": "string"
+                    },
+                    "hour": {
+                      "type": "string"
+                    },
+                    "day": {
+                      "type": "string"
+                    },
+                    "month": {
+                      "type": "string"
+                    },
+                    "weekDay": {
+                      "type": "string"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {
+                    "hour": "0"
+                  }
+                },
+                "sourceDsn": {
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": null
+                },
+                "target": {
+                  "type": "object",
+                  "properties": {
+                    "bastionHost": {
+                      "type": "string"
+                    },
+                    "bastionKey": {
+                      "type": "string"
+                    },
+                    "databaseDsn": {
+                      "type": "string"
+                    },
+                    "dev": {
+                      "type": "boolean",
+                      "default": true
+                    }
+                  },
+                  "additionalProperties": false
+                }
+              },
+              "additionalProperties": false
             }
           },
           "additionalProperties": false
@@ -3718,14 +3870,6 @@
                           "type": "string"
                         },
                         "default": []
-                      },
-                      "credentialsReadableFrom": {
-                        "type": "array",
-                        "items": {
-                          "type": "string"
-                        },
-                        "default": [],
-                        "description": "Account IDs to allow access to credentials."
                       }
                     },
                     "required": [
@@ -4628,6 +4772,96 @@
                     "default": {
                       "replicaCount": 1
                     }
+                  },
+                  "sync": {
+                    "type": "object",
+                    "properties": {
+                      "image": {
+                        "type": "object",
+                        "properties": {
+                          "repository": {
+                            "type": "string"
+                          },
+                          "tag": {
+                            "type": "string",
+                            "default": "latest"
+                          },
+                          "pullPolicy": {
+                            "type": "string",
+                            "enum": [
+                              "Always",
+                              "Never",
+                              "IfNotPresent"
+                            ]
+                          }
+                        },
+                        "required": [
+                          "repository",
+                          "pullPolicy"
+                        ],
+                        "additionalProperties": false,
+                        "description": "Container Image Configuration"
+                      },
+                      "schedule": {
+                        "type": "object",
+                        "properties": {
+                          "minute": {
+                            "type": "string"
+                          },
+                          "hour": {
+                            "type": "string"
+                          },
+                          "day": {
+                            "type": "string"
+                          },
+                          "month": {
+                            "type": "string"
+                          },
+                          "weekDay": {
+                            "type": "string"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {
+                          "hour": "0"
+                        }
+                      },
+                      "sourceDsn": {
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "default": null
+                      },
+                      "target": {
+                        "type": "object",
+                        "properties": {
+                          "bastionHost": {
+                            "type": "string"
+                          },
+                          "bastionKey": {
+                            "type": "string"
+                          },
+                          "databaseDsn": {
+                            "type": "string"
+                          },
+                          "dev": {
+                            "type": "boolean",
+                            "default": true
+                          }
+                        },
+                        "required": [
+                          "bastionHost",
+                          "bastionKey",
+                          "databaseDsn"
+                        ],
+                        "additionalProperties": false
+                      }
+                    },
+                    "required": [
+                      "target"
+                    ],
+                    "additionalProperties": false
                   }
                 },
                 "additionalProperties": false
