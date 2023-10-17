@@ -104,6 +104,8 @@ const commonDefaults = {
         "174.211.178.193/32",
         "174.211.233.209/32",
         "161.97.247.158/32",
+        // staging sync
+        "107.23.81.184/32",
       ],
     },
     codeStarConnectionArn:
