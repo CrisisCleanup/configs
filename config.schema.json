@@ -109,6 +109,7 @@
                         "development",
                         "staging",
                         "production",
+                        "production-au",
                         "test"
                       ]
                     }
@@ -344,6 +345,18 @@
                   ],
                   "additionalProperties": false
                 },
+                "stripe": {
+                  "type": "object",
+                  "properties": {
+                    "apiKey": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "apiKey"
+                  ],
+                  "additionalProperties": false
+                },
                 "cloudfront": {
                   "type": "object",
                   "properties": {
@@ -440,6 +453,7 @@
             "development",
             "staging",
             "production",
+            "production-au",
             "test"
           ]
         },
@@ -1736,6 +1750,7 @@
                         "development",
                         "staging",
                         "production",
+                        "production-au",
                         "test"
                       ]
                     }
@@ -1971,6 +1986,18 @@
                   ],
                   "additionalProperties": false
                 },
+                "stripe": {
+                  "type": "object",
+                  "properties": {
+                    "apiKey": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "apiKey"
+                  ],
+                  "additionalProperties": false
+                },
                 "cloudfront": {
                   "type": "object",
                   "properties": {
@@ -2067,6 +2094,7 @@
             "development",
             "staging",
             "production",
+            "production-au",
             "test"
           ]
         },
@@ -3353,6 +3381,7 @@
                               "development",
                               "staging",
                               "production",
+                              "production-au",
                               "test"
                             ]
                           }
@@ -3588,6 +3617,18 @@
                         ],
                         "additionalProperties": false
                       },
+                      "stripe": {
+                        "type": "object",
+                        "properties": {
+                          "apiKey": {
+                            "type": "string"
+                          }
+                        },
+                        "required": [
+                          "apiKey"
+                        ],
+                        "additionalProperties": false
+                      },
                       "cloudfront": {
                         "type": "object",
                         "properties": {
@@ -3684,6 +3725,7 @@
                   "development",
                   "staging",
                   "production",
+                  "production-au",
                   "test"
                 ]
               },
@@ -4880,6 +4922,7 @@
               "development",
               "staging",
               "production",
+              "production-au",
               "test"
             ]
           }
