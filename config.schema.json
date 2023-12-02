@@ -581,7 +581,11 @@
               "default": null
             },
             "snapshotIdentifier": {
-              "type": "string",
+              "type": [
+                "string",
+                "null"
+              ],
+              "default": null,
               "description": "Snapshot identifier to restore from."
             },
             "engineVersion": {
@@ -648,9 +652,6 @@
               "default": []
             }
           },
-          "required": [
-            "snapshotIdentifier"
-          ],
           "additionalProperties": false,
           "default": {
             "snapshotIdentifier": ""
@@ -2216,7 +2217,11 @@
                   "default": null
                 },
                 "snapshotIdentifier": {
-                  "type": "string",
+                  "type": [
+                    "string",
+                    "null"
+                  ],
+                  "default": null,
                   "description": "Snapshot identifier to restore from."
                 },
                 "engineVersion": {
@@ -2283,9 +2288,6 @@
                   "default": []
                 }
               },
-              "required": [
-                "snapshotIdentifier"
-              ],
               "additionalProperties": false,
               "default": {
                 "snapshotIdentifier": ""
@@ -3847,7 +3849,11 @@
                         "default": null
                       },
                       "snapshotIdentifier": {
-                        "type": "string",
+                        "type": [
+                          "string",
+                          "null"
+                        ],
+                        "default": null,
                         "description": "Snapshot identifier to restore from."
                       },
                       "engineVersion": {
@@ -3914,9 +3920,6 @@
                         "default": []
                       }
                     },
-                    "required": [
-                      "snapshotIdentifier"
-                    ],
                     "additionalProperties": false,
                     "default": {
                       "snapshotIdentifier": ""
