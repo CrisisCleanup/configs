@@ -44,9 +44,9 @@
         "csrfCookieSecure": true
       },
       "ccu": {
-        "webUrl": "https://app.au.crisiscleanup.org",
-        "apiUrl": "https://api.au.crisiscleanup.org",
-        "newrelicDisable": false,
+        "webUrl": "https://app.au.crisiscleanup.io",
+        "apiUrl": "https://api.au.crisiscleanup.io",
+        "newrelicDisable": true,
         "forceDocker": false
       },
       "connect": {
@@ -64,8 +64,8 @@
     }
   },
   "chart": {
-    "namespace": "prod",
-    "domainName": "crisiscleanup.org",
+    "namespace": "prod-au",
+    "domainName": "au.crisiscleanup.io",
     "webImage": {
       "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-web",
       "tag": "production",
