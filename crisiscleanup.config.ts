@@ -162,7 +162,14 @@ async function resolveConfig(
 
 async function main() {
   const autoDecrypt = Boolean(destr.destr(process.env.CCU_CONFIGS_DECRYPT));
-  const stages = ["local", "development", "staging", "production", "test"];
+  const stages = [
+    "local",
+    "development",
+    "staging",
+    "production",
+    "production-au",
+    "test",
+  ];
   const sources = stages.map((stage) => resolveSources(stage));
   const envConfigs = await Promise.all(
     sources.map((source) => resolveConfig(source, autoDecrypt))
