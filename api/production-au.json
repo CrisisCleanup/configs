@@ -82,7 +82,7 @@
     },
     "ingressAnnotations": {
       "kubernetes.io/ingress.class": "alb",
-      "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:ap-southeast-2:137427084442:certificate/b7a3a4d5-6694-4534-8a9d-e3de41740890"
+      "alb.ingress.kubernetes.io/certificate-arn": "arn:aws:acm:ap-southeast-2:137427084442:certificate/4207a128-5665-4b3c-993a-38174814f6f6"
     },
     "wsgi": {
       "spread": true,
