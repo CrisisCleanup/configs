@@ -6,6 +6,10 @@
     "region": "us-east-1"
   },
   "apiStack": {
+    "dns": {
+      "zoneName": "crisiscleanup.io",
+      "subDomain": "staging.crisiscleanup.io"
+    },
     "network": {
       "natGateways": 1,
       "maxAzs": 2,

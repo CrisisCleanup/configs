@@ -6,6 +6,10 @@
     "region": "us-east-1"
   },
   "apiStack": {
+    "dns": {
+      "zoneName": "crisiscleanup.org",
+      "subDomain": "crisiscleanup.org"
+    },
     "network": {
       "cidr": "10.3.0.0/16",
       "maxAzs": 3,

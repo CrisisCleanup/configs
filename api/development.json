@@ -6,6 +6,10 @@
     "region": "us-east-1"
   },
   "apiStack": {
+    "dns": {
+      "zoneName": "crisiscleanup.io",
+      "subDomain": "dev.crisiscleanup.io"
+    },
     "database": {
       "ioOptimized": true,
       "username": "postgres",
