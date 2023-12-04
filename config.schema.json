@@ -807,6 +807,21 @@
         },
         "kubecostToken": {
           "type": "string"
+        },
+        "dns": {
+          "type": "object",
+          "properties": {
+            "zoneName": {
+              "type": "string",
+              "default": "crisiscleanup.io"
+            },
+            "subDomain": {
+              "type": "string",
+              "default": "dev.crisiscleanup.io"
+            }
+          },
+          "additionalProperties": false,
+          "default": {}
         }
       },
       "additionalProperties": false
@@ -2443,6 +2458,21 @@
             },
             "kubecostToken": {
               "type": "string"
+            },
+            "dns": {
+              "type": "object",
+              "properties": {
+                "zoneName": {
+                  "type": "string",
+                  "default": "crisiscleanup.io"
+                },
+                "subDomain": {
+                  "type": "string",
+                  "default": "dev.crisiscleanup.io"
+                }
+              },
+              "additionalProperties": false,
+              "default": {}
             }
           },
           "additionalProperties": false
@@ -4075,6 +4105,21 @@
                   },
                   "kubecostToken": {
                     "type": "string"
+                  },
+                  "dns": {
+                    "type": "object",
+                    "properties": {
+                      "zoneName": {
+                        "type": "string",
+                        "default": "crisiscleanup.io"
+                      },
+                      "subDomain": {
+                        "type": "string",
+                        "default": "dev.crisiscleanup.io"
+                      }
+                    },
+                    "additionalProperties": false,
+                    "default": {}
                   }
                 },
                 "additionalProperties": false
