@@ -23,7 +23,9 @@
       "maxAcu": 8,
       "snapshotIdentifier": "ccu-staging-aurora-pg15-20230809",
       "numReplicas": 0,
-      "credentialsReadableFrom": ["967600921982"]
+      "credentialsReadableFrom": [
+        "967600921982"
+      ]
     },
     "eks": {
       "platformArns": [
@@ -37,7 +39,9 @@
       "django": {
         "emailBackend": "django.core.mail.backends.dummy.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": ["*"],
+        "allowedHosts": [
+          "*"
+        ],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true,
         "csrfTrustedOrigins": [
@@ -82,7 +86,7 @@
     },
     "apiImage": {
       "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-api",
-      "tag": "d90a221",
+      "tag": "638b8b1",
       "pullPolicy": "IfNotPresent"
     },
     "ingressAnnotations": {
@@ -101,13 +105,19 @@
     },
     "celery": {
       "celery": {
-        "queues": ["celery"],
+        "queues": [
+          "celery"
+        ],
         "scaling": {
           "maxReplicas": 6
         }
       },
       "signal": {
-        "queues": ["signal", "phone", "metrics"],
+        "queues": [
+          "signal",
+          "phone",
+          "metrics"
+        ],
         "scaling": {
           "maxReplicas": 6
         }
