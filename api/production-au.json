@@ -28,7 +28,11 @@
       "backupRetentionDays": 3
     },
     "eks": {
-      "instanceTypes": ["c", "m", "r"],
+      "instanceTypes": [
+        "c",
+        "m",
+        "r"
+      ],
       "platformArns": [
         "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674",
         "arn:aws:iam::137427084442:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1dab2fb449ebd3e8"
@@ -43,7 +47,9 @@
       "django": {
         "emailBackend": "anymail.backends.mandrill.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": ["*"],
+        "allowedHosts": [
+          "*"
+        ],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true
       },
@@ -89,7 +95,7 @@
     },
     "apiImage": {
       "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-api",
-      "tag": "v3.59.0",
+      "tag": "v3.60.0",
       "pullPolicy": "IfNotPresent"
     },
     "ingressAnnotations": {
@@ -114,7 +120,9 @@
     },
     "celery": {
       "celery": {
-        "queues": ["celery"],
+        "queues": [
+          "celery"
+        ],
         "scaling": {
           "memUtilPercent": 70,
           "minReplicas": 3,
@@ -122,7 +130,11 @@
         }
       },
       "signal": {
-        "queues": ["signal", "phone", "metrics"],
+        "queues": [
+          "signal",
+          "phone",
+          "metrics"
+        ],
         "scaling": {
           "memUtilPercent": 70,
           "minReplicas": 3,
