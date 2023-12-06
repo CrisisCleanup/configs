@@ -53,6 +53,18 @@
         "newrelicDisable": true,
         "forceDocker": false
       },
+      "cors": {
+        "originWhitelist": [
+          "https://crisiscleanup.org.au",
+          "https://www.crisiscleanup.org.au"
+        ]
+      },
+      "csrf": {
+        "trustedOrigins": [
+          "https://crisiscleanup.org.au",
+          "https://www.crisiscleanup.org.au"
+        ]
+      },
       "connect": {
         "instanceId": "cd54a377-8223-4c43-8524-a21d2837b7c5"
       },
