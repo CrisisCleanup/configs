@@ -28,11 +28,7 @@
       "backupRetentionDays": 3
     },
     "eks": {
-      "instanceTypes": [
-        "c",
-        "m",
-        "r"
-      ],
+      "instanceTypes": ["c", "m", "r"],
       "platformArns": [
         "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674",
         "arn:aws:iam::137427084442:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1dab2fb449ebd3e8"
@@ -47,29 +43,24 @@
       "django": {
         "emailBackend": "anymail.backends.mandrill.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": [
-          "*"
-        ],
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
-        "csrfCookieSecure": true
+        "csrfCookieSecure": true,
+        "csrfTrustedOrigins": [
+          "https://crisiscleanup.org.au",
+          "https://api.crisiscleanup.org.au",
+          "https://www.crisiscleanup.org.au"
+        ],
+        "corsOriginWhitelist": [
+          "https://crisiscleanup.org.au",
+          "https://www.crisiscleanup.org.au"
+        ]
       },
       "ccu": {
         "webUrl": "https://crisiscleanup.org.au",
         "apiUrl": "https://api.crisiscleanup.org.au",
         "newrelicDisable": true,
         "forceDocker": false
-      },
-      "cors": {
-        "originWhitelist": [
-          "https://crisiscleanup.org.au",
-          "https://www.crisiscleanup.org.au"
-        ]
-      },
-      "csrf": {
-        "trustedOrigins": [
-          "https://crisiscleanup.org.au",
-          "https://www.crisiscleanup.org.au"
-        ]
       },
       "connect": {
         "instanceId": "cd54a377-8223-4c43-8524-a21d2837b7c5"
@@ -120,9 +111,7 @@
     },
     "celery": {
       "celery": {
-        "queues": [
-          "celery"
-        ],
+        "queues": ["celery"],
         "scaling": {
           "memUtilPercent": 70,
           "minReplicas": 3,
@@ -130,11 +119,7 @@
         }
       },
       "signal": {
-        "queues": [
-          "signal",
-          "phone",
-          "metrics"
-        ],
+        "queues": ["signal", "phone", "metrics"],
         "scaling": {
           "memUtilPercent": 70,
           "minReplicas": 3,

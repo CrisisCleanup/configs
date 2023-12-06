@@ -40,7 +40,19 @@
           "*"
         ],
         "sessionCookieSecure": false,
-        "csrfCookieSecure": false
+        "csrfCookieSecure": false,
+        "csrfTrustedOrigins": [
+          "https://api.dev.crisiscleanup.io",
+          "https://app.dev.crisiscleanup.io",
+          "https://localhost:8443",
+          "http://localhost:8080"
+        ],
+        "corsOriginWhitelist": [
+          "https://api.dev.crisiscleanup.io",
+          "https://app.dev.crisiscleanup.io",
+          "https://localhost:8443",
+          "http://localhost:8080"
+        ]
       },
       "ccu": {
         "webUrl": "https://app.dev.crisiscleanup.io",
