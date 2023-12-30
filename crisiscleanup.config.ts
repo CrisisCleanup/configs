@@ -44,6 +44,8 @@ const commonDefaults = {
       "maintenance-site",
       "test-reports",
     ],
+    appRegistryTag:
+      "arn:aws:resource-groups:us-east-1:240937704012:group/CrisisCleanup/0562syncluzmzrexfmht044qum",
   },
   api: {
     config: {
