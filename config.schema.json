@@ -230,6 +230,25 @@
                   },
                   "additionalProperties": false,
                   "default": {}
+                },
+                "langchain": {
+                  "type": "object",
+                  "properties": {
+                    "tracingV2": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "endpoint": {
+                      "type": "string",
+                      "default": "https://api.smith.langchain.com"
+                    },
+                    "project": {
+                      "type": "string",
+                      "default": "crisiscleanup-3-api"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
                 }
               },
               "additionalProperties": false,
@@ -444,6 +463,17 @@
                   },
                   "additionalProperties": false,
                   "default": {}
+                },
+                "langchain": {
+                  "type": "object",
+                  "properties": {
+                    "apiKey": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
                 }
               },
               "additionalProperties": true,
@@ -496,6 +526,11 @@
               "type": "string",
               "default": "crisiscleanup-pipeline-assets",
               "description": "Name of S3 bucket used to store pipeline assets."
+            },
+            "appRegistryTag": {
+              "type": "string",
+              "default": "",
+              "description": "AWS myApplications tag."
             }
           },
           "additionalProperties": false,
@@ -530,7 +565,7 @@
             },
             "ebsCsiVersion": {
               "type": "string",
-              "default": "v1.21.0-eksbuild.1",
+              "default": "v1.28.0-eksbuild.1",
               "description": "EBS CSI driver version."
             },
             "defaultSecretsEncryption": {
@@ -716,12 +751,12 @@
             "nodeType": {
               "type": "string",
               "description": "ElastiCache Node Type",
-              "default": "cache.m7g.large"
+              "default": "cache.r7g.xlarge"
             },
             "engineVersion": {
               "type": "string",
               "description": "Redis Engine Version",
-              "default": "7.0"
+              "default": "7.1"
             },
             "nodes": {
               "type": "number",
@@ -1909,6 +1944,25 @@
                   },
                   "additionalProperties": false,
                   "default": {}
+                },
+                "langchain": {
+                  "type": "object",
+                  "properties": {
+                    "tracingV2": {
+                      "type": "boolean",
+                      "default": false
+                    },
+                    "endpoint": {
+                      "type": "string",
+                      "default": "https://api.smith.langchain.com"
+                    },
+                    "project": {
+                      "type": "string",
+                      "default": "crisiscleanup-3-api"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
                 }
               },
               "additionalProperties": false,
@@ -2123,6 +2177,17 @@
                   },
                   "additionalProperties": false,
                   "default": {}
+                },
+                "langchain": {
+                  "type": "object",
+                  "properties": {
+                    "apiKey": {
+                      "type": "string",
+                      "default": ""
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
                 }
               },
               "additionalProperties": true,
@@ -2175,6 +2240,11 @@
               "type": "string",
               "default": "crisiscleanup-pipeline-assets",
               "description": "Name of S3 bucket used to store pipeline assets."
+            },
+            "appRegistryTag": {
+              "type": "string",
+              "default": "",
+              "description": "AWS myApplications tag."
             }
           },
           "additionalProperties": false,
@@ -2203,7 +2273,7 @@
                 },
                 "ebsCsiVersion": {
                   "type": "string",
-                  "default": "v1.21.0-eksbuild.1",
+                  "default": "v1.28.0-eksbuild.1",
                   "description": "EBS CSI driver version."
                 },
                 "defaultSecretsEncryption": {
@@ -2389,12 +2459,12 @@
                 "nodeType": {
                   "type": "string",
                   "description": "ElastiCache Node Type",
-                  "default": "cache.m7g.large"
+                  "default": "cache.r7g.xlarge"
                 },
                 "engineVersion": {
                   "type": "string",
                   "description": "Redis Engine Version",
-                  "default": "7.0"
+                  "default": "7.1"
                 },
                 "nodes": {
                   "type": "number",
@@ -3578,6 +3648,25 @@
                         },
                         "additionalProperties": false,
                         "default": {}
+                      },
+                      "langchain": {
+                        "type": "object",
+                        "properties": {
+                          "tracingV2": {
+                            "type": "boolean",
+                            "default": false
+                          },
+                          "endpoint": {
+                            "type": "string",
+                            "default": "https://api.smith.langchain.com"
+                          },
+                          "project": {
+                            "type": "string",
+                            "default": "crisiscleanup-3-api"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
                       }
                     },
                     "additionalProperties": false,
@@ -3792,6 +3881,17 @@
                         },
                         "additionalProperties": false,
                         "default": {}
+                      },
+                      "langchain": {
+                        "type": "object",
+                        "properties": {
+                          "apiKey": {
+                            "type": "string",
+                            "default": ""
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
                       }
                     },
                     "additionalProperties": true,
@@ -3844,6 +3944,11 @@
                     "type": "string",
                     "default": "crisiscleanup-pipeline-assets",
                     "description": "Name of S3 bucket used to store pipeline assets."
+                  },
+                  "appRegistryTag": {
+                    "type": "string",
+                    "default": "",
+                    "description": "AWS myApplications tag."
                   }
                 },
                 "additionalProperties": false,
@@ -3872,7 +3977,7 @@
                       },
                       "ebsCsiVersion": {
                         "type": "string",
-                        "default": "v1.21.0-eksbuild.1",
+                        "default": "v1.28.0-eksbuild.1",
                         "description": "EBS CSI driver version."
                       },
                       "defaultSecretsEncryption": {
@@ -4058,12 +4163,12 @@
                       "nodeType": {
                         "type": "string",
                         "description": "ElastiCache Node Type",
-                        "default": "cache.m7g.large"
+                        "default": "cache.r7g.xlarge"
                       },
                       "engineVersion": {
                         "type": "string",
                         "description": "Redis Engine Version",
-                        "default": "7.0"
+                        "default": "7.1"
                       },
                       "nodes": {
                         "type": "number",
