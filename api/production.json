@@ -28,11 +28,7 @@
       "backupRetentionDays": 3
     },
     "eks": {
-      "instanceTypes": [
-        "c",
-        "m",
-        "r"
-      ],
+      "instanceTypes": ["c", "m", "r"],
       "platformArns": [
         "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674",
         "arn:aws:iam::967600921982:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_ddf52ca00402da26"
@@ -55,9 +51,7 @@
       "django": {
         "emailBackend": "anymail.backends.mandrill.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": [
-          "*"
-        ],
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true,
         "csrfTrustedOrigins": [
@@ -87,6 +81,11 @@
       },
       "celery": {
         "alwaysEager": false
+      },
+      "langchain": {
+        "tracingV2": true,
+        "endpoint": "https://api.smith.langchain.com",
+        "project": "crisiscleanup-3-api"
       }
     }
   },
@@ -125,9 +124,7 @@
     },
     "celery": {
       "celery": {
-        "queues": [
-          "celery"
-        ],
+        "queues": ["celery"],
         "scaling": {
           "memUtilPercent": 70,
           "minReplicas": 3,
@@ -135,11 +132,7 @@
         }
       },
       "signal": {
-        "queues": [
-          "signal",
-          "phone",
-          "metrics"
-        ],
+        "queues": ["signal", "phone", "metrics"],
         "scaling": {
           "memUtilPercent": 70,
           "minReplicas": 3,
