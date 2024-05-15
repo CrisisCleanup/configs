@@ -49,6 +49,9 @@ const commonDefaults = {
   },
   api: {
     config: {
+      rag: {
+        chatModel: "gpt-4o",
+      },
       sentry: {
         traceExcludeUrls: [
           "/",
