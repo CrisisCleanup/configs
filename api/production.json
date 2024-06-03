@@ -47,7 +47,7 @@
       "images": {
         "runner": "ghcr.io/crisiscleanup/runner:v2.317.0",
         "init-dind-externals": "ghcr.io/crisiscleanup/runner:v2.317.0",
-        "dind": "240937704012.dkr.ecr.us-east-1.amazonaws.com/ecr-public/docker/library/docker:dind"
+        "dind": "967600921982.dkr.ecr.us-east-1.amazonaws.com/ecr-public/docker/library/docker:dind"
       }
     }
   },
