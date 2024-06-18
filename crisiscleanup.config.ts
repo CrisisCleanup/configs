@@ -42,6 +42,7 @@ const commonDefaults = {
       "crisiscleanup-3-api",
       "crisiscleanup-4-web",
       "maintenance-site",
+      "au-offline-site",
       "test-reports",
     ],
     appRegistryTag:
@@ -149,7 +150,7 @@ function resolveSources(name: string): ConfigSources {
 
 async function resolveConfig(
   sources: ConfigSources,
-  autoDecrypt: boolean = false
+  autoDecrypt: boolean = false,
 ) {
   const { configPath, secretsPath, name } = sources;
   const [configData, secretsData] = await Promise.all([
@@ -178,7 +179,7 @@ async function main() {
   ];
   const sources = stages.map((stage) => resolveSources(stage));
   const envConfigs = await Promise.all(
-    sources.map((source) => resolveConfig(source, autoDecrypt))
+    sources.map((source) => resolveConfig(source, autoDecrypt)),
   );
   return {
     $meta: { name: "crisiscleanup", repo: "configs", sources },
