@@ -28,11 +28,7 @@
       "backupRetentionDays": 3
     },
     "eks": {
-      "instanceTypes": [
-        "c",
-        "m",
-        "r"
-      ],
+      "instanceTypes": ["c", "m", "r"],
       "platformArns": [
         "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674",
         "arn:aws:iam::967600921982:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_ddf52ca00402da26"
@@ -56,9 +52,7 @@
       "django": {
         "emailBackend": "anymail.backends.mandrill.EmailBackend",
         "settingsModule": "config.settings.production",
-        "allowedHosts": [
-          "*"
-        ],
+        "allowedHosts": ["*"],
         "sessionCookieSecure": true,
         "csrfCookieSecure": true,
         "csrfTrustedOrigins": [
@@ -116,38 +110,32 @@
     "wsgi": {
       "spread": true,
       "scaling": {
-        "memUtilPercent": 80,
+        "memUtilPercent": 90,
         "minReplicas": 4,
-        "maxReplicas": 16
+        "maxReplicas": 10
       }
     },
     "asgi": {
       "spread": true,
       "scaling": {
-        "memUtilPercent": 80,
+        "memUtilPercent": 90,
         "minReplicas": 2,
         "maxReplicas": 6
       }
     },
     "celery": {
       "celery": {
-        "queues": [
-          "celery"
-        ],
+        "queues": ["celery"],
         "scaling": {
-          "memUtilPercent": 70,
+          "memUtilPercent": 80,
           "minReplicas": 3,
           "maxReplicas": 8
         }
       },
       "signal": {
-        "queues": [
-          "signal",
-          "phone",
-          "metrics"
-        ],
+        "queues": ["signal", "phone", "metrics"],
         "scaling": {
-          "memUtilPercent": 70,
+          "memUtilPercent": 80,
           "minReplicas": 3,
           "maxReplicas": 8
         }
