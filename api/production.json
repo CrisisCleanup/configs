@@ -119,7 +119,13 @@
         "memUtilPercent": 90,
         "cpuUtilPercent": 85,
         "minReplicas": 4,
-        "maxReplicas": 10
+        "maxReplicas": 12
+      },
+      "resources": {
+        "cpu": {
+          "request": 1200,
+          "limit": 1800
+        }
       }
     },
     "asgi": {
@@ -129,6 +135,12 @@
         "cpuUtilPercent": 85,
         "minReplicas": 2,
         "maxReplicas": 10
+      },
+      "resources": {
+        "cpu": {
+          "request": 500,
+          "limit": 1400
+        }
       }
     },
     "celery": {
@@ -140,6 +152,12 @@
           "memUtilPercent": 80,
           "minReplicas": 3,
           "maxReplicas": 8
+        },
+        "resources": {
+          "cpu": {
+            "request": 50,
+            "limit": 200
+          }
         }
       },
       "signal": {
@@ -152,6 +170,12 @@
           "memUtilPercent": 80,
           "minReplicas": 3,
           "maxReplicas": 8
+        },
+        "resources": {
+          "cpu": {
+            "request": 200,
+            "limit": 400
+          }
         }
       }
     },
