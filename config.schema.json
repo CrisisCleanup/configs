@@ -970,6 +970,41 @@
                   "type": "boolean",
                   "default": false
                 },
+                "resources": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "memory": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Kubernetes resource limits/requests"
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1028,6 +1063,41 @@
                 "spread": {
                   "type": "boolean",
                   "default": false
+                },
+                "resources": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "memory": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Kubernetes resource limits/requests"
                 },
                 "replicaCount": {
                   "type": "number",
@@ -1075,6 +1145,41 @@
                   "type": "boolean",
                   "default": false
                 },
+                "resources": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "memory": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Kubernetes resource limits/requests"
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1133,6 +1238,41 @@
                 "spread": {
                   "type": "boolean",
                   "default": false
+                },
+                "resources": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "memory": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Kubernetes resource limits/requests"
                 },
                 "replicaCount": {
                   "type": "number",
@@ -1180,6 +1320,41 @@
                   "type": "boolean",
                   "default": false
                 },
+                "resources": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "memory": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Kubernetes resource limits/requests"
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1239,6 +1414,41 @@
                   "type": "boolean",
                   "default": false
                 },
+                "resources": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "memory": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Kubernetes resource limits/requests"
+                },
                 "replicaCount": {
                   "type": "number",
                   "minimum": 0,
@@ -1283,6 +1493,41 @@
                   "spread": {
                     "type": "boolean",
                     "default": false
+                  },
+                  "resources": {
+                    "type": "object",
+                    "properties": {
+                      "cpu": {
+                        "type": "object",
+                        "properties": {
+                          "limit": {
+                            "type": "number",
+                            "description": "Kubernetes CPU Millicores"
+                          },
+                          "request": {
+                            "type": "number",
+                            "description": "Kubernetes CPU Millicores"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "memory": {
+                        "type": "object",
+                        "properties": {
+                          "limit": {
+                            "type": "number",
+                            "description": "Kubernetes Memory Mebibytes"
+                          },
+                          "request": {
+                            "type": "number",
+                            "description": "Kubernetes Memory Mebibytes"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false,
+                    "description": "Kubernetes resource limits/requests"
                   },
                   "queues": {
                     "type": "array",
@@ -1349,6 +1594,41 @@
                   "spread": {
                     "type": "boolean",
                     "default": false
+                  },
+                  "resources": {
+                    "type": "object",
+                    "properties": {
+                      "cpu": {
+                        "type": "object",
+                        "properties": {
+                          "limit": {
+                            "type": "number",
+                            "description": "Kubernetes CPU Millicores"
+                          },
+                          "request": {
+                            "type": "number",
+                            "description": "Kubernetes CPU Millicores"
+                          }
+                        },
+                        "additionalProperties": false
+                      },
+                      "memory": {
+                        "type": "object",
+                        "properties": {
+                          "limit": {
+                            "type": "number",
+                            "description": "Kubernetes Memory Mebibytes"
+                          },
+                          "request": {
+                            "type": "number",
+                            "description": "Kubernetes Memory Mebibytes"
+                          }
+                        },
+                        "additionalProperties": false
+                      }
+                    },
+                    "additionalProperties": false,
+                    "description": "Kubernetes resource limits/requests"
                   },
                   "queues": {
                     "type": "array",
@@ -1417,6 +1697,41 @@
                   "type": "boolean",
                   "default": false
                 },
+                "resources": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "memory": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Kubernetes resource limits/requests"
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1475,6 +1790,41 @@
                 "spread": {
                   "type": "boolean",
                   "default": false
+                },
+                "resources": {
+                  "type": "object",
+                  "properties": {
+                    "cpu": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes CPU Millicores"
+                        }
+                      },
+                      "additionalProperties": false
+                    },
+                    "memory": {
+                      "type": "object",
+                      "properties": {
+                        "limit": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        },
+                        "request": {
+                          "type": "number",
+                          "description": "Kubernetes Memory Mebibytes"
+                        }
+                      },
+                      "additionalProperties": false
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Kubernetes resource limits/requests"
                 },
                 "replicaCount": {
                   "type": "number",
@@ -2533,6 +2883,41 @@
                       "type": "boolean",
                       "default": false
                     },
+                    "resources": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "memory": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Kubernetes resource limits/requests"
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -2591,6 +2976,41 @@
                     "spread": {
                       "type": "boolean",
                       "default": false
+                    },
+                    "resources": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "memory": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Kubernetes resource limits/requests"
                     },
                     "replicaCount": {
                       "type": "number",
@@ -2638,6 +3058,41 @@
                       "type": "boolean",
                       "default": false
                     },
+                    "resources": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "memory": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Kubernetes resource limits/requests"
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -2696,6 +3151,41 @@
                     "spread": {
                       "type": "boolean",
                       "default": false
+                    },
+                    "resources": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "memory": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Kubernetes resource limits/requests"
                     },
                     "replicaCount": {
                       "type": "number",
@@ -2743,6 +3233,41 @@
                       "type": "boolean",
                       "default": false
                     },
+                    "resources": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "memory": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Kubernetes resource limits/requests"
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -2802,6 +3327,41 @@
                       "type": "boolean",
                       "default": false
                     },
+                    "resources": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "memory": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Kubernetes resource limits/requests"
+                    },
                     "replicaCount": {
                       "type": "number",
                       "minimum": 0,
@@ -2846,6 +3406,41 @@
                       "spread": {
                         "type": "boolean",
                         "default": false
+                      },
+                      "resources": {
+                        "type": "object",
+                        "properties": {
+                          "cpu": {
+                            "type": "object",
+                            "properties": {
+                              "limit": {
+                                "type": "number",
+                                "description": "Kubernetes CPU Millicores"
+                              },
+                              "request": {
+                                "type": "number",
+                                "description": "Kubernetes CPU Millicores"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "memory": {
+                            "type": "object",
+                            "properties": {
+                              "limit": {
+                                "type": "number",
+                                "description": "Kubernetes Memory Mebibytes"
+                              },
+                              "request": {
+                                "type": "number",
+                                "description": "Kubernetes Memory Mebibytes"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false,
+                        "description": "Kubernetes resource limits/requests"
                       },
                       "queues": {
                         "type": "array",
@@ -2912,6 +3507,41 @@
                       "spread": {
                         "type": "boolean",
                         "default": false
+                      },
+                      "resources": {
+                        "type": "object",
+                        "properties": {
+                          "cpu": {
+                            "type": "object",
+                            "properties": {
+                              "limit": {
+                                "type": "number",
+                                "description": "Kubernetes CPU Millicores"
+                              },
+                              "request": {
+                                "type": "number",
+                                "description": "Kubernetes CPU Millicores"
+                              }
+                            },
+                            "additionalProperties": false
+                          },
+                          "memory": {
+                            "type": "object",
+                            "properties": {
+                              "limit": {
+                                "type": "number",
+                                "description": "Kubernetes Memory Mebibytes"
+                              },
+                              "request": {
+                                "type": "number",
+                                "description": "Kubernetes Memory Mebibytes"
+                              }
+                            },
+                            "additionalProperties": false
+                          }
+                        },
+                        "additionalProperties": false,
+                        "description": "Kubernetes resource limits/requests"
                       },
                       "queues": {
                         "type": "array",
@@ -2980,6 +3610,41 @@
                       "type": "boolean",
                       "default": false
                     },
+                    "resources": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "memory": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Kubernetes resource limits/requests"
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -3038,6 +3703,41 @@
                     "spread": {
                       "type": "boolean",
                       "default": false
+                    },
+                    "resources": {
+                      "type": "object",
+                      "properties": {
+                        "cpu": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes CPU Millicores"
+                            }
+                          },
+                          "additionalProperties": false
+                        },
+                        "memory": {
+                          "type": "object",
+                          "properties": {
+                            "limit": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            },
+                            "request": {
+                              "type": "number",
+                              "description": "Kubernetes Memory Mebibytes"
+                            }
+                          },
+                          "additionalProperties": false
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Kubernetes resource limits/requests"
                     },
                     "replicaCount": {
                       "type": "number",
@@ -4105,6 +4805,41 @@
                             "type": "boolean",
                             "default": false
                           },
+                          "resources": {
+                            "type": "object",
+                            "properties": {
+                              "cpu": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "memory": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Kubernetes resource limits/requests"
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4163,6 +4898,41 @@
                           "spread": {
                             "type": "boolean",
                             "default": false
+                          },
+                          "resources": {
+                            "type": "object",
+                            "properties": {
+                              "cpu": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "memory": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Kubernetes resource limits/requests"
                           },
                           "replicaCount": {
                             "type": "number",
@@ -4210,6 +4980,41 @@
                             "type": "boolean",
                             "default": false
                           },
+                          "resources": {
+                            "type": "object",
+                            "properties": {
+                              "cpu": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "memory": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Kubernetes resource limits/requests"
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4268,6 +5073,41 @@
                           "spread": {
                             "type": "boolean",
                             "default": false
+                          },
+                          "resources": {
+                            "type": "object",
+                            "properties": {
+                              "cpu": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "memory": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Kubernetes resource limits/requests"
                           },
                           "replicaCount": {
                             "type": "number",
@@ -4315,6 +5155,41 @@
                             "type": "boolean",
                             "default": false
                           },
+                          "resources": {
+                            "type": "object",
+                            "properties": {
+                              "cpu": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "memory": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Kubernetes resource limits/requests"
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4374,6 +5249,41 @@
                             "type": "boolean",
                             "default": false
                           },
+                          "resources": {
+                            "type": "object",
+                            "properties": {
+                              "cpu": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "memory": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Kubernetes resource limits/requests"
+                          },
                           "replicaCount": {
                             "type": "number",
                             "minimum": 0,
@@ -4418,6 +5328,41 @@
                             "spread": {
                               "type": "boolean",
                               "default": false
+                            },
+                            "resources": {
+                              "type": "object",
+                              "properties": {
+                                "cpu": {
+                                  "type": "object",
+                                  "properties": {
+                                    "limit": {
+                                      "type": "number",
+                                      "description": "Kubernetes CPU Millicores"
+                                    },
+                                    "request": {
+                                      "type": "number",
+                                      "description": "Kubernetes CPU Millicores"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "memory": {
+                                  "type": "object",
+                                  "properties": {
+                                    "limit": {
+                                      "type": "number",
+                                      "description": "Kubernetes Memory Mebibytes"
+                                    },
+                                    "request": {
+                                      "type": "number",
+                                      "description": "Kubernetes Memory Mebibytes"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "description": "Kubernetes resource limits/requests"
                             },
                             "queues": {
                               "type": "array",
@@ -4484,6 +5429,41 @@
                             "spread": {
                               "type": "boolean",
                               "default": false
+                            },
+                            "resources": {
+                              "type": "object",
+                              "properties": {
+                                "cpu": {
+                                  "type": "object",
+                                  "properties": {
+                                    "limit": {
+                                      "type": "number",
+                                      "description": "Kubernetes CPU Millicores"
+                                    },
+                                    "request": {
+                                      "type": "number",
+                                      "description": "Kubernetes CPU Millicores"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                },
+                                "memory": {
+                                  "type": "object",
+                                  "properties": {
+                                    "limit": {
+                                      "type": "number",
+                                      "description": "Kubernetes Memory Mebibytes"
+                                    },
+                                    "request": {
+                                      "type": "number",
+                                      "description": "Kubernetes Memory Mebibytes"
+                                    }
+                                  },
+                                  "additionalProperties": false
+                                }
+                              },
+                              "additionalProperties": false,
+                              "description": "Kubernetes resource limits/requests"
                             },
                             "queues": {
                               "type": "array",
@@ -4552,6 +5532,41 @@
                             "type": "boolean",
                             "default": false
                           },
+                          "resources": {
+                            "type": "object",
+                            "properties": {
+                              "cpu": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "memory": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Kubernetes resource limits/requests"
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4610,6 +5625,41 @@
                           "spread": {
                             "type": "boolean",
                             "default": false
+                          },
+                          "resources": {
+                            "type": "object",
+                            "properties": {
+                              "cpu": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes CPU Millicores"
+                                  }
+                                },
+                                "additionalProperties": false
+                              },
+                              "memory": {
+                                "type": "object",
+                                "properties": {
+                                  "limit": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  },
+                                  "request": {
+                                    "type": "number",
+                                    "description": "Kubernetes Memory Mebibytes"
+                                  }
+                                },
+                                "additionalProperties": false
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Kubernetes resource limits/requests"
                           },
                           "replicaCount": {
                             "type": "number",
