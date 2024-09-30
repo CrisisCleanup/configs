@@ -51,9 +51,7 @@
                           }
                         }
                       ],
-                      "default": [
-                        "*"
-                      ],
+                      "default": ["*"],
                       "description": "Django ALLOWED_HOSTS"
                     },
                     "csrfCookieSecure": {
@@ -249,6 +247,25 @@
                   },
                   "additionalProperties": false,
                   "default": {}
+                },
+                "rag": {
+                  "type": "object",
+                  "properties": {
+                    "chatModel": {
+                      "type": "string",
+                      "default": "gpt-4o"
+                    },
+                    "documentEmbedModel": {
+                      "type": "string",
+                      "default": "text-embedding-3-large"
+                    },
+                    "queryEmbedModel": {
+                      "type": "string",
+                      "default": "text-embedding-3-small"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
                 }
               },
               "additionalProperties": false,
@@ -276,9 +293,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "dbname"
-                  ],
+                  "required": ["dbname"],
                   "additionalProperties": false,
                   "default": {
                     "dbname": "crisiscleanup_local",
@@ -316,9 +331,7 @@
                       "default": []
                     }
                   },
-                  "required": [
-                    "host"
-                  ],
+                  "required": ["host"],
                   "additionalProperties": false,
                   "default": {
                     "host": "172.17.0.1"
@@ -334,10 +347,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "publicKey",
-                    "privateKey"
-                  ],
+                  "required": ["publicKey", "privateKey"],
                   "additionalProperties": false
                 },
                 "zendesk": {
@@ -347,9 +357,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "apiKey"
-                  ],
+                  "required": ["apiKey"],
                   "additionalProperties": false
                 },
                 "connectFirst": {
@@ -393,9 +401,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "apiKey"
-                  ],
+                  "required": ["apiKey"],
                   "additionalProperties": false
                 },
                 "cloudfront": {
@@ -408,10 +414,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "publicKey",
-                    "privateKey"
-                  ],
+                  "required": ["publicKey", "privateKey"],
                   "additionalProperties": false
                 },
                 "saml": {
@@ -424,10 +427,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "awsRole",
-                    "awsProvider"
-                  ],
+                  "required": ["awsRole", "awsProvider"],
                   "additionalProperties": false,
                   "default": {
                     "awsProvider": "",
@@ -452,9 +452,7 @@
                           "type": "string"
                         }
                       },
-                      "required": [
-                        "apiKey"
-                      ],
+                      "required": ["apiKey"],
                       "additionalProperties": false,
                       "default": {
                         "apiKey": ""
@@ -517,9 +515,7 @@
               "items": {
                 "type": "string"
               },
-              "default": [
-                "infrastructure"
-              ],
+              "default": ["infrastructure"],
               "description": "Repositories allow to authenticate via OIDC."
             },
             "assetsBucketName": {
@@ -537,9 +533,7 @@
           "default": {}
         }
       },
-      "required": [
-        "ccuStage"
-      ],
+      "required": ["ccuStage"],
       "additionalProperties": true
     },
     "ApiStackConfig": {
@@ -638,10 +632,7 @@
               "default": null
             },
             "snapshotIdentifier": {
-              "type": [
-                "string",
-                "null"
-              ],
+              "type": ["string", "null"],
               "default": null,
               "description": "Snapshot identifier to restore from."
             },
@@ -814,11 +805,7 @@
                   "type": "string"
                 }
               },
-              "required": [
-                "appId",
-                "appInstallationId",
-                "appPrivateKey"
-              ],
+              "required": ["appId", "appInstallationId", "appPrivateKey"],
               "additionalProperties": false,
               "description": "Github App Credentials",
               "default": {
@@ -828,18 +815,12 @@
               }
             },
             "minRunners": {
-              "type": [
-                "number",
-                "null"
-              ],
+              "type": ["number", "null"],
               "default": null,
               "description": "Minimum allowed runners"
             },
             "maxRunners": {
-              "type": [
-                "number",
-                "null"
-              ],
+              "type": ["number", "null"],
               "default": null,
               "description": "Maximum allowed runners"
             },
@@ -909,17 +890,10 @@
             },
             "pullPolicy": {
               "type": "string",
-              "enum": [
-                "Always",
-                "Never",
-                "IfNotPresent"
-              ]
+              "enum": ["Always", "Never", "IfNotPresent"]
             }
           },
-          "required": [
-            "repository",
-            "pullPolicy"
-          ],
+          "required": ["repository", "pullPolicy"],
           "additionalProperties": false,
           "description": "Default image to use for api components.",
           "default": {
@@ -940,17 +914,10 @@
             },
             "pullPolicy": {
               "type": "string",
-              "enum": [
-                "Always",
-                "Never",
-                "IfNotPresent"
-              ]
+              "enum": ["Always", "Never", "IfNotPresent"]
             }
           },
-          "required": [
-            "repository",
-            "pullPolicy"
-          ],
+          "required": ["repository", "pullPolicy"],
           "additionalProperties": false,
           "description": "Default image to use for web components.",
           "default": {
@@ -992,17 +959,10 @@
                     },
                     "pullPolicy": {
                       "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
+                      "enum": ["Always", "Never", "IfNotPresent"]
                     }
                   },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
+                  "required": ["repository", "pullPolicy"],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
@@ -1040,9 +1000,7 @@
                   "description": "Horizontal Autoscaling Parameters"
                 }
               },
-              "required": [
-                "scaling"
-              ],
+              "required": ["scaling"],
               "additionalProperties": true
             },
             {
@@ -1060,17 +1018,10 @@
                     },
                     "pullPolicy": {
                       "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
+                      "enum": ["Always", "Never", "IfNotPresent"]
                     }
                   },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
+                  "required": ["repository", "pullPolicy"],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
@@ -1084,9 +1035,7 @@
                   "description": "Static number of replicas to create."
                 }
               },
-              "required": [
-                "replicaCount"
-              ],
+              "required": ["replicaCount"],
               "additionalProperties": true
             }
           ],
@@ -1115,17 +1064,10 @@
                     },
                     "pullPolicy": {
                       "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
+                      "enum": ["Always", "Never", "IfNotPresent"]
                     }
                   },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
+                  "required": ["repository", "pullPolicy"],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
@@ -1163,9 +1105,7 @@
                   "description": "Horizontal Autoscaling Parameters"
                 }
               },
-              "required": [
-                "scaling"
-              ],
+              "required": ["scaling"],
               "additionalProperties": true
             },
             {
@@ -1183,17 +1123,10 @@
                     },
                     "pullPolicy": {
                       "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
+                      "enum": ["Always", "Never", "IfNotPresent"]
                     }
                   },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
+                  "required": ["repository", "pullPolicy"],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
@@ -1207,9 +1140,7 @@
                   "description": "Static number of replicas to create."
                 }
               },
-              "required": [
-                "replicaCount"
-              ],
+              "required": ["replicaCount"],
               "additionalProperties": true
             }
           ],
@@ -1238,17 +1169,10 @@
                     },
                     "pullPolicy": {
                       "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
+                      "enum": ["Always", "Never", "IfNotPresent"]
                     }
                   },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
+                  "required": ["repository", "pullPolicy"],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
@@ -1286,9 +1210,7 @@
                   "description": "Horizontal Autoscaling Parameters"
                 }
               },
-              "required": [
-                "scaling"
-              ],
+              "required": ["scaling"],
               "additionalProperties": true
             },
             {
@@ -1306,17 +1228,10 @@
                     },
                     "pullPolicy": {
                       "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
+                      "enum": ["Always", "Never", "IfNotPresent"]
                     }
                   },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
+                  "required": ["repository", "pullPolicy"],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
@@ -1330,9 +1245,7 @@
                   "description": "Static number of replicas to create."
                 }
               },
-              "required": [
-                "replicaCount"
-              ],
+              "required": ["replicaCount"],
               "additionalProperties": true
             }
           ],
@@ -1360,17 +1273,10 @@
                       },
                       "pullPolicy": {
                         "type": "string",
-                        "enum": [
-                          "Always",
-                          "Never",
-                          "IfNotPresent"
-                        ]
+                        "enum": ["Always", "Never", "IfNotPresent"]
                       }
                     },
-                    "required": [
-                      "repository",
-                      "pullPolicy"
-                    ],
+                    "required": ["repository", "pullPolicy"],
                     "additionalProperties": false,
                     "description": "Container Image Configuration"
                   },
@@ -1415,10 +1321,7 @@
                     "description": "Horizontal Autoscaling Parameters"
                   }
                 },
-                "required": [
-                  "queues",
-                  "scaling"
-                ],
+                "required": ["queues", "scaling"],
                 "additionalProperties": true
               },
               {
@@ -1436,17 +1339,10 @@
                       },
                       "pullPolicy": {
                         "type": "string",
-                        "enum": [
-                          "Always",
-                          "Never",
-                          "IfNotPresent"
-                        ]
+                        "enum": ["Always", "Never", "IfNotPresent"]
                       }
                     },
-                    "required": [
-                      "repository",
-                      "pullPolicy"
-                    ],
+                    "required": ["repository", "pullPolicy"],
                     "additionalProperties": false,
                     "description": "Container Image Configuration"
                   },
@@ -1467,10 +1363,7 @@
                     "description": "Static number of replicas to create."
                   }
                 },
-                "required": [
-                  "queues",
-                  "replicaCount"
-                ],
+                "required": ["queues", "replicaCount"],
                 "additionalProperties": true
               }
             ]
@@ -1481,20 +1374,14 @@
           "description": "Celery worker components.",
           "default": {
             "celery": {
-              "queues": [
-                "celery"
-              ],
+              "queues": ["celery"],
               "scaling": {
                 "minReplicas": 1,
                 "maxReplicas": 2
               }
             },
             "signal": {
-              "queues": [
-                "signal",
-                "phone",
-                "metrics"
-              ],
+              "queues": ["signal", "phone", "metrics"],
               "scaling": {
                 "minReplicas": 1,
                 "maxReplicas": 2
@@ -1519,17 +1406,10 @@
                     },
                     "pullPolicy": {
                       "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
+                      "enum": ["Always", "Never", "IfNotPresent"]
                     }
                   },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
+                  "required": ["repository", "pullPolicy"],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
@@ -1567,9 +1447,7 @@
                   "description": "Horizontal Autoscaling Parameters"
                 }
               },
-              "required": [
-                "scaling"
-              ],
+              "required": ["scaling"],
               "additionalProperties": true
             },
             {
@@ -1587,17 +1465,10 @@
                     },
                     "pullPolicy": {
                       "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
+                      "enum": ["Always", "Never", "IfNotPresent"]
                     }
                   },
-                  "required": [
-                    "repository",
-                    "pullPolicy"
-                  ],
+                  "required": ["repository", "pullPolicy"],
                   "additionalProperties": false,
                   "description": "Container Image Configuration"
                 },
@@ -1611,9 +1482,7 @@
                   "description": "Static number of replicas to create."
                 }
               },
-              "required": [
-                "replicaCount"
-              ],
+              "required": ["replicaCount"],
               "additionalProperties": true
             }
           ],
@@ -1637,17 +1506,10 @@
                 },
                 "pullPolicy": {
                   "type": "string",
-                  "enum": [
-                    "Always",
-                    "Never",
-                    "IfNotPresent"
-                  ]
+                  "enum": ["Always", "Never", "IfNotPresent"]
                 }
               },
-              "required": [
-                "repository",
-                "pullPolicy"
-              ],
+              "required": ["repository", "pullPolicy"],
               "additionalProperties": false,
               "description": "Container Image Configuration"
             },
@@ -1676,10 +1538,7 @@
               }
             },
             "sourceDsn": {
-              "type": [
-                "string",
-                "null"
-              ],
+              "type": ["string", "null"],
               "default": null
             },
             "target": {
@@ -1699,17 +1558,11 @@
                   "default": true
                 }
               },
-              "required": [
-                "bastionHost",
-                "bastionKey",
-                "databaseDsn"
-              ],
+              "required": ["bastionHost", "bastionKey", "databaseDsn"],
               "additionalProperties": false
             }
           },
-          "required": [
-            "target"
-          ],
+          "required": ["target"],
           "additionalProperties": false
         }
       },
@@ -1765,9 +1618,7 @@
                           }
                         }
                       ],
-                      "default": [
-                        "*"
-                      ],
+                      "default": ["*"],
                       "description": "Django ALLOWED_HOSTS"
                     },
                     "csrfCookieSecure": {
@@ -1963,6 +1814,25 @@
                   },
                   "additionalProperties": false,
                   "default": {}
+                },
+                "rag": {
+                  "type": "object",
+                  "properties": {
+                    "chatModel": {
+                      "type": "string",
+                      "default": "gpt-4o"
+                    },
+                    "documentEmbedModel": {
+                      "type": "string",
+                      "default": "text-embedding-3-large"
+                    },
+                    "queryEmbedModel": {
+                      "type": "string",
+                      "default": "text-embedding-3-small"
+                    }
+                  },
+                  "additionalProperties": false,
+                  "default": {}
                 }
               },
               "additionalProperties": false,
@@ -1990,9 +1860,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "dbname"
-                  ],
+                  "required": ["dbname"],
                   "additionalProperties": false,
                   "default": {
                     "dbname": "crisiscleanup_local",
@@ -2030,9 +1898,7 @@
                       "default": []
                     }
                   },
-                  "required": [
-                    "host"
-                  ],
+                  "required": ["host"],
                   "additionalProperties": false,
                   "default": {
                     "host": "172.17.0.1"
@@ -2048,10 +1914,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "publicKey",
-                    "privateKey"
-                  ],
+                  "required": ["publicKey", "privateKey"],
                   "additionalProperties": false
                 },
                 "zendesk": {
@@ -2061,9 +1924,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "apiKey"
-                  ],
+                  "required": ["apiKey"],
                   "additionalProperties": false
                 },
                 "connectFirst": {
@@ -2107,9 +1968,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "apiKey"
-                  ],
+                  "required": ["apiKey"],
                   "additionalProperties": false
                 },
                 "cloudfront": {
@@ -2122,10 +1981,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "publicKey",
-                    "privateKey"
-                  ],
+                  "required": ["publicKey", "privateKey"],
                   "additionalProperties": false
                 },
                 "saml": {
@@ -2138,10 +1994,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "awsRole",
-                    "awsProvider"
-                  ],
+                  "required": ["awsRole", "awsProvider"],
                   "additionalProperties": false,
                   "default": {
                     "awsProvider": "",
@@ -2166,9 +2019,7 @@
                           "type": "string"
                         }
                       },
-                      "required": [
-                        "apiKey"
-                      ],
+                      "required": ["apiKey"],
                       "additionalProperties": false,
                       "default": {
                         "apiKey": ""
@@ -2231,9 +2082,7 @@
               "items": {
                 "type": "string"
               },
-              "default": [
-                "infrastructure"
-              ],
+              "default": ["infrastructure"],
               "description": "Repositories allow to authenticate via OIDC."
             },
             "assetsBucketName": {
@@ -2346,10 +2195,7 @@
                   "default": null
                 },
                 "snapshotIdentifier": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
+                  "type": ["string", "null"],
                   "default": null,
                   "description": "Snapshot identifier to restore from."
                 },
@@ -2522,11 +2368,7 @@
                       "type": "string"
                     }
                   },
-                  "required": [
-                    "appId",
-                    "appInstallationId",
-                    "appPrivateKey"
-                  ],
+                  "required": ["appId", "appInstallationId", "appPrivateKey"],
                   "additionalProperties": false,
                   "description": "Github App Credentials",
                   "default": {
@@ -2536,18 +2378,12 @@
                   }
                 },
                 "minRunners": {
-                  "type": [
-                    "number",
-                    "null"
-                  ],
+                  "type": ["number", "null"],
                   "default": null,
                   "description": "Minimum allowed runners"
                 },
                 "maxRunners": {
-                  "type": [
-                    "number",
-                    "null"
-                  ],
+                  "type": ["number", "null"],
                   "default": null,
                   "description": "Maximum allowed runners"
                 },
@@ -2617,17 +2453,10 @@
                 },
                 "pullPolicy": {
                   "type": "string",
-                  "enum": [
-                    "Always",
-                    "Never",
-                    "IfNotPresent"
-                  ]
+                  "enum": ["Always", "Never", "IfNotPresent"]
                 }
               },
-              "required": [
-                "repository",
-                "pullPolicy"
-              ],
+              "required": ["repository", "pullPolicy"],
               "additionalProperties": false,
               "description": "Default image to use for api components.",
               "default": {
@@ -2648,17 +2477,10 @@
                 },
                 "pullPolicy": {
                   "type": "string",
-                  "enum": [
-                    "Always",
-                    "Never",
-                    "IfNotPresent"
-                  ]
+                  "enum": ["Always", "Never", "IfNotPresent"]
                 }
               },
-              "required": [
-                "repository",
-                "pullPolicy"
-              ],
+              "required": ["repository", "pullPolicy"],
               "additionalProperties": false,
               "description": "Default image to use for web components.",
               "default": {
@@ -2700,17 +2522,10 @@
                         },
                         "pullPolicy": {
                           "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
+                          "enum": ["Always", "Never", "IfNotPresent"]
                         }
                       },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
+                      "required": ["repository", "pullPolicy"],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
@@ -2748,9 +2563,7 @@
                       "description": "Horizontal Autoscaling Parameters"
                     }
                   },
-                  "required": [
-                    "scaling"
-                  ],
+                  "required": ["scaling"],
                   "additionalProperties": true
                 },
                 {
@@ -2768,17 +2581,10 @@
                         },
                         "pullPolicy": {
                           "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
+                          "enum": ["Always", "Never", "IfNotPresent"]
                         }
                       },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
+                      "required": ["repository", "pullPolicy"],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
@@ -2792,9 +2598,7 @@
                       "description": "Static number of replicas to create."
                     }
                   },
-                  "required": [
-                    "replicaCount"
-                  ],
+                  "required": ["replicaCount"],
                   "additionalProperties": true
                 }
               ],
@@ -2823,17 +2627,10 @@
                         },
                         "pullPolicy": {
                           "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
+                          "enum": ["Always", "Never", "IfNotPresent"]
                         }
                       },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
+                      "required": ["repository", "pullPolicy"],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
@@ -2871,9 +2668,7 @@
                       "description": "Horizontal Autoscaling Parameters"
                     }
                   },
-                  "required": [
-                    "scaling"
-                  ],
+                  "required": ["scaling"],
                   "additionalProperties": true
                 },
                 {
@@ -2891,17 +2686,10 @@
                         },
                         "pullPolicy": {
                           "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
+                          "enum": ["Always", "Never", "IfNotPresent"]
                         }
                       },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
+                      "required": ["repository", "pullPolicy"],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
@@ -2915,9 +2703,7 @@
                       "description": "Static number of replicas to create."
                     }
                   },
-                  "required": [
-                    "replicaCount"
-                  ],
+                  "required": ["replicaCount"],
                   "additionalProperties": true
                 }
               ],
@@ -2946,17 +2732,10 @@
                         },
                         "pullPolicy": {
                           "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
+                          "enum": ["Always", "Never", "IfNotPresent"]
                         }
                       },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
+                      "required": ["repository", "pullPolicy"],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
@@ -2994,9 +2773,7 @@
                       "description": "Horizontal Autoscaling Parameters"
                     }
                   },
-                  "required": [
-                    "scaling"
-                  ],
+                  "required": ["scaling"],
                   "additionalProperties": true
                 },
                 {
@@ -3014,17 +2791,10 @@
                         },
                         "pullPolicy": {
                           "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
+                          "enum": ["Always", "Never", "IfNotPresent"]
                         }
                       },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
+                      "required": ["repository", "pullPolicy"],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
@@ -3038,9 +2808,7 @@
                       "description": "Static number of replicas to create."
                     }
                   },
-                  "required": [
-                    "replicaCount"
-                  ],
+                  "required": ["replicaCount"],
                   "additionalProperties": true
                 }
               ],
@@ -3068,17 +2836,10 @@
                           },
                           "pullPolicy": {
                             "type": "string",
-                            "enum": [
-                              "Always",
-                              "Never",
-                              "IfNotPresent"
-                            ]
+                            "enum": ["Always", "Never", "IfNotPresent"]
                           }
                         },
-                        "required": [
-                          "repository",
-                          "pullPolicy"
-                        ],
+                        "required": ["repository", "pullPolicy"],
                         "additionalProperties": false,
                         "description": "Container Image Configuration"
                       },
@@ -3123,10 +2884,7 @@
                         "description": "Horizontal Autoscaling Parameters"
                       }
                     },
-                    "required": [
-                      "queues",
-                      "scaling"
-                    ],
+                    "required": ["queues", "scaling"],
                     "additionalProperties": true
                   },
                   {
@@ -3144,17 +2902,10 @@
                           },
                           "pullPolicy": {
                             "type": "string",
-                            "enum": [
-                              "Always",
-                              "Never",
-                              "IfNotPresent"
-                            ]
+                            "enum": ["Always", "Never", "IfNotPresent"]
                           }
                         },
-                        "required": [
-                          "repository",
-                          "pullPolicy"
-                        ],
+                        "required": ["repository", "pullPolicy"],
                         "additionalProperties": false,
                         "description": "Container Image Configuration"
                       },
@@ -3175,10 +2926,7 @@
                         "description": "Static number of replicas to create."
                       }
                     },
-                    "required": [
-                      "queues",
-                      "replicaCount"
-                    ],
+                    "required": ["queues", "replicaCount"],
                     "additionalProperties": true
                   }
                 ]
@@ -3189,20 +2937,14 @@
               "description": "Celery worker components.",
               "default": {
                 "celery": {
-                  "queues": [
-                    "celery"
-                  ],
+                  "queues": ["celery"],
                   "scaling": {
                     "minReplicas": 1,
                     "maxReplicas": 2
                   }
                 },
                 "signal": {
-                  "queues": [
-                    "signal",
-                    "phone",
-                    "metrics"
-                  ],
+                  "queues": ["signal", "phone", "metrics"],
                   "scaling": {
                     "minReplicas": 1,
                     "maxReplicas": 2
@@ -3227,17 +2969,10 @@
                         },
                         "pullPolicy": {
                           "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
+                          "enum": ["Always", "Never", "IfNotPresent"]
                         }
                       },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
+                      "required": ["repository", "pullPolicy"],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
@@ -3275,9 +3010,7 @@
                       "description": "Horizontal Autoscaling Parameters"
                     }
                   },
-                  "required": [
-                    "scaling"
-                  ],
+                  "required": ["scaling"],
                   "additionalProperties": true
                 },
                 {
@@ -3295,17 +3028,10 @@
                         },
                         "pullPolicy": {
                           "type": "string",
-                          "enum": [
-                            "Always",
-                            "Never",
-                            "IfNotPresent"
-                          ]
+                          "enum": ["Always", "Never", "IfNotPresent"]
                         }
                       },
-                      "required": [
-                        "repository",
-                        "pullPolicy"
-                      ],
+                      "required": ["repository", "pullPolicy"],
                       "additionalProperties": false,
                       "description": "Container Image Configuration"
                     },
@@ -3319,9 +3045,7 @@
                       "description": "Static number of replicas to create."
                     }
                   },
-                  "required": [
-                    "replicaCount"
-                  ],
+                  "required": ["replicaCount"],
                   "additionalProperties": true
                 }
               ],
@@ -3345,11 +3069,7 @@
                     },
                     "pullPolicy": {
                       "type": "string",
-                      "enum": [
-                        "Always",
-                        "Never",
-                        "IfNotPresent"
-                      ]
+                      "enum": ["Always", "Never", "IfNotPresent"]
                     }
                   },
                   "additionalProperties": false,
@@ -3380,10 +3100,7 @@
                   }
                 },
                 "sourceDsn": {
-                  "type": [
-                    "string",
-                    "null"
-                  ],
+                  "type": ["string", "null"],
                   "default": null
                 },
                 "target": {
@@ -3469,9 +3186,7 @@
                                 }
                               }
                             ],
-                            "default": [
-                              "*"
-                            ],
+                            "default": ["*"],
                             "description": "Django ALLOWED_HOSTS"
                           },
                           "csrfCookieSecure": {
@@ -3667,6 +3382,25 @@
                         },
                         "additionalProperties": false,
                         "default": {}
+                      },
+                      "rag": {
+                        "type": "object",
+                        "properties": {
+                          "chatModel": {
+                            "type": "string",
+                            "default": "gpt-4o"
+                          },
+                          "documentEmbedModel": {
+                            "type": "string",
+                            "default": "text-embedding-3-large"
+                          },
+                          "queryEmbedModel": {
+                            "type": "string",
+                            "default": "text-embedding-3-small"
+                          }
+                        },
+                        "additionalProperties": false,
+                        "default": {}
                       }
                     },
                     "additionalProperties": false,
@@ -3694,9 +3428,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "dbname"
-                        ],
+                        "required": ["dbname"],
                         "additionalProperties": false,
                         "default": {
                           "dbname": "crisiscleanup_local",
@@ -3734,9 +3466,7 @@
                             "default": []
                           }
                         },
-                        "required": [
-                          "host"
-                        ],
+                        "required": ["host"],
                         "additionalProperties": false,
                         "default": {
                           "host": "172.17.0.1"
@@ -3752,10 +3482,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "publicKey",
-                          "privateKey"
-                        ],
+                        "required": ["publicKey", "privateKey"],
                         "additionalProperties": false
                       },
                       "zendesk": {
@@ -3765,9 +3492,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "apiKey"
-                        ],
+                        "required": ["apiKey"],
                         "additionalProperties": false
                       },
                       "connectFirst": {
@@ -3811,9 +3536,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "apiKey"
-                        ],
+                        "required": ["apiKey"],
                         "additionalProperties": false
                       },
                       "cloudfront": {
@@ -3826,10 +3549,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "publicKey",
-                          "privateKey"
-                        ],
+                        "required": ["publicKey", "privateKey"],
                         "additionalProperties": false
                       },
                       "saml": {
@@ -3842,10 +3562,7 @@
                             "type": "string"
                           }
                         },
-                        "required": [
-                          "awsRole",
-                          "awsProvider"
-                        ],
+                        "required": ["awsRole", "awsProvider"],
                         "additionalProperties": false,
                         "default": {
                           "awsProvider": "",
@@ -3870,9 +3587,7 @@
                                 "type": "string"
                               }
                             },
-                            "required": [
-                              "apiKey"
-                            ],
+                            "required": ["apiKey"],
                             "additionalProperties": false,
                             "default": {
                               "apiKey": ""
@@ -3935,9 +3650,7 @@
                     "items": {
                       "type": "string"
                     },
-                    "default": [
-                      "infrastructure"
-                    ],
+                    "default": ["infrastructure"],
                     "description": "Repositories allow to authenticate via OIDC."
                   },
                   "assetsBucketName": {
@@ -4050,10 +3763,7 @@
                         "default": null
                       },
                       "snapshotIdentifier": {
-                        "type": [
-                          "string",
-                          "null"
-                        ],
+                        "type": ["string", "null"],
                         "default": null,
                         "description": "Snapshot identifier to restore from."
                       },
@@ -4240,18 +3950,12 @@
                         }
                       },
                       "minRunners": {
-                        "type": [
-                          "number",
-                          "null"
-                        ],
+                        "type": ["number", "null"],
                         "default": null,
                         "description": "Minimum allowed runners"
                       },
                       "maxRunners": {
-                        "type": [
-                          "number",
-                          "null"
-                        ],
+                        "type": ["number", "null"],
                         "default": null,
                         "description": "Maximum allowed runners"
                       },
@@ -4321,17 +4025,10 @@
                       },
                       "pullPolicy": {
                         "type": "string",
-                        "enum": [
-                          "Always",
-                          "Never",
-                          "IfNotPresent"
-                        ]
+                        "enum": ["Always", "Never", "IfNotPresent"]
                       }
                     },
-                    "required": [
-                      "repository",
-                      "pullPolicy"
-                    ],
+                    "required": ["repository", "pullPolicy"],
                     "additionalProperties": false,
                     "description": "Default image to use for api components.",
                     "default": {
@@ -4352,17 +4049,10 @@
                       },
                       "pullPolicy": {
                         "type": "string",
-                        "enum": [
-                          "Always",
-                          "Never",
-                          "IfNotPresent"
-                        ]
+                        "enum": ["Always", "Never", "IfNotPresent"]
                       }
                     },
-                    "required": [
-                      "repository",
-                      "pullPolicy"
-                    ],
+                    "required": ["repository", "pullPolicy"],
                     "additionalProperties": false,
                     "description": "Default image to use for web components.",
                     "default": {
@@ -4404,17 +4094,10 @@
                               },
                               "pullPolicy": {
                                 "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
+                                "enum": ["Always", "Never", "IfNotPresent"]
                               }
                             },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
+                            "required": ["repository", "pullPolicy"],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
@@ -4452,9 +4135,7 @@
                             "description": "Horizontal Autoscaling Parameters"
                           }
                         },
-                        "required": [
-                          "scaling"
-                        ],
+                        "required": ["scaling"],
                         "additionalProperties": true
                       },
                       {
@@ -4472,17 +4153,10 @@
                               },
                               "pullPolicy": {
                                 "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
+                                "enum": ["Always", "Never", "IfNotPresent"]
                               }
                             },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
+                            "required": ["repository", "pullPolicy"],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
@@ -4496,9 +4170,7 @@
                             "description": "Static number of replicas to create."
                           }
                         },
-                        "required": [
-                          "replicaCount"
-                        ],
+                        "required": ["replicaCount"],
                         "additionalProperties": true
                       }
                     ],
@@ -4527,17 +4199,10 @@
                               },
                               "pullPolicy": {
                                 "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
+                                "enum": ["Always", "Never", "IfNotPresent"]
                               }
                             },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
+                            "required": ["repository", "pullPolicy"],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
@@ -4575,9 +4240,7 @@
                             "description": "Horizontal Autoscaling Parameters"
                           }
                         },
-                        "required": [
-                          "scaling"
-                        ],
+                        "required": ["scaling"],
                         "additionalProperties": true
                       },
                       {
@@ -4595,17 +4258,10 @@
                               },
                               "pullPolicy": {
                                 "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
+                                "enum": ["Always", "Never", "IfNotPresent"]
                               }
                             },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
+                            "required": ["repository", "pullPolicy"],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
@@ -4619,9 +4275,7 @@
                             "description": "Static number of replicas to create."
                           }
                         },
-                        "required": [
-                          "replicaCount"
-                        ],
+                        "required": ["replicaCount"],
                         "additionalProperties": true
                       }
                     ],
@@ -4650,17 +4304,10 @@
                               },
                               "pullPolicy": {
                                 "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
+                                "enum": ["Always", "Never", "IfNotPresent"]
                               }
                             },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
+                            "required": ["repository", "pullPolicy"],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
@@ -4698,9 +4345,7 @@
                             "description": "Horizontal Autoscaling Parameters"
                           }
                         },
-                        "required": [
-                          "scaling"
-                        ],
+                        "required": ["scaling"],
                         "additionalProperties": true
                       },
                       {
@@ -4718,17 +4363,10 @@
                               },
                               "pullPolicy": {
                                 "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
+                                "enum": ["Always", "Never", "IfNotPresent"]
                               }
                             },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
+                            "required": ["repository", "pullPolicy"],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
@@ -4742,9 +4380,7 @@
                             "description": "Static number of replicas to create."
                           }
                         },
-                        "required": [
-                          "replicaCount"
-                        ],
+                        "required": ["replicaCount"],
                         "additionalProperties": true
                       }
                     ],
@@ -4772,17 +4408,10 @@
                                 },
                                 "pullPolicy": {
                                   "type": "string",
-                                  "enum": [
-                                    "Always",
-                                    "Never",
-                                    "IfNotPresent"
-                                  ]
+                                  "enum": ["Always", "Never", "IfNotPresent"]
                                 }
                               },
-                              "required": [
-                                "repository",
-                                "pullPolicy"
-                              ],
+                              "required": ["repository", "pullPolicy"],
                               "additionalProperties": false,
                               "description": "Container Image Configuration"
                             },
@@ -4827,10 +4456,7 @@
                               "description": "Horizontal Autoscaling Parameters"
                             }
                           },
-                          "required": [
-                            "queues",
-                            "scaling"
-                          ],
+                          "required": ["queues", "scaling"],
                           "additionalProperties": true
                         },
                         {
@@ -4848,17 +4474,10 @@
                                 },
                                 "pullPolicy": {
                                   "type": "string",
-                                  "enum": [
-                                    "Always",
-                                    "Never",
-                                    "IfNotPresent"
-                                  ]
+                                  "enum": ["Always", "Never", "IfNotPresent"]
                                 }
                               },
-                              "required": [
-                                "repository",
-                                "pullPolicy"
-                              ],
+                              "required": ["repository", "pullPolicy"],
                               "additionalProperties": false,
                               "description": "Container Image Configuration"
                             },
@@ -4879,10 +4498,7 @@
                               "description": "Static number of replicas to create."
                             }
                           },
-                          "required": [
-                            "queues",
-                            "replicaCount"
-                          ],
+                          "required": ["queues", "replicaCount"],
                           "additionalProperties": true
                         }
                       ]
@@ -4893,20 +4509,14 @@
                     "description": "Celery worker components.",
                     "default": {
                       "celery": {
-                        "queues": [
-                          "celery"
-                        ],
+                        "queues": ["celery"],
                         "scaling": {
                           "minReplicas": 1,
                           "maxReplicas": 2
                         }
                       },
                       "signal": {
-                        "queues": [
-                          "signal",
-                          "phone",
-                          "metrics"
-                        ],
+                        "queues": ["signal", "phone", "metrics"],
                         "scaling": {
                           "minReplicas": 1,
                           "maxReplicas": 2
@@ -4931,17 +4541,10 @@
                               },
                               "pullPolicy": {
                                 "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
+                                "enum": ["Always", "Never", "IfNotPresent"]
                               }
                             },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
+                            "required": ["repository", "pullPolicy"],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
@@ -4979,9 +4582,7 @@
                             "description": "Horizontal Autoscaling Parameters"
                           }
                         },
-                        "required": [
-                          "scaling"
-                        ],
+                        "required": ["scaling"],
                         "additionalProperties": true
                       },
                       {
@@ -4999,17 +4600,10 @@
                               },
                               "pullPolicy": {
                                 "type": "string",
-                                "enum": [
-                                  "Always",
-                                  "Never",
-                                  "IfNotPresent"
-                                ]
+                                "enum": ["Always", "Never", "IfNotPresent"]
                               }
                             },
-                            "required": [
-                              "repository",
-                              "pullPolicy"
-                            ],
+                            "required": ["repository", "pullPolicy"],
                             "additionalProperties": false,
                             "description": "Container Image Configuration"
                           },
@@ -5023,9 +4617,7 @@
                             "description": "Static number of replicas to create."
                           }
                         },
-                        "required": [
-                          "replicaCount"
-                        ],
+                        "required": ["replicaCount"],
                         "additionalProperties": true
                       }
                     ],
@@ -5049,17 +4641,10 @@
                           },
                           "pullPolicy": {
                             "type": "string",
-                            "enum": [
-                              "Always",
-                              "Never",
-                              "IfNotPresent"
-                            ]
+                            "enum": ["Always", "Never", "IfNotPresent"]
                           }
                         },
-                        "required": [
-                          "repository",
-                          "pullPolicy"
-                        ],
+                        "required": ["repository", "pullPolicy"],
                         "additionalProperties": false,
                         "description": "Container Image Configuration"
                       },
@@ -5088,10 +4673,7 @@
                         }
                       },
                       "sourceDsn": {
-                        "type": [
-                          "string",
-                          "null"
-                        ],
+                        "type": ["string", "null"],
                         "default": null
                       },
                       "target": {
@@ -5119,20 +4701,14 @@
                         "additionalProperties": false
                       }
                     },
-                    "required": [
-                      "target"
-                    ],
+                    "required": ["target"],
                     "additionalProperties": false
                   }
                 },
                 "additionalProperties": false
               }
             },
-            "required": [
-              "ccuStage",
-              "apiStack",
-              "chart"
-            ],
+            "required": ["ccuStage", "apiStack", "chart"],
             "additionalProperties": true
           },
           "propertyNames": {
