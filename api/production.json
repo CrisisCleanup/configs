@@ -117,14 +117,16 @@
       "spread": true,
       "scaling": {
         "memUtilPercent": 90,
+        "cpuUtilPercent": 85,
         "minReplicas": 4,
-        "maxReplicas": 14
+        "maxReplicas": 10
       }
     },
     "asgi": {
       "spread": true,
       "scaling": {
         "memUtilPercent": 90,
+        "cpuUtilPercent": 85,
         "minReplicas": 2,
         "maxReplicas": 10
       }
