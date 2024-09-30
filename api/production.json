@@ -126,7 +126,7 @@
       "scaling": {
         "memUtilPercent": 90,
         "minReplicas": 2,
-        "maxReplicas": 6
+        "maxReplicas": 10
       }
     },
     "celery": {
