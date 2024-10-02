@@ -121,7 +121,7 @@
         "memUtilPercent": 90,
         "cpuUtilPercent": 85,
         "minReplicas": 8,
-        "maxReplicas": 25
+        "maxReplicas": 60
       },
       "resources": {
         "cpu": {
