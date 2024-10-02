@@ -123,8 +123,8 @@
       },
       "resources": {
         "cpu": {
-          "request": 1500,
-          "limit": 2200
+          "request": 2200,
+          "limit": 3000
         }
       }
     },
