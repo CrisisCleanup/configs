@@ -1005,6 +1005,104 @@
                   "additionalProperties": false,
                   "description": "Kubernetes resource limits/requests"
                 },
+                "verticalScaling": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "policies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "containerName": {
+                            "type": "string",
+                            "description": "Name or pattern of containers to target."
+                          },
+                          "minAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          },
+                          "maxAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          }
+                        },
+                        "required": ["containerName"],
+                        "additionalProperties": false
+                      },
+                      "description": "Container policies for resource adjustments."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Vertical Pod Autoscaler Configuration"
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1098,6 +1196,104 @@
                   },
                   "additionalProperties": false,
                   "description": "Kubernetes resource limits/requests"
+                },
+                "verticalScaling": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "policies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "containerName": {
+                            "type": "string",
+                            "description": "Name or pattern of containers to target."
+                          },
+                          "minAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          },
+                          "maxAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          }
+                        },
+                        "required": ["containerName"],
+                        "additionalProperties": false
+                      },
+                      "description": "Container policies for resource adjustments."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Vertical Pod Autoscaler Configuration"
                 },
                 "replicaCount": {
                   "type": "number",
@@ -1180,6 +1376,104 @@
                   "additionalProperties": false,
                   "description": "Kubernetes resource limits/requests"
                 },
+                "verticalScaling": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "policies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "containerName": {
+                            "type": "string",
+                            "description": "Name or pattern of containers to target."
+                          },
+                          "minAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          },
+                          "maxAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          }
+                        },
+                        "required": ["containerName"],
+                        "additionalProperties": false
+                      },
+                      "description": "Container policies for resource adjustments."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Vertical Pod Autoscaler Configuration"
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1273,6 +1567,104 @@
                   },
                   "additionalProperties": false,
                   "description": "Kubernetes resource limits/requests"
+                },
+                "verticalScaling": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "policies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "containerName": {
+                            "type": "string",
+                            "description": "Name or pattern of containers to target."
+                          },
+                          "minAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          },
+                          "maxAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          }
+                        },
+                        "required": ["containerName"],
+                        "additionalProperties": false
+                      },
+                      "description": "Container policies for resource adjustments."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Vertical Pod Autoscaler Configuration"
                 },
                 "replicaCount": {
                   "type": "number",
@@ -1355,6 +1747,104 @@
                   "additionalProperties": false,
                   "description": "Kubernetes resource limits/requests"
                 },
+                "verticalScaling": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "policies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "containerName": {
+                            "type": "string",
+                            "description": "Name or pattern of containers to target."
+                          },
+                          "minAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          },
+                          "maxAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          }
+                        },
+                        "required": ["containerName"],
+                        "additionalProperties": false
+                      },
+                      "description": "Container policies for resource adjustments."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Vertical Pod Autoscaler Configuration"
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1449,6 +1939,104 @@
                   "additionalProperties": false,
                   "description": "Kubernetes resource limits/requests"
                 },
+                "verticalScaling": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "policies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "containerName": {
+                            "type": "string",
+                            "description": "Name or pattern of containers to target."
+                          },
+                          "minAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          },
+                          "maxAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          }
+                        },
+                        "required": ["containerName"],
+                        "additionalProperties": false
+                      },
+                      "description": "Container policies for resource adjustments."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Vertical Pod Autoscaler Configuration"
+                },
                 "replicaCount": {
                   "type": "number",
                   "minimum": 0,
@@ -1528,6 +2116,104 @@
                     },
                     "additionalProperties": false,
                     "description": "Kubernetes resource limits/requests"
+                  },
+                  "verticalScaling": {
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "policies": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "containerName": {
+                              "type": "string",
+                              "description": "Name or pattern of containers to target."
+                            },
+                            "minAllowed": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "cpu": {
+                                      "anyOf": [
+                                        {
+                                          "type": "number",
+                                          "description": "Kubernetes CPU Millicores"
+                                        }
+                                      ]
+                                    },
+                                    "memory": {
+                                      "anyOf": [
+                                        {
+                                          "type": "number",
+                                          "description": "Kubernetes Memory Mebibytes"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "description": "Resource limits for vertical scaling."
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "cpu": {},
+                                    "memory": {}
+                                  },
+                                  "additionalProperties": false
+                                }
+                              ],
+                              "description": "Resource limits for vertical scaling."
+                            },
+                            "maxAllowed": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "cpu": {
+                                      "anyOf": [
+                                        {
+                                          "type": "number",
+                                          "description": "Kubernetes CPU Millicores"
+                                        }
+                                      ]
+                                    },
+                                    "memory": {
+                                      "anyOf": [
+                                        {
+                                          "type": "number",
+                                          "description": "Kubernetes Memory Mebibytes"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "description": "Resource limits for vertical scaling."
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "cpu": {},
+                                    "memory": {}
+                                  },
+                                  "additionalProperties": false
+                                }
+                              ],
+                              "description": "Resource limits for vertical scaling."
+                            }
+                          },
+                          "required": ["containerName"],
+                          "additionalProperties": false
+                        },
+                        "description": "Container policies for resource adjustments."
+                      }
+                    },
+                    "additionalProperties": false,
+                    "description": "Vertical Pod Autoscaler Configuration"
                   },
                   "queues": {
                     "type": "array",
@@ -1629,6 +2315,104 @@
                     },
                     "additionalProperties": false,
                     "description": "Kubernetes resource limits/requests"
+                  },
+                  "verticalScaling": {
+                    "type": "object",
+                    "properties": {
+                      "enabled": {
+                        "type": "boolean",
+                        "default": true
+                      },
+                      "policies": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "containerName": {
+                              "type": "string",
+                              "description": "Name or pattern of containers to target."
+                            },
+                            "minAllowed": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "cpu": {
+                                      "anyOf": [
+                                        {
+                                          "type": "number",
+                                          "description": "Kubernetes CPU Millicores"
+                                        }
+                                      ]
+                                    },
+                                    "memory": {
+                                      "anyOf": [
+                                        {
+                                          "type": "number",
+                                          "description": "Kubernetes Memory Mebibytes"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "description": "Resource limits for vertical scaling."
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "cpu": {},
+                                    "memory": {}
+                                  },
+                                  "additionalProperties": false
+                                }
+                              ],
+                              "description": "Resource limits for vertical scaling."
+                            },
+                            "maxAllowed": {
+                              "allOf": [
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "cpu": {
+                                      "anyOf": [
+                                        {
+                                          "type": "number",
+                                          "description": "Kubernetes CPU Millicores"
+                                        }
+                                      ]
+                                    },
+                                    "memory": {
+                                      "anyOf": [
+                                        {
+                                          "type": "number",
+                                          "description": "Kubernetes Memory Mebibytes"
+                                        }
+                                      ]
+                                    }
+                                  },
+                                  "additionalProperties": false,
+                                  "description": "Resource limits for vertical scaling."
+                                },
+                                {
+                                  "type": "object",
+                                  "properties": {
+                                    "cpu": {},
+                                    "memory": {}
+                                  },
+                                  "additionalProperties": false
+                                }
+                              ],
+                              "description": "Resource limits for vertical scaling."
+                            }
+                          },
+                          "required": ["containerName"],
+                          "additionalProperties": false
+                        },
+                        "description": "Container policies for resource adjustments."
+                      }
+                    },
+                    "additionalProperties": false,
+                    "description": "Vertical Pod Autoscaler Configuration"
                   },
                   "queues": {
                     "type": "array",
@@ -1732,6 +2516,104 @@
                   "additionalProperties": false,
                   "description": "Kubernetes resource limits/requests"
                 },
+                "verticalScaling": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "policies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "containerName": {
+                            "type": "string",
+                            "description": "Name or pattern of containers to target."
+                          },
+                          "minAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          },
+                          "maxAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          }
+                        },
+                        "required": ["containerName"],
+                        "additionalProperties": false
+                      },
+                      "description": "Container policies for resource adjustments."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Vertical Pod Autoscaler Configuration"
+                },
                 "scaling": {
                   "type": "object",
                   "properties": {
@@ -1825,6 +2707,104 @@
                   },
                   "additionalProperties": false,
                   "description": "Kubernetes resource limits/requests"
+                },
+                "verticalScaling": {
+                  "type": "object",
+                  "properties": {
+                    "enabled": {
+                      "type": "boolean",
+                      "default": true
+                    },
+                    "policies": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "containerName": {
+                            "type": "string",
+                            "description": "Name or pattern of containers to target."
+                          },
+                          "minAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          },
+                          "maxAllowed": {
+                            "allOf": [
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes CPU Millicores"
+                                      }
+                                    ]
+                                  },
+                                  "memory": {
+                                    "anyOf": [
+                                      {
+                                        "type": "number",
+                                        "description": "Kubernetes Memory Mebibytes"
+                                      }
+                                    ]
+                                  }
+                                },
+                                "additionalProperties": false,
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              {
+                                "type": "object",
+                                "properties": {
+                                  "cpu": {},
+                                  "memory": {}
+                                },
+                                "additionalProperties": false
+                              }
+                            ],
+                            "description": "Resource limits for vertical scaling."
+                          }
+                        },
+                        "required": ["containerName"],
+                        "additionalProperties": false
+                      },
+                      "description": "Container policies for resource adjustments."
+                    }
+                  },
+                  "additionalProperties": false,
+                  "description": "Vertical Pod Autoscaler Configuration"
                 },
                 "replicaCount": {
                   "type": "number",
@@ -2918,6 +3898,104 @@
                       "additionalProperties": false,
                       "description": "Kubernetes resource limits/requests"
                     },
+                    "verticalScaling": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "policies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "containerName": {
+                                "type": "string",
+                                "description": "Name or pattern of containers to target."
+                              },
+                              "minAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              "maxAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              }
+                            },
+                            "required": ["containerName"],
+                            "additionalProperties": false
+                          },
+                          "description": "Container policies for resource adjustments."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Vertical Pod Autoscaler Configuration"
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -3011,6 +4089,104 @@
                       },
                       "additionalProperties": false,
                       "description": "Kubernetes resource limits/requests"
+                    },
+                    "verticalScaling": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "policies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "containerName": {
+                                "type": "string",
+                                "description": "Name or pattern of containers to target."
+                              },
+                              "minAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              "maxAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              }
+                            },
+                            "required": ["containerName"],
+                            "additionalProperties": false
+                          },
+                          "description": "Container policies for resource adjustments."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Vertical Pod Autoscaler Configuration"
                     },
                     "replicaCount": {
                       "type": "number",
@@ -3093,6 +4269,104 @@
                       "additionalProperties": false,
                       "description": "Kubernetes resource limits/requests"
                     },
+                    "verticalScaling": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "policies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "containerName": {
+                                "type": "string",
+                                "description": "Name or pattern of containers to target."
+                              },
+                              "minAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              "maxAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              }
+                            },
+                            "required": ["containerName"],
+                            "additionalProperties": false
+                          },
+                          "description": "Container policies for resource adjustments."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Vertical Pod Autoscaler Configuration"
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -3186,6 +4460,104 @@
                       },
                       "additionalProperties": false,
                       "description": "Kubernetes resource limits/requests"
+                    },
+                    "verticalScaling": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "policies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "containerName": {
+                                "type": "string",
+                                "description": "Name or pattern of containers to target."
+                              },
+                              "minAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              "maxAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              }
+                            },
+                            "required": ["containerName"],
+                            "additionalProperties": false
+                          },
+                          "description": "Container policies for resource adjustments."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Vertical Pod Autoscaler Configuration"
                     },
                     "replicaCount": {
                       "type": "number",
@@ -3268,6 +4640,104 @@
                       "additionalProperties": false,
                       "description": "Kubernetes resource limits/requests"
                     },
+                    "verticalScaling": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "policies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "containerName": {
+                                "type": "string",
+                                "description": "Name or pattern of containers to target."
+                              },
+                              "minAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              "maxAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              }
+                            },
+                            "required": ["containerName"],
+                            "additionalProperties": false
+                          },
+                          "description": "Container policies for resource adjustments."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Vertical Pod Autoscaler Configuration"
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -3362,6 +4832,104 @@
                       "additionalProperties": false,
                       "description": "Kubernetes resource limits/requests"
                     },
+                    "verticalScaling": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "policies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "containerName": {
+                                "type": "string",
+                                "description": "Name or pattern of containers to target."
+                              },
+                              "minAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              "maxAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              }
+                            },
+                            "required": ["containerName"],
+                            "additionalProperties": false
+                          },
+                          "description": "Container policies for resource adjustments."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Vertical Pod Autoscaler Configuration"
+                    },
                     "replicaCount": {
                       "type": "number",
                       "minimum": 0,
@@ -3441,6 +5009,104 @@
                         },
                         "additionalProperties": false,
                         "description": "Kubernetes resource limits/requests"
+                      },
+                      "verticalScaling": {
+                        "type": "object",
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "policies": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "containerName": {
+                                  "type": "string",
+                                  "description": "Name or pattern of containers to target."
+                                },
+                                "minAllowed": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "cpu": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "description": "Kubernetes CPU Millicores"
+                                            }
+                                          ]
+                                        },
+                                        "memory": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "description": "Kubernetes Memory Mebibytes"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "cpu": {},
+                                        "memory": {}
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  ],
+                                  "description": "Resource limits for vertical scaling."
+                                },
+                                "maxAllowed": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "cpu": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "description": "Kubernetes CPU Millicores"
+                                            }
+                                          ]
+                                        },
+                                        "memory": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "description": "Kubernetes Memory Mebibytes"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "cpu": {},
+                                        "memory": {}
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  ],
+                                  "description": "Resource limits for vertical scaling."
+                                }
+                              },
+                              "required": ["containerName"],
+                              "additionalProperties": false
+                            },
+                            "description": "Container policies for resource adjustments."
+                          }
+                        },
+                        "additionalProperties": false,
+                        "description": "Vertical Pod Autoscaler Configuration"
                       },
                       "queues": {
                         "type": "array",
@@ -3542,6 +5208,104 @@
                         },
                         "additionalProperties": false,
                         "description": "Kubernetes resource limits/requests"
+                      },
+                      "verticalScaling": {
+                        "type": "object",
+                        "properties": {
+                          "enabled": {
+                            "type": "boolean",
+                            "default": true
+                          },
+                          "policies": {
+                            "type": "array",
+                            "items": {
+                              "type": "object",
+                              "properties": {
+                                "containerName": {
+                                  "type": "string",
+                                  "description": "Name or pattern of containers to target."
+                                },
+                                "minAllowed": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "cpu": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "description": "Kubernetes CPU Millicores"
+                                            }
+                                          ]
+                                        },
+                                        "memory": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "description": "Kubernetes Memory Mebibytes"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "cpu": {},
+                                        "memory": {}
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  ],
+                                  "description": "Resource limits for vertical scaling."
+                                },
+                                "maxAllowed": {
+                                  "allOf": [
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "cpu": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "description": "Kubernetes CPU Millicores"
+                                            }
+                                          ]
+                                        },
+                                        "memory": {
+                                          "anyOf": [
+                                            {
+                                              "type": "number",
+                                              "description": "Kubernetes Memory Mebibytes"
+                                            }
+                                          ]
+                                        }
+                                      },
+                                      "additionalProperties": false,
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    {
+                                      "type": "object",
+                                      "properties": {
+                                        "cpu": {},
+                                        "memory": {}
+                                      },
+                                      "additionalProperties": false
+                                    }
+                                  ],
+                                  "description": "Resource limits for vertical scaling."
+                                }
+                              },
+                              "required": ["containerName"],
+                              "additionalProperties": false
+                            },
+                            "description": "Container policies for resource adjustments."
+                          }
+                        },
+                        "additionalProperties": false,
+                        "description": "Vertical Pod Autoscaler Configuration"
                       },
                       "queues": {
                         "type": "array",
@@ -3645,6 +5409,104 @@
                       "additionalProperties": false,
                       "description": "Kubernetes resource limits/requests"
                     },
+                    "verticalScaling": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "policies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "containerName": {
+                                "type": "string",
+                                "description": "Name or pattern of containers to target."
+                              },
+                              "minAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              "maxAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              }
+                            },
+                            "required": ["containerName"],
+                            "additionalProperties": false
+                          },
+                          "description": "Container policies for resource adjustments."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Vertical Pod Autoscaler Configuration"
+                    },
                     "scaling": {
                       "type": "object",
                       "properties": {
@@ -3738,6 +5600,104 @@
                       },
                       "additionalProperties": false,
                       "description": "Kubernetes resource limits/requests"
+                    },
+                    "verticalScaling": {
+                      "type": "object",
+                      "properties": {
+                        "enabled": {
+                          "type": "boolean",
+                          "default": true
+                        },
+                        "policies": {
+                          "type": "array",
+                          "items": {
+                            "type": "object",
+                            "properties": {
+                              "containerName": {
+                                "type": "string",
+                                "description": "Name or pattern of containers to target."
+                              },
+                              "minAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              },
+                              "maxAllowed": {
+                                "allOf": [
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes CPU Millicores"
+                                          }
+                                        ]
+                                      },
+                                      "memory": {
+                                        "anyOf": [
+                                          {
+                                            "type": "number",
+                                            "description": "Kubernetes Memory Mebibytes"
+                                          }
+                                        ]
+                                      }
+                                    },
+                                    "additionalProperties": false,
+                                    "description": "Resource limits for vertical scaling."
+                                  },
+                                  {
+                                    "type": "object",
+                                    "properties": {
+                                      "cpu": {},
+                                      "memory": {}
+                                    },
+                                    "additionalProperties": false
+                                  }
+                                ],
+                                "description": "Resource limits for vertical scaling."
+                              }
+                            },
+                            "required": ["containerName"],
+                            "additionalProperties": false
+                          },
+                          "description": "Container policies for resource adjustments."
+                        }
+                      },
+                      "additionalProperties": false,
+                      "description": "Vertical Pod Autoscaler Configuration"
                     },
                     "replicaCount": {
                       "type": "number",
@@ -4840,6 +6800,104 @@
                             "additionalProperties": false,
                             "description": "Kubernetes resource limits/requests"
                           },
+                          "verticalScaling": {
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean",
+                                "default": true
+                              },
+                              "policies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "containerName": {
+                                      "type": "string",
+                                      "description": "Name or pattern of containers to target."
+                                    },
+                                    "minAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    "maxAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    }
+                                  },
+                                  "required": ["containerName"],
+                                  "additionalProperties": false
+                                },
+                                "description": "Container policies for resource adjustments."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Vertical Pod Autoscaler Configuration"
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -4933,6 +6991,104 @@
                             },
                             "additionalProperties": false,
                             "description": "Kubernetes resource limits/requests"
+                          },
+                          "verticalScaling": {
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean",
+                                "default": true
+                              },
+                              "policies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "containerName": {
+                                      "type": "string",
+                                      "description": "Name or pattern of containers to target."
+                                    },
+                                    "minAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    "maxAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    }
+                                  },
+                                  "required": ["containerName"],
+                                  "additionalProperties": false
+                                },
+                                "description": "Container policies for resource adjustments."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Vertical Pod Autoscaler Configuration"
                           },
                           "replicaCount": {
                             "type": "number",
@@ -5015,6 +7171,104 @@
                             "additionalProperties": false,
                             "description": "Kubernetes resource limits/requests"
                           },
+                          "verticalScaling": {
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean",
+                                "default": true
+                              },
+                              "policies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "containerName": {
+                                      "type": "string",
+                                      "description": "Name or pattern of containers to target."
+                                    },
+                                    "minAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    "maxAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    }
+                                  },
+                                  "required": ["containerName"],
+                                  "additionalProperties": false
+                                },
+                                "description": "Container policies for resource adjustments."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Vertical Pod Autoscaler Configuration"
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -5108,6 +7362,104 @@
                             },
                             "additionalProperties": false,
                             "description": "Kubernetes resource limits/requests"
+                          },
+                          "verticalScaling": {
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean",
+                                "default": true
+                              },
+                              "policies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "containerName": {
+                                      "type": "string",
+                                      "description": "Name or pattern of containers to target."
+                                    },
+                                    "minAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    "maxAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    }
+                                  },
+                                  "required": ["containerName"],
+                                  "additionalProperties": false
+                                },
+                                "description": "Container policies for resource adjustments."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Vertical Pod Autoscaler Configuration"
                           },
                           "replicaCount": {
                             "type": "number",
@@ -5190,6 +7542,104 @@
                             "additionalProperties": false,
                             "description": "Kubernetes resource limits/requests"
                           },
+                          "verticalScaling": {
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean",
+                                "default": true
+                              },
+                              "policies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "containerName": {
+                                      "type": "string",
+                                      "description": "Name or pattern of containers to target."
+                                    },
+                                    "minAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    "maxAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    }
+                                  },
+                                  "required": ["containerName"],
+                                  "additionalProperties": false
+                                },
+                                "description": "Container policies for resource adjustments."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Vertical Pod Autoscaler Configuration"
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -5284,6 +7734,104 @@
                             "additionalProperties": false,
                             "description": "Kubernetes resource limits/requests"
                           },
+                          "verticalScaling": {
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean",
+                                "default": true
+                              },
+                              "policies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "containerName": {
+                                      "type": "string",
+                                      "description": "Name or pattern of containers to target."
+                                    },
+                                    "minAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    "maxAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    }
+                                  },
+                                  "required": ["containerName"],
+                                  "additionalProperties": false
+                                },
+                                "description": "Container policies for resource adjustments."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Vertical Pod Autoscaler Configuration"
+                          },
                           "replicaCount": {
                             "type": "number",
                             "minimum": 0,
@@ -5363,6 +7911,104 @@
                               },
                               "additionalProperties": false,
                               "description": "Kubernetes resource limits/requests"
+                            },
+                            "verticalScaling": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "default": true
+                                },
+                                "policies": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "containerName": {
+                                        "type": "string",
+                                        "description": "Name or pattern of containers to target."
+                                      },
+                                      "minAllowed": {
+                                        "allOf": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "cpu": {
+                                                "anyOf": [
+                                                  {
+                                                    "type": "number",
+                                                    "description": "Kubernetes CPU Millicores"
+                                                  }
+                                                ]
+                                              },
+                                              "memory": {
+                                                "anyOf": [
+                                                  {
+                                                    "type": "number",
+                                                    "description": "Kubernetes Memory Mebibytes"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "description": "Resource limits for vertical scaling."
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "cpu": {},
+                                              "memory": {}
+                                            },
+                                            "additionalProperties": false
+                                          }
+                                        ],
+                                        "description": "Resource limits for vertical scaling."
+                                      },
+                                      "maxAllowed": {
+                                        "allOf": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "cpu": {
+                                                "anyOf": [
+                                                  {
+                                                    "type": "number",
+                                                    "description": "Kubernetes CPU Millicores"
+                                                  }
+                                                ]
+                                              },
+                                              "memory": {
+                                                "anyOf": [
+                                                  {
+                                                    "type": "number",
+                                                    "description": "Kubernetes Memory Mebibytes"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "description": "Resource limits for vertical scaling."
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "cpu": {},
+                                              "memory": {}
+                                            },
+                                            "additionalProperties": false
+                                          }
+                                        ],
+                                        "description": "Resource limits for vertical scaling."
+                                      }
+                                    },
+                                    "required": ["containerName"],
+                                    "additionalProperties": false
+                                  },
+                                  "description": "Container policies for resource adjustments."
+                                }
+                              },
+                              "additionalProperties": false,
+                              "description": "Vertical Pod Autoscaler Configuration"
                             },
                             "queues": {
                               "type": "array",
@@ -5464,6 +8110,104 @@
                               },
                               "additionalProperties": false,
                               "description": "Kubernetes resource limits/requests"
+                            },
+                            "verticalScaling": {
+                              "type": "object",
+                              "properties": {
+                                "enabled": {
+                                  "type": "boolean",
+                                  "default": true
+                                },
+                                "policies": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "containerName": {
+                                        "type": "string",
+                                        "description": "Name or pattern of containers to target."
+                                      },
+                                      "minAllowed": {
+                                        "allOf": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "cpu": {
+                                                "anyOf": [
+                                                  {
+                                                    "type": "number",
+                                                    "description": "Kubernetes CPU Millicores"
+                                                  }
+                                                ]
+                                              },
+                                              "memory": {
+                                                "anyOf": [
+                                                  {
+                                                    "type": "number",
+                                                    "description": "Kubernetes Memory Mebibytes"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "description": "Resource limits for vertical scaling."
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "cpu": {},
+                                              "memory": {}
+                                            },
+                                            "additionalProperties": false
+                                          }
+                                        ],
+                                        "description": "Resource limits for vertical scaling."
+                                      },
+                                      "maxAllowed": {
+                                        "allOf": [
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "cpu": {
+                                                "anyOf": [
+                                                  {
+                                                    "type": "number",
+                                                    "description": "Kubernetes CPU Millicores"
+                                                  }
+                                                ]
+                                              },
+                                              "memory": {
+                                                "anyOf": [
+                                                  {
+                                                    "type": "number",
+                                                    "description": "Kubernetes Memory Mebibytes"
+                                                  }
+                                                ]
+                                              }
+                                            },
+                                            "additionalProperties": false,
+                                            "description": "Resource limits for vertical scaling."
+                                          },
+                                          {
+                                            "type": "object",
+                                            "properties": {
+                                              "cpu": {},
+                                              "memory": {}
+                                            },
+                                            "additionalProperties": false
+                                          }
+                                        ],
+                                        "description": "Resource limits for vertical scaling."
+                                      }
+                                    },
+                                    "required": ["containerName"],
+                                    "additionalProperties": false
+                                  },
+                                  "description": "Container policies for resource adjustments."
+                                }
+                              },
+                              "additionalProperties": false,
+                              "description": "Vertical Pod Autoscaler Configuration"
                             },
                             "queues": {
                               "type": "array",
@@ -5567,6 +8311,104 @@
                             "additionalProperties": false,
                             "description": "Kubernetes resource limits/requests"
                           },
+                          "verticalScaling": {
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean",
+                                "default": true
+                              },
+                              "policies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "containerName": {
+                                      "type": "string",
+                                      "description": "Name or pattern of containers to target."
+                                    },
+                                    "minAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    "maxAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    }
+                                  },
+                                  "required": ["containerName"],
+                                  "additionalProperties": false
+                                },
+                                "description": "Container policies for resource adjustments."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Vertical Pod Autoscaler Configuration"
+                          },
                           "scaling": {
                             "type": "object",
                             "properties": {
@@ -5660,6 +8502,104 @@
                             },
                             "additionalProperties": false,
                             "description": "Kubernetes resource limits/requests"
+                          },
+                          "verticalScaling": {
+                            "type": "object",
+                            "properties": {
+                              "enabled": {
+                                "type": "boolean",
+                                "default": true
+                              },
+                              "policies": {
+                                "type": "array",
+                                "items": {
+                                  "type": "object",
+                                  "properties": {
+                                    "containerName": {
+                                      "type": "string",
+                                      "description": "Name or pattern of containers to target."
+                                    },
+                                    "minAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    },
+                                    "maxAllowed": {
+                                      "allOf": [
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes CPU Millicores"
+                                                }
+                                              ]
+                                            },
+                                            "memory": {
+                                              "anyOf": [
+                                                {
+                                                  "type": "number",
+                                                  "description": "Kubernetes Memory Mebibytes"
+                                                }
+                                              ]
+                                            }
+                                          },
+                                          "additionalProperties": false,
+                                          "description": "Resource limits for vertical scaling."
+                                        },
+                                        {
+                                          "type": "object",
+                                          "properties": {
+                                            "cpu": {},
+                                            "memory": {}
+                                          },
+                                          "additionalProperties": false
+                                        }
+                                      ],
+                                      "description": "Resource limits for vertical scaling."
+                                    }
+                                  },
+                                  "required": ["containerName"],
+                                  "additionalProperties": false
+                                },
+                                "description": "Container policies for resource adjustments."
+                              }
+                            },
+                            "additionalProperties": false,
+                            "description": "Vertical Pod Autoscaler Configuration"
                           },
                           "replicaCount": {
                             "type": "number",
