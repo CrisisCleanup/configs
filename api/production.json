@@ -125,8 +125,12 @@
       },
       "resources": {
         "cpu": {
-          "request": 2200,
+          "request": 2000,
           "limit": 3000
+        },
+        "memory": {
+          "request": 1500,
+          "limit": 1500
         }
       }
     },
@@ -134,14 +138,14 @@
       "spread": true,
       "scaling": {
         "memUtilPercent": 90,
-        "cpuUtilPercent": 85,
+        "cpuUtilPercent": 90,
         "minReplicas": 8,
         "maxReplicas": 20
       },
       "resources": {
         "cpu": {
-          "request": 500,
-          "limit": 1400
+          "request": 1000,
+          "limit": 2000
         }
       }
     },
@@ -151,7 +155,7 @@
           "celery"
         ],
         "scaling": {
-          "memUtilPercent": 80,
+          "memUtilPercent": 90,
           "minReplicas": 3,
           "maxReplicas": 8
         },
@@ -159,6 +163,10 @@
           "cpu": {
             "request": 50,
             "limit": 200
+          },
+          "memory": {
+            "request": 1100,
+            "limit": 1100
           }
         }
       },
@@ -169,14 +177,19 @@
           "metrics"
         ],
         "scaling": {
-          "memUtilPercent": 80,
+          "cpuUtilPercent": 80,
+          "memUtilPercent": 90,
           "minReplicas": 3,
           "maxReplicas": 8
         },
         "resources": {
           "cpu": {
-            "request": 200,
-            "limit": 400
+            "request": 250,
+            "limit": 500
+          },
+          "memory": {
+            "request": 1100,
+            "limit": 1100
           }
         }
       }
