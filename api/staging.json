@@ -96,11 +96,17 @@
     "wsgi": {
       "scaling": {
         "maxReplicas": 6
+      },
+      "verticalScaling": {
+        "enabled": true
       }
     },
     "asgi": {
       "scaling": {
         "maxReplicas": 6
+      },
+      "verticalScaling": {
+        "enabled": true
       }
     },
     "celery": {
@@ -110,6 +116,9 @@
         ],
         "scaling": {
           "maxReplicas": 6
+        },
+        "verticalScaling": {
+          "enabled": true
         }
       },
       "signal": {
@@ -120,6 +129,9 @@
         ],
         "scaling": {
           "maxReplicas": 6
+        },
+        "verticalScaling": {
+          "enabled": true
         }
       }
     },
