@@ -132,6 +132,18 @@
           "request": 1500,
           "limit": 1500
         }
+      },
+      "verticalScaling": {
+        "enabled": true,
+        "policies": [
+          {
+            "containerName": "*",
+            "minAllowed": {
+              "cpu": 200,
+              "memory": 600
+            }
+          }
+        ]
       }
     },
     "asgi": {
@@ -147,6 +159,18 @@
           "request": 1000,
           "limit": 2000
         }
+      },
+      "verticalScaling": {
+        "enabled": true,
+        "policies": [
+          {
+            "containerName": "*",
+            "minAllowed": {
+              "cpu": 200,
+              "memory": 600
+            }
+          }
+        ]
       }
     },
     "celery": {
