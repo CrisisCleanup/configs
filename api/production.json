@@ -120,7 +120,7 @@
       "scaling": {
         "memUtilPercent": 90,
         "cpuUtilPercent": 85,
-        "minReplicas": 30,
+        "minReplicas": 16,
         "maxReplicas": 80
       },
       "resources": {
