@@ -291,6 +291,9 @@
                     },
                     "port": {
                       "type": "string"
+                    },
+                    "hostReplica": {
+                      "type": "string"
                     }
                   },
                   "required": ["dbname"],
@@ -1095,13 +1098,17 @@
                           }
                         },
                         "required": ["containerName"],
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "description": "Container policy for resource adjustments."
                       },
                       "description": "Container policies for resource adjustments."
                     }
                   },
                   "additionalProperties": false,
-                  "description": "Vertical Pod Autoscaler Configuration"
+                  "description": "Vertical Pod Autoscaler Configuration",
+                  "default": {
+                    "enabled": true
+                  }
                 },
                 "scaling": {
                   "type": "object",
@@ -1287,13 +1294,17 @@
                           }
                         },
                         "required": ["containerName"],
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "description": "Container policy for resource adjustments."
                       },
                       "description": "Container policies for resource adjustments."
                     }
                   },
                   "additionalProperties": false,
-                  "description": "Vertical Pod Autoscaler Configuration"
+                  "description": "Vertical Pod Autoscaler Configuration",
+                  "default": {
+                    "enabled": true
+                  }
                 },
                 "replicaCount": {
                   "type": "number",
@@ -1466,13 +1477,17 @@
                           }
                         },
                         "required": ["containerName"],
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "description": "Container policy for resource adjustments."
                       },
                       "description": "Container policies for resource adjustments."
                     }
                   },
                   "additionalProperties": false,
-                  "description": "Vertical Pod Autoscaler Configuration"
+                  "description": "Vertical Pod Autoscaler Configuration",
+                  "default": {
+                    "enabled": true
+                  }
                 },
                 "scaling": {
                   "type": "object",
@@ -1658,13 +1673,17 @@
                           }
                         },
                         "required": ["containerName"],
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "description": "Container policy for resource adjustments."
                       },
                       "description": "Container policies for resource adjustments."
                     }
                   },
                   "additionalProperties": false,
-                  "description": "Vertical Pod Autoscaler Configuration"
+                  "description": "Vertical Pod Autoscaler Configuration",
+                  "default": {
+                    "enabled": true
+                  }
                 },
                 "replicaCount": {
                   "type": "number",
@@ -1837,13 +1856,17 @@
                           }
                         },
                         "required": ["containerName"],
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "description": "Container policy for resource adjustments."
                       },
                       "description": "Container policies for resource adjustments."
                     }
                   },
                   "additionalProperties": false,
-                  "description": "Vertical Pod Autoscaler Configuration"
+                  "description": "Vertical Pod Autoscaler Configuration",
+                  "default": {
+                    "enabled": true
+                  }
                 },
                 "scaling": {
                   "type": "object",
@@ -2029,13 +2052,17 @@
                           }
                         },
                         "required": ["containerName"],
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "description": "Container policy for resource adjustments."
                       },
                       "description": "Container policies for resource adjustments."
                     }
                   },
                   "additionalProperties": false,
-                  "description": "Vertical Pod Autoscaler Configuration"
+                  "description": "Vertical Pod Autoscaler Configuration",
+                  "default": {
+                    "enabled": true
+                  }
                 },
                 "replicaCount": {
                   "type": "number",
@@ -2207,13 +2234,17 @@
                             }
                           },
                           "required": ["containerName"],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "description": "Container policy for resource adjustments."
                         },
                         "description": "Container policies for resource adjustments."
                       }
                     },
                     "additionalProperties": false,
-                    "description": "Vertical Pod Autoscaler Configuration"
+                    "description": "Vertical Pod Autoscaler Configuration",
+                    "default": {
+                      "enabled": true
+                    }
                   },
                   "queues": {
                     "type": "array",
@@ -2406,13 +2437,17 @@
                             }
                           },
                           "required": ["containerName"],
-                          "additionalProperties": false
+                          "additionalProperties": false,
+                          "description": "Container policy for resource adjustments."
                         },
                         "description": "Container policies for resource adjustments."
                       }
                     },
                     "additionalProperties": false,
-                    "description": "Vertical Pod Autoscaler Configuration"
+                    "description": "Vertical Pod Autoscaler Configuration",
+                    "default": {
+                      "enabled": true
+                    }
                   },
                   "queues": {
                     "type": "array",
@@ -2606,13 +2641,17 @@
                           }
                         },
                         "required": ["containerName"],
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "description": "Container policy for resource adjustments."
                       },
                       "description": "Container policies for resource adjustments."
                     }
                   },
                   "additionalProperties": false,
-                  "description": "Vertical Pod Autoscaler Configuration"
+                  "description": "Vertical Pod Autoscaler Configuration",
+                  "default": {
+                    "enabled": true
+                  }
                 },
                 "scaling": {
                   "type": "object",
@@ -2798,13 +2837,17 @@
                           }
                         },
                         "required": ["containerName"],
-                        "additionalProperties": false
+                        "additionalProperties": false,
+                        "description": "Container policy for resource adjustments."
                       },
                       "description": "Container policies for resource adjustments."
                     }
                   },
                   "additionalProperties": false,
-                  "description": "Vertical Pod Autoscaler Configuration"
+                  "description": "Vertical Pod Autoscaler Configuration",
+                  "default": {
+                    "enabled": true
+                  }
                 },
                 "replicaCount": {
                   "type": "number",
@@ -3187,6 +3230,9 @@
                       "type": "string"
                     },
                     "port": {
+                      "type": "string"
+                    },
+                    "hostReplica": {
                       "type": "string"
                     }
                   },
@@ -3988,13 +4034,17 @@
                               }
                             },
                             "required": ["containerName"],
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "description": "Container policy for resource adjustments."
                           },
                           "description": "Container policies for resource adjustments."
                         }
                       },
                       "additionalProperties": false,
-                      "description": "Vertical Pod Autoscaler Configuration"
+                      "description": "Vertical Pod Autoscaler Configuration",
+                      "default": {
+                        "enabled": true
+                      }
                     },
                     "scaling": {
                       "type": "object",
@@ -4180,13 +4230,17 @@
                               }
                             },
                             "required": ["containerName"],
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "description": "Container policy for resource adjustments."
                           },
                           "description": "Container policies for resource adjustments."
                         }
                       },
                       "additionalProperties": false,
-                      "description": "Vertical Pod Autoscaler Configuration"
+                      "description": "Vertical Pod Autoscaler Configuration",
+                      "default": {
+                        "enabled": true
+                      }
                     },
                     "replicaCount": {
                       "type": "number",
@@ -4359,13 +4413,17 @@
                               }
                             },
                             "required": ["containerName"],
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "description": "Container policy for resource adjustments."
                           },
                           "description": "Container policies for resource adjustments."
                         }
                       },
                       "additionalProperties": false,
-                      "description": "Vertical Pod Autoscaler Configuration"
+                      "description": "Vertical Pod Autoscaler Configuration",
+                      "default": {
+                        "enabled": true
+                      }
                     },
                     "scaling": {
                       "type": "object",
@@ -4551,13 +4609,17 @@
                               }
                             },
                             "required": ["containerName"],
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "description": "Container policy for resource adjustments."
                           },
                           "description": "Container policies for resource adjustments."
                         }
                       },
                       "additionalProperties": false,
-                      "description": "Vertical Pod Autoscaler Configuration"
+                      "description": "Vertical Pod Autoscaler Configuration",
+                      "default": {
+                        "enabled": true
+                      }
                     },
                     "replicaCount": {
                       "type": "number",
@@ -4730,13 +4792,17 @@
                               }
                             },
                             "required": ["containerName"],
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "description": "Container policy for resource adjustments."
                           },
                           "description": "Container policies for resource adjustments."
                         }
                       },
                       "additionalProperties": false,
-                      "description": "Vertical Pod Autoscaler Configuration"
+                      "description": "Vertical Pod Autoscaler Configuration",
+                      "default": {
+                        "enabled": true
+                      }
                     },
                     "scaling": {
                       "type": "object",
@@ -4922,13 +4988,17 @@
                               }
                             },
                             "required": ["containerName"],
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "description": "Container policy for resource adjustments."
                           },
                           "description": "Container policies for resource adjustments."
                         }
                       },
                       "additionalProperties": false,
-                      "description": "Vertical Pod Autoscaler Configuration"
+                      "description": "Vertical Pod Autoscaler Configuration",
+                      "default": {
+                        "enabled": true
+                      }
                     },
                     "replicaCount": {
                       "type": "number",
@@ -5100,13 +5170,17 @@
                                 }
                               },
                               "required": ["containerName"],
-                              "additionalProperties": false
+                              "additionalProperties": false,
+                              "description": "Container policy for resource adjustments."
                             },
                             "description": "Container policies for resource adjustments."
                           }
                         },
                         "additionalProperties": false,
-                        "description": "Vertical Pod Autoscaler Configuration"
+                        "description": "Vertical Pod Autoscaler Configuration",
+                        "default": {
+                          "enabled": true
+                        }
                       },
                       "queues": {
                         "type": "array",
@@ -5299,13 +5373,17 @@
                                 }
                               },
                               "required": ["containerName"],
-                              "additionalProperties": false
+                              "additionalProperties": false,
+                              "description": "Container policy for resource adjustments."
                             },
                             "description": "Container policies for resource adjustments."
                           }
                         },
                         "additionalProperties": false,
-                        "description": "Vertical Pod Autoscaler Configuration"
+                        "description": "Vertical Pod Autoscaler Configuration",
+                        "default": {
+                          "enabled": true
+                        }
                       },
                       "queues": {
                         "type": "array",
@@ -5499,13 +5577,17 @@
                               }
                             },
                             "required": ["containerName"],
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "description": "Container policy for resource adjustments."
                           },
                           "description": "Container policies for resource adjustments."
                         }
                       },
                       "additionalProperties": false,
-                      "description": "Vertical Pod Autoscaler Configuration"
+                      "description": "Vertical Pod Autoscaler Configuration",
+                      "default": {
+                        "enabled": true
+                      }
                     },
                     "scaling": {
                       "type": "object",
@@ -5691,13 +5773,17 @@
                               }
                             },
                             "required": ["containerName"],
-                            "additionalProperties": false
+                            "additionalProperties": false,
+                            "description": "Container policy for resource adjustments."
                           },
                           "description": "Container policies for resource adjustments."
                         }
                       },
                       "additionalProperties": false,
-                      "description": "Vertical Pod Autoscaler Configuration"
+                      "description": "Vertical Pod Autoscaler Configuration",
+                      "default": {
+                        "enabled": true
+                      }
                     },
                     "replicaCount": {
                       "type": "number",
@@ -6085,6 +6171,9 @@
                             "type": "string"
                           },
                           "port": {
+                            "type": "string"
+                          },
+                          "hostReplica": {
                             "type": "string"
                           }
                         },
@@ -6890,13 +6979,17 @@
                                     }
                                   },
                                   "required": ["containerName"],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "description": "Container policy for resource adjustments."
                                 },
                                 "description": "Container policies for resource adjustments."
                               }
                             },
                             "additionalProperties": false,
-                            "description": "Vertical Pod Autoscaler Configuration"
+                            "description": "Vertical Pod Autoscaler Configuration",
+                            "default": {
+                              "enabled": true
+                            }
                           },
                           "scaling": {
                             "type": "object",
@@ -7082,13 +7175,17 @@
                                     }
                                   },
                                   "required": ["containerName"],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "description": "Container policy for resource adjustments."
                                 },
                                 "description": "Container policies for resource adjustments."
                               }
                             },
                             "additionalProperties": false,
-                            "description": "Vertical Pod Autoscaler Configuration"
+                            "description": "Vertical Pod Autoscaler Configuration",
+                            "default": {
+                              "enabled": true
+                            }
                           },
                           "replicaCount": {
                             "type": "number",
@@ -7261,13 +7358,17 @@
                                     }
                                   },
                                   "required": ["containerName"],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "description": "Container policy for resource adjustments."
                                 },
                                 "description": "Container policies for resource adjustments."
                               }
                             },
                             "additionalProperties": false,
-                            "description": "Vertical Pod Autoscaler Configuration"
+                            "description": "Vertical Pod Autoscaler Configuration",
+                            "default": {
+                              "enabled": true
+                            }
                           },
                           "scaling": {
                             "type": "object",
@@ -7453,13 +7554,17 @@
                                     }
                                   },
                                   "required": ["containerName"],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "description": "Container policy for resource adjustments."
                                 },
                                 "description": "Container policies for resource adjustments."
                               }
                             },
                             "additionalProperties": false,
-                            "description": "Vertical Pod Autoscaler Configuration"
+                            "description": "Vertical Pod Autoscaler Configuration",
+                            "default": {
+                              "enabled": true
+                            }
                           },
                           "replicaCount": {
                             "type": "number",
@@ -7632,13 +7737,17 @@
                                     }
                                   },
                                   "required": ["containerName"],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "description": "Container policy for resource adjustments."
                                 },
                                 "description": "Container policies for resource adjustments."
                               }
                             },
                             "additionalProperties": false,
-                            "description": "Vertical Pod Autoscaler Configuration"
+                            "description": "Vertical Pod Autoscaler Configuration",
+                            "default": {
+                              "enabled": true
+                            }
                           },
                           "scaling": {
                             "type": "object",
@@ -7824,13 +7933,17 @@
                                     }
                                   },
                                   "required": ["containerName"],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "description": "Container policy for resource adjustments."
                                 },
                                 "description": "Container policies for resource adjustments."
                               }
                             },
                             "additionalProperties": false,
-                            "description": "Vertical Pod Autoscaler Configuration"
+                            "description": "Vertical Pod Autoscaler Configuration",
+                            "default": {
+                              "enabled": true
+                            }
                           },
                           "replicaCount": {
                             "type": "number",
@@ -8002,13 +8115,17 @@
                                       }
                                     },
                                     "required": ["containerName"],
-                                    "additionalProperties": false
+                                    "additionalProperties": false,
+                                    "description": "Container policy for resource adjustments."
                                   },
                                   "description": "Container policies for resource adjustments."
                                 }
                               },
                               "additionalProperties": false,
-                              "description": "Vertical Pod Autoscaler Configuration"
+                              "description": "Vertical Pod Autoscaler Configuration",
+                              "default": {
+                                "enabled": true
+                              }
                             },
                             "queues": {
                               "type": "array",
@@ -8201,13 +8318,17 @@
                                       }
                                     },
                                     "required": ["containerName"],
-                                    "additionalProperties": false
+                                    "additionalProperties": false,
+                                    "description": "Container policy for resource adjustments."
                                   },
                                   "description": "Container policies for resource adjustments."
                                 }
                               },
                               "additionalProperties": false,
-                              "description": "Vertical Pod Autoscaler Configuration"
+                              "description": "Vertical Pod Autoscaler Configuration",
+                              "default": {
+                                "enabled": true
+                              }
                             },
                             "queues": {
                               "type": "array",
@@ -8401,13 +8522,17 @@
                                     }
                                   },
                                   "required": ["containerName"],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "description": "Container policy for resource adjustments."
                                 },
                                 "description": "Container policies for resource adjustments."
                               }
                             },
                             "additionalProperties": false,
-                            "description": "Vertical Pod Autoscaler Configuration"
+                            "description": "Vertical Pod Autoscaler Configuration",
+                            "default": {
+                              "enabled": true
+                            }
                           },
                           "scaling": {
                             "type": "object",
@@ -8593,13 +8718,17 @@
                                     }
                                   },
                                   "required": ["containerName"],
-                                  "additionalProperties": false
+                                  "additionalProperties": false,
+                                  "description": "Container policy for resource adjustments."
                                 },
                                 "description": "Container policies for resource adjustments."
                               }
                             },
                             "additionalProperties": false,
-                            "description": "Vertical Pod Autoscaler Configuration"
+                            "description": "Vertical Pod Autoscaler Configuration",
+                            "default": {
+                              "enabled": true
+                            }
                           },
                           "replicaCount": {
                             "type": "number",
