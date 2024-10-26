@@ -81,7 +81,7 @@
     },
     "apiImage": {
       "repository": "240937704012.dkr.ecr.us-east-1.amazonaws.com/crisiscleanup-api",
-      "tag": "d57bc03",
+      "tag": "855b987",
       "pullPolicy": "IfNotPresent"
     },
     "ingressAnnotations": {
