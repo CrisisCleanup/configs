@@ -95,7 +95,7 @@
     },
     "wsgi": {
       "scaling": {
-        "maxReplicas": 6
+        "maxReplicas": 16
       },
       "verticalScaling": {
         "enabled": true
@@ -103,7 +103,7 @@
     },
     "asgi": {
       "scaling": {
-        "maxReplicas": 6
+        "maxReplicas": 16
       },
       "verticalScaling": {
         "enabled": true
@@ -115,7 +115,7 @@
           "celery"
         ],
         "scaling": {
-          "maxReplicas": 6
+          "maxReplicas": 12
         },
         "verticalScaling": {
           "enabled": true
@@ -128,7 +128,7 @@
           "metrics"
         ],
         "scaling": {
-          "maxReplicas": 6
+          "maxReplicas": 12
         },
         "verticalScaling": {
           "enabled": true
