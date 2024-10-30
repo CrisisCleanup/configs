@@ -45,8 +45,8 @@
       "minRunners": 0,
       "maxRunners": 8,
       "images": {
-        "runner": "ghcr.io/crisiscleanup/runner:v2.320.0",
-        "init-dind-externals": "ghcr.io/crisiscleanup/runner:v2.320.0",
+        "runner": "ghcr.io/crisiscleanup/runner:v2.319.1",
+        "init-dind-externals": "ghcr.io/crisiscleanup/runner:v2.319.1",
         "dind": "967600921982.dkr.ecr.us-east-1.amazonaws.com/ecr-public/docker/library/docker:dind"
       }
     }
