@@ -119,8 +119,7 @@ const commonDefaults = {
         "34.225.76.94/32",
         "34.230.206.171/32",
         "44.218.173.117/32",
-        // temporary, remove:
-        "24.218.44.86/32"
+        "187.252.199.203/32"
       ],
     },
     codeStarConnectionArn:
