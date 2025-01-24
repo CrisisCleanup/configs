@@ -180,7 +180,7 @@
           "celery"
         ],
         "scaling": {
-          "cpuUtilPercent": 80,
+          "cpuUtilPercent": 90,
           "memUtilPercent": 90,
           "minReplicas": 3,
           "maxReplicas": 30
@@ -203,7 +203,7 @@
           "metrics"
         ],
         "scaling": {
-          "cpuUtilPercent": 80,
+          "cpuUtilPercent": 90,
           "memUtilPercent": 90,
           "minReplicas": 3,
           "maxReplicas": 30
