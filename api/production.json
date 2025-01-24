@@ -43,7 +43,7 @@
     },
     "arc": {
       "minRunners": 0,
-      "maxRunners": 8,
+      "maxRunners": 12,
       "images": {
         "runner": "ghcr.io/crisiscleanup/runner:v2.321.0",
         "init-dind-externals": "ghcr.io/crisiscleanup/runner:v2.321.0",
