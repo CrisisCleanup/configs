@@ -95,7 +95,8 @@
     },
     "wsgi": {
       "scaling": {
-        "maxReplicas": 16
+        "minReplicas": 4,
+        "maxReplicas": 20
       },
       "verticalScaling": {
         "enabled": true
@@ -103,7 +104,8 @@
     },
     "asgi": {
       "scaling": {
-        "maxReplicas": 16
+        "minReplicas": 4,
+        "maxReplicas": 20
       },
       "verticalScaling": {
         "enabled": true
