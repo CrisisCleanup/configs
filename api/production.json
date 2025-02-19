@@ -119,9 +119,9 @@
     "wsgi": {
       "spread": true,
       "scaling": {
-        "memUtilPercent": 90,
-        "cpuUtilPercent": 85,
-        "minReplicas": 16,
+        "memUtilPercent": 80,
+        "cpuUtilPercent": 80,
+        "minReplicas": 20,
         "maxReplicas": 80
       },
       "resources": {
