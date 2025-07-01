@@ -90,8 +90,36 @@
     },
     "wsgi": {
       "scaling": {
-        "minReplicas": 1,
-        "maxReplicas": 6
+        "minReplicas": 0,
+        "maxReplicas": 0
+      }
+    },
+    "asgi": {
+      "scaling": {
+        "minReplicas": 0,
+        "maxReplicas": 0
+      }
+    },
+    "celery": {
+      "celery": {
+        "queues": [
+          "celery"
+        ],
+        "scaling": {
+          "minReplicas": 0,
+          "maxReplicas": 0
+        }
+      },
+      "signal": {
+        "queues": [
+          "signal",
+          "phone",
+          "metrics"
+        ],
+        "scaling": {
+          "minReplicas": 0,
+          "maxReplicas": 0
+        }
       }
     }
   }
