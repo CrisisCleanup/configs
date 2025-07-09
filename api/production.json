@@ -31,7 +31,8 @@
       "instanceTypes": [
         "c",
         "m",
-        "r"
+        "r",
+        "t"
       ],
       "platformArns": [
         "arn:aws:iam::240937704012:role/aws-reserved/sso.amazonaws.com/AWSReservedSSO_AWSAdministratorAccess_1cd42a2b39f2c674",
@@ -121,16 +122,16 @@
       "scaling": {
         "memUtilPercent": 80,
         "cpuUtilPercent": 80,
-        "minReplicas": 16,
-        "maxReplicas": 60
+        "minReplicas": 8,
+        "maxReplicas": 20
       },
       "resources": {
         "cpu": {
-          "request": 2000,
+          "request": 300,
           "limit": 3000
         },
         "memory": {
-          "request": 1500,
+          "request": 700,
           "limit": 1500
         }
       },
@@ -140,8 +141,8 @@
           {
             "containerName": "*",
             "minAllowed": {
-              "cpu": 200,
-              "memory": 600
+              "cpu": 100,
+              "memory": 400
             }
           }
         ]
@@ -152,12 +153,12 @@
       "scaling": {
         "memUtilPercent": 90,
         "cpuUtilPercent": 90,
-        "minReplicas": 12,
+        "minReplicas": 8,
         "maxReplicas": 20
       },
       "resources": {
         "cpu": {
-          "request": 1000,
+          "request": 400,
           "limit": 2000
         }
       },
@@ -167,8 +168,8 @@
           {
             "containerName": "*",
             "minAllowed": {
-              "cpu": 200,
-              "memory": 600
+              "cpu": 50,
+              "memory": 200
             }
           }
         ]
@@ -179,11 +180,14 @@
         "queues": [
           "celery"
         ],
+        "verticalScaling": {
+          "enabled": true
+        },
         "scaling": {
           "cpuUtilPercent": 90,
           "memUtilPercent": 90,
           "minReplicas": 3,
-          "maxReplicas": 30
+          "maxReplicas": 15
         },
         "resources": {
           "cpu": {
@@ -191,7 +195,7 @@
             "limit": 200
           },
           "memory": {
-            "request": 1100,
+            "request": 700,
             "limit": 1100
           }
         }
@@ -202,11 +206,14 @@
           "phone",
           "metrics"
         ],
+        "verticalScaling": {
+          "enabled": true
+        },
         "scaling": {
           "cpuUtilPercent": 90,
           "memUtilPercent": 90,
           "minReplicas": 3,
-          "maxReplicas": 30
+          "maxReplicas": 15
         },
         "resources": {
           "cpu": {
@@ -214,7 +221,7 @@
             "limit": 500
           },
           "memory": {
-            "request": 1100,
+            "request": 700,
             "limit": 1100
           }
         }
