@@ -19,7 +19,7 @@
       "databaseName": null,
       "username": "postgres",
       "ioOptimized": true,
-      "minAcu": 4,
+      "minAcu": 3,
       "maxAcu": 64,
       "snapshotIdentifier": "ccu-prod-aurora-pg15-20230818",
       "numReplicas": 1,
@@ -181,7 +181,16 @@
           "celery"
         ],
         "verticalScaling": {
-          "enabled": true
+          "enabled": true,
+          "policies": [
+            {
+              "containerName": "*",
+              "minAllowed": {
+                "cpu": 50,
+                "memory": 150
+              }
+            }
+          ]
         },
         "scaling": {
           "cpuUtilPercent": 90,
@@ -207,7 +216,16 @@
           "metrics"
         ],
         "verticalScaling": {
-          "enabled": true
+          "enabled": true,
+          "policies": [
+            {
+              "containerName": "*",
+              "minAllowed": {
+                "cpu": 150,
+                "memory": 250
+              }
+            }
+          ]
         },
         "scaling": {
           "cpuUtilPercent": 90,
