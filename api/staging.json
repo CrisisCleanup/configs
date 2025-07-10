@@ -133,7 +133,16 @@
           "maxReplicas": 6
         },
         "verticalScaling": {
-          "enabled": true
+          "enabled": true,
+          "policies": [
+            {
+              "containerName": "*",
+              "minAllowed": {
+                "cpu": 200,
+                "memory": 250
+              }
+            }
+          ]
         }
       }
     },
